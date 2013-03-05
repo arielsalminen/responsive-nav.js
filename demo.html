@@ -1,0 +1,25 @@
+<!-- TinyNav2.js v0.1 by @viljamis -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TinyNav2.js</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="demo.css">
+    <script>
+      var tinynav = {
+        nav: "nav", // Boolean: Trigger on window resize, true or false
+        nav_toggle: "nav-toggle" // Integer: Threshold time after window resize, in milliseconds
+      };
+    </script>
+    <script src="TinyNav2.min.js"></script>
+  </head>
+  <body>
+    <ol id="nav" class="closed">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Sub item</a></li>
+      <li><a href="#">Sub item</a></li>
+    </ol>
+    <a href="#nav" id="nav-toggle">Menu</a>
+  </body>
+</html>

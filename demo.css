@@ -1,0 +1,25 @@
+/*! TinyNav2.js v0.1 by @viljamis */
+@media only screen and (min-width: 40em) {
+  #nav-toggle {
+    display: none;
+  }
+}
+
+#nav {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.5s ease;
+  -moz-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+}
+
+@media only screen and (min-width: 40em) {
+  #nav {
+    height: auto;
+  }
+}
+
+#nav.opened {
+  height: 4em;
+}
