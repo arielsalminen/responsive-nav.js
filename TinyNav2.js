@@ -79,6 +79,11 @@
       nav_toggle.onmousedown = null;
       nav_function();
     };
+
+    // On click
+    nav_toggle.onclick = function () {
+      return false;
+    };
   }
 
   // Run on domready (w.load as a fallback)
