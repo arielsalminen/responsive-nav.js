@@ -14,6 +14,13 @@ body {
   font: normal 100%/1.5 sans-serif;
 }
 
+p {
+  margin-top: 5em;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
 #nav-toggle {
   display: none;
 }
