@@ -22,4 +22,5 @@ Changelog
 ======
 
 v0.2 (2013-03-06) - Added aria-hidden on resize and toggle, thank you [@stowball](https://github.com/stowball)!
+
 v0.1 (2013-03-05) - Release
