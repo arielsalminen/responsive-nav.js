@@ -86,7 +86,7 @@ p {
   }
 
   .js #nav {
-    height: auto;
+    height: auto !important;
   }
   
   #nav a {
