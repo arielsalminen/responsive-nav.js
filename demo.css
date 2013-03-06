@@ -1,4 +1,4 @@
-/*! TinyNav2.js v0.3 by @viljamis */
+/*! TinyNav2.js v0.5 by @viljamis */
 
 * {
   margin: 0;
@@ -42,10 +42,16 @@ p {
   float: right;
 }
 
-#nav {
+#nav,
+#nav-inner {
   list-style: none;
   width: 100%;
   float: left;
+}
+
+#nav li {
+  float: left;
+  width: 100%;
 }
 
 #nav a {
@@ -55,9 +61,7 @@ p {
   display: block;
   width: 100%;
   border-bottom: 1px solid #fff;
-  padding: 0 1em;
-  height: 44px;
-  line-height: 44px;
+  padding: .6em 1em;
   float: left;
 }
 
@@ -67,29 +71,43 @@ p {
 }
 
 .js #nav {
-  height: 0;
+  /* clip: rect(0 0 0 0);
+  position: absolute; */
+  max-height: 0;
+  display: block;
   overflow: hidden;
-  -webkit-transition: height 0.5s ease;
-  -moz-transition: height 0.5s ease;
-  -o-transition: height 0.5s ease;
-  transition: height 0.5s ease;
+  -moz-transition: max-height .4s ease;
+  -o-transition: max-height .4s ease;
+  -webkit-transition: max-height .4s ease;
+  transition: max-height .4s ease;
 }
 
-.js #nav.opened {
-  height: 176px; /* 44px x 4 = 176px */
+
+
+#nav.opened {
+  /* position: static; */
+  max-height: 9999px;
 }
 
 @media only screen and (min-width: 40em) {
+  
+  body {
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 60em;
+  }
 
   .js #nav-toggle {
     display: none;
   }
 
   .js #nav {
-    height: auto !important;
+    max-height: none !important;
   }
   
-  #nav a {
+  #nav li {
+    text-align: center;
+    float: left;
     width: 25%;
     border-right: 1px solid #fff;
   }

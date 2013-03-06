@@ -1,34 +1,40 @@
-<!-- TinyNav2.js v0.3 by @viljamis -->
+<!-- TinyNav2.js v0.5 by @viljamis -->
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
     <title>TinyNav2.js</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="demo.css?v=0.5">
     <script>
+
       // Adds "js" class to <html>
       var doc = document,
         docEl = document.documentElement;
       docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
 
       // Optional TinyNav settings
-      var tinynav = {
+      var tinyNav = {
         nav: "nav", // String: #id of the nav
-        nav_toggle: "nav-toggle" // String: #id of the toggle
+        navToggle: "nav-toggle" // String: #id of the toggle
       };
+
     </script>
-    <script src="TinyNav2.js"></script>
+    <script src="TinyNav2.min.js?v=0.5"></script>
   </head>
   <body>
-    <ol id="nav" class="closed">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Blog</a></li>
-    </ol>
+
+    <div id="nav" class="closed">
+      <ul id="nav-inner">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
     <a href="#nav" id="nav-toggle">Menu</a>
-    
+
     <p>The source code is hosted on <a href="https://github.com/viljamis/TinyNav2.js">GitHub</a>.</p>
   </body>
 </html>
