@@ -25,6 +25,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Changelog
 ======
 
+v0.5 (2013-03-06) - TinyNav2 now calculates the needed height for the navigation so you don't have to. Includes also bug fixes.
+
 v0.3 (2013-03-06) - Adds styles for the demo. You can now also [view the demo online](http://tinynav2.viljamis.com)
 
 v0.2 (2013-03-06) - Added aria-hidden on resize and toggle, thank you [@stowball](https://github.com/stowball)!
