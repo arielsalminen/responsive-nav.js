@@ -1,11 +1,62 @@
 /*! TinyNav2.js v0.2 by @viljamis */
-@media only screen and (min-width: 40em) {
-  #nav-toggle {
-    display: none;
-  }
+
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color: #000;
+  background: #fff;
+  font: normal 100%/1.5 sans-serif;
+}
+
+#nav-toggle {
+  display: none;
+}
+
+.js #nav-toggle {
+  display: block;
 }
 
 #nav {
+  list-style: none;
+  width: 100%;
+  float: left;
+}
+
+#nav a {
+  color: #000;
+  text-decoration: none;
+  background: #ddd;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  padding: 0 1em;
+  height: 44px;
+  line-height: 44px;
+  float: left;
+}
+
+#nav a:hover,
+#nav .active a {
+  background: #aaa;
+}
+
+#nav-toggle {
+  color: #000;
+  text-decoration: none;
+  background: #ddd;
+  display: block;
+  border-bottom: 1px solid #fff;
+  padding: .6em 1em;
+  float: right;
+}
+
+.js #nav {
   height: 0;
   overflow: hidden;
   -webkit-transition: height 0.5s ease;
@@ -14,12 +65,23 @@
   transition: height 0.5s ease;
 }
 
-@media only screen and (min-width: 40em) {
-  #nav {
-    height: auto;
-  }
+.js #nav.opened {
+  height: 176px; /* 44px x 4 = 176px */
 }
 
-#nav.opened {
-  height: 4em;
+@media only screen and (min-width: 40em) {
+
+  .js #nav-toggle {
+    display: none;
+  }
+
+  .js #nav {
+    height: auto;
+  }
+  
+  #nav a {
+    width: 25%;
+    border-right: 1px solid #fff;
+  }
+
 }
