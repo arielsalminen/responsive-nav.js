@@ -1,5 +1,5 @@
 # TinyNav2.js
-### Tiny responsive navigation plugin without library dependencies and with fast touch screen support. Weighs just 452 bytes minified and gzipped.
+### Tiny responsive navigation plugin without library dependencies and with fast touch screen support. Weighs just 597 bytes minified and gzipped.
 
 Work-in-progress, so description and more stuff coming soon…
 
