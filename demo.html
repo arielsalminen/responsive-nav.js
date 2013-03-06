@@ -7,18 +7,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="demo.css">
     <script>
+      // Adds "js" class to <html>
+      var doc = document,
+        docEl = document.documentElement;
+      docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
+
+      // Optional TinyNav settings
       var tinynav = {
         nav: "nav", // String: #id of the nav
         nav_toggle: "nav-toggle" // String: #id of the toggle
       };
     </script>
-    <script src="TinyNav2.min.js"></script>
+    <script src="TinyNav2.js"></script>
   </head>
   <body>
     <ol id="nav" class="closed">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Sub item</a></li>
-      <li><a href="#">Sub item</a></li>
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="index.html">About</a></li>
+      <li><a href="index.html">Projects</a></li>
+      <li><a href="index.html">Blog</a></li>
     </ol>
     <a href="#nav" id="nav-toggle">Menu</a>
   </body>
