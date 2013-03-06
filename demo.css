@@ -20,6 +20,13 @@ body {
 
 .js #nav-toggle {
   display: block;
+  color: #000;
+  text-decoration: none;
+  background: #ddd;
+  display: block;
+  border-bottom: 1px solid #fff;
+  padding: .6em 1em;
+  float: right;
 }
 
 #nav {
@@ -44,16 +51,6 @@ body {
 #nav a:hover,
 #nav .active a {
   background: #aaa;
-}
-
-#nav-toggle {
-  color: #000;
-  text-decoration: none;
-  background: #ddd;
-  display: block;
-  border-bottom: 1px solid #fff;
-  padding: .6em 1em;
-  float: right;
 }
 
 .js #nav {
