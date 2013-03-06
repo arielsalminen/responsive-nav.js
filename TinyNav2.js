@@ -1,5 +1,5 @@
-/*! TinyNav2.js v0.3
- * https://github.com/viljamis/TinyNav2.js
+/*! tinyNav2.js v0.5
+ * https://github.com/viljamis/tinyNav2.js
  * http://tinynav2.viljamis.com
  *
  * Copyright (c) 2013 @viljamis
@@ -10,23 +10,44 @@
 
 (function (w) {
 
-  // TinyNav
-  var tinynav = w.tinynav || {};
+  var tinyNav = w.tinyNav || {};
 
   var nav,
-    nav_toggle,
+    navToggle,
+    navInner,
+    doc = w.document,
     aria = "aria-hidden",
+    head = doc.getElementsByTagName("head")[0],
+    styleEl = doc.createElement("style"),
     computed = w.getComputedStyle ? true : false;
 
-  // Set aria-hidden
-  w.setAria = function () {
+  // Create style element
+  head.appendChild(styleEl);
+
+  // Resizer
+  w.resizer = function () {
     if (computed) {
-      if (w.getComputedStyle(nav_toggle, null).getPropertyValue("display") !== "none") {
-        nav_toggle.setAttribute(aria, false);
+      if (w.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
+
+        // Set aria-hidden
+        navToggle.setAttribute(aria, false);
         nav.setAttribute(aria, true);
+
+        // Inject custom styles
+        head.appendChild(styleEl);
+        var savedHeight = navInner.offsetHeight,
+          innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
+        styleEl.innerHTML = innerStyles;
+        innerStyles = '';
+
       } else {
-        nav_toggle.setAttribute(aria, true);
+
+        // Set aria-hidden
+        navToggle.setAttribute(aria, true);
         nav.setAttribute(aria, false);
+
+        // Remove custom styles
+        styleEl.parentNode.removeChild(styleEl);
       }
     }
   };
@@ -36,19 +57,19 @@
 
     var nav_open = false,
       closed = "closed",
-      opened = "opened";
-
-    // Get element
-    var getElement = function (el) {
-      return w.document.getElementById(el);
-    };
+      opened = "opened",
+      getElement = function (el) {
+        return doc.getElementById(el);
+      };
 
     // Default settings
-    nav = getElement(tinynav.nav) || getElement("nav"); // String: #id of the nav
-    nav_toggle = getElement(tinynav.nav_toggle) || getElement("nav-toggle"); // String: #id of the toggle
+    nav = getElement(tinyNav.nav) || getElement("nav"); // String: id of the nav
+    navInner = getElement(tinyNav.navInner) || getElement("nav-inner"); // String: id of the nav wrapper
+    navToggle = getElement(tinyNav.navToggle) || getElement("nav-toggle"); // String: id of the toggle
 
     // Determines if we should open or close the nav
-    var nav_function = function () {
+    var navFunction = function (e) {
+        e.preventDefault();
         if (!nav_open) {
           nav.className = nav.className.replace(closed, opened);
           if (computed) {
@@ -65,23 +86,23 @@
         return false;
       };
 
-    // Init aria on load
-    w.setAria();
+    // Init on load
+    w.resizer();
 
     // Mousedown
-    nav_toggle.onmousedown = function () {
-      nav_function();
+    navToggle.onmousedown = function (e) {
+      navFunction(e);
     };
 
     // Touchstart event fires before the mousedown event
     // and can wipe the previous mousedown event
-    nav_toggle.ontouchstart = function () {
-      nav_toggle.onmousedown = null;
-      nav_function();
+    navToggle.ontouchstart = function (e) {
+      navToggle.onmousedown = null;
+      navFunction(e);
     };
 
     // On click
-    nav_toggle.onclick = function () {
+    navToggle.onclick = function () {
       return false;
     };
   }
@@ -94,10 +115,10 @@
       w.removeEventListener("load", w.navigation, false);
     }, false);
     w.addEventListener("load", w.navigation, false);
-    w.addEventListener("resize", w.setAria, false);
+    w.addEventListener("resize", w.resizer, false);
   } else if (w.attachEvent) {
     w.attachEvent("onload", w.navigation);
-    w.attachEvent("resize", w.setAria);
+    w.attachEvent("resize", w.resizer);
   }
 
 })(this);
