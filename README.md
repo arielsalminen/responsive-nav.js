@@ -1,7 +1,7 @@
 # TinyNav2.js
-### Responsive navigation plugin without library dependencies and with fast touch screen support. Weighs just 316 bytes.
+### Tiny responsive navigation plugin without library dependencies and with fast touch screen support. Weighs just 452 bytes minified and gzipped.
 
-Description and more stuff coming soon… WIP
+Work-in-progress, so description and more stuff coming soon…
 
 
 License
@@ -21,4 +21,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Changelog
 ======
 
+v0.2 (2013-03-06) - Added aria-hidden on resize and toggle, thank you [@stowball](https://github.com/stowball)!
 v0.1 (2013-03-05) - Release
