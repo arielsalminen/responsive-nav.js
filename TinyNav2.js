@@ -1,6 +1,6 @@
 /*! TinyNav2.js v0.2
  * https://github.com/viljamis/TinyNav2.js
- * http://viljamis.com
+ * http://tinynav2.viljamis.com
  *
  * Copyright (c) 2013 @viljamis
  * Available under the MIT license

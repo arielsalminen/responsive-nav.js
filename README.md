@@ -6,7 +6,7 @@ Work-in-progress, so description and more stuff coming soon…
 Usage Instructions and demo
 ======
 
-For a demo go to [http://viljamis.com/tinynav2/](http://viljamis.com/tinynav2/). Usage instructions coming later…
+For a demo go to [http://tinynav2.viljamis.com](http://tinynav2.viljamis.com). Usage instructions coming later…
 
 License
 ======
@@ -25,7 +25,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Changelog
 ======
 
-v0.3 (2013-03-06) - Adds styles for the demo. You can now also [view the demo online](http://viljamis.com/tinynav2/)
+v0.3 (2013-03-06) - Adds styles for the demo. You can now also [view the demo online](http://tinynav2.viljamis.com)
 
 v0.2 (2013-03-06) - Added aria-hidden on resize and toggle, thank you [@stowball](https://github.com/stowball)!
 
