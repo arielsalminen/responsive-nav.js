@@ -1,12 +1,16 @@
 # TinyNav2.js
-### Tiny responsive navigation plugin without library dependencies and with fast touch screen support. Weighs just 597 bytes minified and gzipped.
+### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-Work-in-progress, so description and more stuff coming soon…
+TinyNav2 is a tiny JavaScript plugin (597 bytes minified and gzipped) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS transitions for best possible performance. It also uses a "clever" workaround which makes it possible to transition from height: 0; to height: auto; which isn't normally possible with CSS transitions.
 
-Usage Instructions and demo
+Please note that this is still a work-in-progress, so there are some bugs in certain browsers like Opera Mobile. Anyway, I will deal with them soon, so don't worry. Usage instructions and better demos are also coming.
+
+Check out also the previous version: [TinyNav 1](http://tinynav.viljamis.com)
+
+Demo
 ======
 
-For a demo go to [http://tinynav2.viljamis.com](http://tinynav2.viljamis.com). Usage instructions coming later…
+For a demo go to [http://tinynav2.viljamis.com](http://tinynav2.viljamis.com). 
 
 License
 ======
