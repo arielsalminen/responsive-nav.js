@@ -7,10 +7,22 @@ Please note that this is still a work-in-progress, so there are some bugs in cer
 
 Check out also the previous version: [TinyNav 1](http://tinynav.viljamis.com)
 
+#### Features:
+ * Under 1kb minified and gzipped
+ * Uses CSS3 transitions and touchstart
+ * Automatically calculates needed height for the navigation so you don't have to
+ * Simple markup using an unordered list
+ * Custom settings for the toggle label and nav selectors
+ * 1.0 version will work in all major desktop and mobile browsers
+
+
+
 Demo
 ======
 
 For a demo go to [http://tinynav2.viljamis.com](http://tinynav2.viljamis.com). 
+
+
 
 License
 ======
