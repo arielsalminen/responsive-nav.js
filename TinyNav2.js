@@ -23,8 +23,18 @@
     computed = w.getComputedStyle ? true : false,
     debug = tinyNav.debug || false; // Boolean: log debug messages to console, true or false
 
+  // Debug
+  if (debug === true) {
+    c.log("Inited Tinynav2.js");
+  }
+
   // Create style element
   head.appendChild(styleEl);
+
+  // Debug
+  if (debug === true) {
+    c.log("Created initial 'styleEl' to <head>");
+  }
 
   // Resizer
   w.resizer = function () {
@@ -36,7 +46,15 @@
         nav.setAttribute(aria, true);
 
         // Inject custom styles
-        head.appendChild(styleEl);
+        if (!styleEl.parentNode) {
+          head.appendChild(styleEl);
+
+          // Debug
+          if (debug === true) {
+            c.log("Appended 'styleEl' to <head>");
+          }
+
+        }
         var savedHeight = navInner.offsetHeight,
           innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
         styleEl.innerHTML = innerStyles;
@@ -44,7 +62,7 @@
 
         // Debug
         if (debug === true) {
-          c.log("Calculated max-height of " + savedHeight + " pixels and inserted to DOM");
+          c.log("Calculated max-height of " + savedHeight + " pixels and updated 'styleEl'");
         }
 
       } else {
@@ -59,7 +77,7 @@
 
           // Debug
           if (debug === true) {
-            c.log("Removed max-height styles");
+            c.log("Removed 'styleEl' from <head>");
           }
 
         }
@@ -69,11 +87,6 @@
 
   // Navigation
   w.navigation = function () {
-
-    // Debug
-    if (debug === true) {
-      c.log("Inited Navigation");
-    }
 
     var nav_open = false,
       closed = "closed",
