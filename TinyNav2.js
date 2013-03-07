@@ -123,12 +123,24 @@
 
     // Mousedown
     navToggle.onmousedown = function (e) {
+
+      // Debug
+      if (debug === true) {
+        c.log("Detected mousedown");
+      }
+
       navFunction(e);
     };
 
     // Touchstart event fires before the mousedown event
     // and can wipe the previous mousedown event
     navToggle.ontouchstart = function (e) {
+
+      // Debug
+      if (debug === true) {
+        c.log("Detected touchstart");
+      }
+
       navToggle.onmousedown = null;
       navFunction(e);
     };
