@@ -1,4 +1,4 @@
-/*! tinyNav2.js v0.5
+/*! tinyNav2.js v0.51
  * https://github.com/viljamis/tinyNav2.js
  * http://tinynav2.viljamis.com
  *
