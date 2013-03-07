@@ -29,6 +29,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Changelog
 ======
 
+v0.6 (2013-03-07) - TinyNav2 now automatically creates a toggle link for the menu so you don't have to.
+
 v0.52 (2013-03-07) - Adds new option called "debug".
 
 v0.51 (2013-03-07) - Fixes errors in the console.
