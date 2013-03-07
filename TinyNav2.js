@@ -40,6 +40,9 @@
         styleEl.innerHTML = innerStyles;
         innerStyles = '';
 
+        // Debug
+        console.log("Calculated max-height of " + savedHeight + " pixels and inserted to DOM");
+
       } else {
 
         // Set aria-hidden
@@ -47,13 +50,22 @@
         nav.setAttribute(aria, false);
 
         // Remove custom styles
-        styleEl.parentNode.removeChild(styleEl);
+        if (styleEl.parentNode) {
+          styleEl.parentNode.removeChild(styleEl);
+
+          // Debug
+          console.log("Removed max-height styles");
+
+        }
       }
     }
   };
 
   // Navigation
   w.navigation = function () {
+
+    // Debug
+    console.log("Inited Navigation");
 
     var nav_open = false,
       closed = "closed",
@@ -76,12 +88,20 @@
             nav.setAttribute(aria, false);
           }
           nav_open = true;
+
+          // Debug
+          console.log("Opened navigation");
+
         } else {
           nav.className = nav.className.replace(opened, closed);
           if (computed) {
             nav.setAttribute(aria, true);
           }
           nav_open = false;
+
+          // Debug
+          console.log("Closed navigation");
+
         }
         return false;
       };
