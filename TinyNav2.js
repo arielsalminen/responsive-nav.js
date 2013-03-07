@@ -1,4 +1,4 @@
-/*! tinyNav2.js v0.52
+/*! tinyNav2.js v0.6
  * https://github.com/viljamis/tinyNav2.js
  * http://tinynav2.viljamis.com
  *
@@ -21,6 +21,7 @@
     head = doc.getElementsByTagName("head")[0],
     styleEl = doc.createElement("style"),
     computed = w.getComputedStyle ? true : false,
+    label = tinyNav.label || "Menu",
     debug = tinyNav.debug || false; // Boolean: log debug messages to console, true or false
 
   // Debug
@@ -98,7 +99,19 @@
     // Default selectors
     nav = getElement(tinyNav.nav) || getElement("nav"); // String: id of the nav
     navInner = getElement(tinyNav.navInner) || getElement("nav-inner"); // String: id of the nav wrapper
-    navToggle = getElement(tinyNav.navToggle) || getElement("nav-toggle"); // String: id of the toggle
+
+    // Create navigation toggle
+    var toggle = doc.createElement("a");
+    toggle.setAttribute("href", "#");
+    toggle.setAttribute("id", "nav-toggle");
+    toggle.innerHTML = label;
+    nav.parentNode.insertBefore(toggle, nav.nextSibling);
+    navToggle = getElement("nav-toggle");
+
+    // Debug
+    if (debug === true) {
+      c.log("Navigation toggle created");
+    }
 
     // Determines if we should open or close the nav
     var navFunction = function (e) {

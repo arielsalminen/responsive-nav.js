@@ -1,4 +1,4 @@
-/*! TinyNav2.js v0.52 by @viljamis */
+/*! TinyNav2.js v0.6 by @viljamis */
 
 * {
   margin: 0;
@@ -28,10 +28,6 @@ p {
 }
 
 #nav-toggle {
-  display: none;
-}
-
-.js #nav-toggle {
   display: block;
   color: #000;
   text-decoration: none;
@@ -97,7 +93,7 @@ p {
     max-width: 60em;
   }
 
-  .js #nav-toggle {
+  #nav-toggle {
     display: none;
   }
 
