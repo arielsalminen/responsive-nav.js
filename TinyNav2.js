@@ -15,11 +15,13 @@
   var nav,
     navToggle,
     navInner,
+    c = console,
     doc = w.document,
     aria = "aria-hidden",
     head = doc.getElementsByTagName("head")[0],
     styleEl = doc.createElement("style"),
-    computed = w.getComputedStyle ? true : false;
+    computed = w.getComputedStyle ? true : false,
+    debug = tinyNav.debug || false; // Boolean: log debug messages to console, true or false
 
   // Create style element
   head.appendChild(styleEl);
@@ -41,7 +43,9 @@
         innerStyles = '';
 
         // Debug
-        console.log("Calculated max-height of " + savedHeight + " pixels and inserted to DOM");
+        if (debug === true) {
+          c.log("Calculated max-height of " + savedHeight + " pixels and inserted to DOM");
+        }
 
       } else {
 
@@ -54,7 +58,9 @@
           styleEl.parentNode.removeChild(styleEl);
 
           // Debug
-          console.log("Removed max-height styles");
+          if (debug === true) {
+            c.log("Removed max-height styles");
+          }
 
         }
       }
@@ -65,7 +71,9 @@
   w.navigation = function () {
 
     // Debug
-    console.log("Inited Navigation");
+    if (debug === true) {
+      c.log("Inited Navigation");
+    }
 
     var nav_open = false,
       closed = "closed",
@@ -74,7 +82,7 @@
         return doc.getElementById(el);
       };
 
-    // Default settings
+    // Default selectors
     nav = getElement(tinyNav.nav) || getElement("nav"); // String: id of the nav
     navInner = getElement(tinyNav.navInner) || getElement("nav-inner"); // String: id of the nav wrapper
     navToggle = getElement(tinyNav.navToggle) || getElement("nav-toggle"); // String: id of the toggle
@@ -90,7 +98,9 @@
           nav_open = true;
 
           // Debug
-          console.log("Opened navigation");
+          if (debug === true) {
+            c.log("Opened navigation");
+          }
 
         } else {
           nav.className = nav.className.replace(opened, closed);
@@ -100,7 +110,9 @@
           nav_open = false;
 
           // Debug
-          console.log("Closed navigation");
+          if (debug === true) {
+            c.log("Closed navigation");
+          }
 
         }
         return false;
