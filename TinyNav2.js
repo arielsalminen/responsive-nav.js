@@ -114,7 +114,10 @@
     // the overflow: hidden; doesn't work anymore unless we also set
     // clip: rect(0 0 0 0); and position: absolute.
     // But in this case we don't really want absolute position,
-    // so we need to override this in the css with static position. Lol.
+    // so we need to override this in the css with static position
+    // when the animation starts.
+    //
+    // This: https://dl.dropbox.com/u/2206960/GIF/panda.gif
     if (ua.match(/(Opera Mobi)/)) {
       nav.style.position = "absolute";
     }
