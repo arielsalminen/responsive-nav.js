@@ -1,4 +1,4 @@
-/*! TinyNav2.js v0.6 by @viljamis */
+/*! TinyNav2.js v0.61 by @viljamis */
 
 * {
   margin: 0;
@@ -27,7 +27,7 @@ p {
   width: 100%;
 }
 
-#nav-toggle {
+#tinynav-toggle {
   display: block;
   color: #000;
   text-decoration: none;
@@ -67,8 +67,7 @@ p {
 }
 
 .js #nav {
-  /* clip: rect(0 0 0 0);
-  position: absolute; */
+  clip: rect(0 0 0 0);
   max-height: 0;
   display: block;
   overflow: hidden;
@@ -81,7 +80,7 @@ p {
 
 
 #nav.opened {
-  /* position: static; */
+  position: static !important; /* Don't remove, will otherwise break in Opera Mobile */
   max-height: 9999px;
 }
 
@@ -93,7 +92,7 @@ p {
     max-width: 60em;
   }
 
-  #nav-toggle {
+  #tinynav-toggle {
     display: none;
   }
 
