@@ -1,4 +1,4 @@
-/*! tinyNav2.js v0.6
+/*! tinyNav2.js v0.61
  * https://github.com/viljamis/tinyNav2.js
  * http://tinynav2.viljamis.com
  *
@@ -18,6 +18,7 @@
     c = console,
     doc = w.document,
     aria = "aria-hidden",
+    ua = navigator.userAgent,
     head = doc.getElementsByTagName("head")[0],
     styleEl = doc.createElement("style"),
     computed = w.getComputedStyle ? true : false,
@@ -103,10 +104,20 @@
     // Create navigation toggle
     var toggle = doc.createElement("a");
     toggle.setAttribute("href", "#");
-    toggle.setAttribute("id", "nav-toggle");
+    toggle.setAttribute("id", "tinynav-toggle");
     toggle.innerHTML = label;
     nav.parentNode.insertBefore(toggle, nav.nextSibling);
-    navToggle = getElement("nav-toggle");
+    navToggle = getElement("tinynav-toggle");
+
+    // Following tries to fix overflow: hidden; "bug" in Opera Mobile.
+    // The problem seems to be that when using "max-height" on an element
+    // the overflow: hidden; doesn't work anymore unless we also set
+    // clip: rect(0 0 0 0); and position: absolute.
+    // But in this case we don't really want absolute position,
+    // so we need to override this in the css with static position. Lol.
+    if (ua.match(/(Opera Mobi)/)) {
+      nav.style.position = "absolute";
+    }
 
     // Debug
     if (debug === true) {
