@@ -1,0 +1,48 @@
+body {
+  color: #000;
+  background: #fff;
+  font: normal 100%/1.5 sans-serif;
+}
+
+p {
+  margin-top: 5em;
+  text-align: center;
+  width: 100%;
+}
+
+#nav {
+
+  a {
+    color: #000; 
+    background: #ddd;
+    border-bottom: 1px solid #fff;
+    padding: .6em 1em;
+    
+    &:hover,
+    .active & {
+      background: #aaa;
+    }
+  }// a
+  
+}// #nav
+
+
+#tinynav-toggle {
+  color: #000;
+  background: #ddd;
+  border-bottom: 1px solid #fff;
+  padding: .6em 1em;
+}
+
+@media only screen and (min-width: 40em) {
+
+  body {
+    margin: 0 auto;
+    padding: 2em;
+    max-width: 60em;
+  }
+
+}// @media
+
+
+// end demo styles
