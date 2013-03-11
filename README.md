@@ -41,6 +41,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Changelog
 ======
 
+v0.65 (2013-03-11) - Removes the need to add "closed" class.
+
 v0.61 (2013-03-09) - Works now in Opera Mobile.
 
 v0.6 (2013-03-07) - TinyNav2 now automatically creates a toggle link for the menu so you don't have to.
