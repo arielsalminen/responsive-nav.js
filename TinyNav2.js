@@ -101,6 +101,9 @@
     nav = getElement(tinyNav.nav) || getElement("nav"); // String: id of the nav
     navInner = getElement(tinyNav.navInner) || getElement("nav-inner"); // String: id of the nav wrapper
 
+    // Add closed class for nav
+    nav.className = nav.className + " closed";
+
     // Create navigation toggle
     var toggle = doc.createElement("a");
     toggle.setAttribute("href", "#");
@@ -109,15 +112,7 @@
     nav.parentNode.insertBefore(toggle, nav.nextSibling);
     navToggle = getElement("tinynav-toggle");
 
-    // Following tries to fix overflow: hidden; "bug" in Opera Mobile.
-    // The problem seems to be that when using "max-height" on an element
-    // the overflow: hidden; doesn't work anymore unless we also set
-    // clip: rect(0 0 0 0); and position: absolute.
-    // But in this case we don't really want absolute position,
-    // so we need to override this in the css with static position
-    // when the animation starts.
-    //
-    // This: https://dl.dropbox.com/u/2206960/GIF/panda.gif
+    // Fixes overflow: hidden; bug in Opera Mobile
     if (ua.match(/(Opera Mobi)/)) {
       nav.style.position = "absolute";
     }
