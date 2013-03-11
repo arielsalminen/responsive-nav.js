@@ -28,11 +28,9 @@ p {
 }
 
 #tinynav-toggle {
-  display: block;
   color: #000;
   text-decoration: none;
   background: #ddd;
-  display: block;
   border-bottom: 1px solid #fff;
   padding: .6em 1em;
   float: right;
@@ -54,7 +52,6 @@ p {
   color: #000;
   text-decoration: none;
   background: #ddd;
-  display: block;
   width: 100%;
   border-bottom: 1px solid #fff;
   padding: .6em 1em;
@@ -93,7 +90,14 @@ p {
   }
 
   #tinynav-toggle {
-    display: none;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
   }
 
   .js #nav {
@@ -102,7 +106,6 @@ p {
   
   #nav li {
     text-align: center;
-    float: left;
     width: 25%;
     border-right: 1px solid #fff;
   }
