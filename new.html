@@ -6,7 +6,7 @@
     <title>TinyNav2.js</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="demo.css">
-    <script src="TinyNav2.js"></script>
+    <script src="new.js"></script>
     <script>
 
       // Adds "js" class to <html>
@@ -15,12 +15,10 @@
       docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
 
       // Optional TinyNav settings
-      var tinyNav = {
-        nav: "nav", // String: id of the navigation
-        navInner: "nav-inner", // String: id of the navigation wrapper
+      navigation = new TinyNav("#nav", {
         label: "Mökä", // String: Label for the navigation toggle, default is "Menu"
         debug: true // Boolean: log debug messages to console, true or false
-      };
+      });
       
       console.log("foo")
 
