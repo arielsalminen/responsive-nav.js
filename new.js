@@ -77,7 +77,7 @@ var TinyNav = (function (window, document) {
 
     toggle: function (el) {
       
-      var that = el;
+      var that = this || el;
       
       if (!nav_open) {
         that.wrapper.className = that.wrapper.className.replace(closed, opened);
