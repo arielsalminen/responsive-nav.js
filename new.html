@@ -26,15 +26,18 @@
       var docEl = document.documentElement;
       docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
 
-      // TinyNav
-      var navigation = new TinyNav("#nav", {
-        label: "Mökä", // String: Label for the navigation toggle, default is "Menu"
-        debug: true, // Boolean: log debug messages to console, true or false
-        navInner: "#nav ul"
+      // TinyNav2
+      var navigation = new TinyNav("#nav", { // Selector: Outer wrapper, default is "#nav"
+        navInner: "#nav ul", // Selector: Inner wrapper, default is "#nav ul"
+        label: "Menu", // String: Label for the navigation toggle, default is "Menu"
+        debug: true // Boolean: log debug messages to console, true or false, default is false
       });
 
-      // Call public method
-      navigation.msg();
+      // TinyNav2 public methods
+      navigation.init();
+      navigation.destroy();
+      navigation.toggle();
+      // etc…
 
     </script>
   </body>
