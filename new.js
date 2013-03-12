@@ -76,20 +76,23 @@ var TinyNav = (function (window, document) {
     },
 
     toggle: function (el) {
+      
+      var that = el;
+      
       if (!nav_open) {
-        this.wrapper.className = this.wrapper.className.replace(closed, opened);
+        that.wrapper.className = that.wrapper.className.replace(closed, opened);
         if (computed) {
-          this.wrapper.setAttribute(aria, false);
+          that.wrapper.setAttribute(aria, false);
         }
         nav_open = true;
-        if (this.options.debug) c.log("Opened navigation");
+        if (that.options.debug) c.log("Opened navigation");
       } else {
-        this.wrapper.className = this.wrapper.className.replace(opened, closed);
+        that.wrapper.className = that.wrapper.className.replace(opened, closed);
         if (computed) {
-          this.wrapper.setAttribute(aria, true);
+          that.wrapper.setAttribute(aria, true);
         }
         nav_open = false;
-        if (this.options.debug) c.log("Closed navigation");
+        if (that.options.debug) c.log("Closed navigation");
       }
       return false;
     },
@@ -128,7 +131,7 @@ var TinyNav = (function (window, document) {
       // Mousedown
       navToggle.onmousedown = function () {
         event.preventDefault();
-        this.toggle();
+        TinyNav.prototype.toggle(el);
         if (el.options.debug) c.log("Detected mousedown");
       };
       // Touchstart event fires before the mousedown event
