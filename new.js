@@ -24,8 +24,6 @@ var TinyNav = (function (window, document) {
 
       // Determine the wrapper
       this.wrapper = typeof el == "string" ? doc.querySelector(el) : el;
-      
-      console.log(this.wrapper);
 
       // Default settings
       this.options = {
@@ -55,16 +53,6 @@ var TinyNav = (function (window, document) {
     };
 
   TinyNav.prototype = {
-    handleEvent: function (e) {
-      switch(e.type) {
-        case "onmousedown":
-          alert("foo")
-          break;
-        default:
-          alert("problems")
-      }
-    },
-
     init: function (el) {
       if (this.initiated) return;
       this.initiated = true;
@@ -85,6 +73,25 @@ var TinyNav = (function (window, document) {
       this._removeToggle();
       window.removeEventListener("load", checkResize, false);
       window.removeEventListener(resizeEvent, checkResize, false);
+    },
+
+    toggle: function (el) {
+      if (!nav_open) {
+        this.wrapper.className = this.wrapper.className.replace(closed, opened);
+        if (computed) {
+          this.wrapper.setAttribute(aria, false);
+        }
+        nav_open = true;
+        if (this.options.debug) c.log("Opened navigation");
+      } else {
+        this.wrapper.className = this.wrapper.className.replace(opened, closed);
+        if (computed) {
+          this.wrapper.setAttribute(aria, true);
+        }
+        nav_open = false;
+        if (this.options.debug) c.log("Closed navigation");
+      }
+      return false;
     },
 
     _createStyles: function (el) {
@@ -116,31 +123,12 @@ var TinyNav = (function (window, document) {
       navToggle.parentNode.removeChild(navToggle);
       if (el.options.debug) c.log("Navigation toggle removed");
     },
-    
-    _toggle: function (el) {
-      if (!nav_open) {
-        el.wrapper.className = el.wrapper.className.replace(closed, opened);
-        if (computed) {
-          el.wrapper.setAttribute(aria, false);
-        }
-        nav_open = true;
-        if (el.options.debug) c.log("Opened navigation");
-      } else {
-        el.wrapper.className = el.wrapper.className.replace(opened, closed);
-        if (computed) {
-          el.wrapper.setAttribute(aria, true);
-        }
-        nav_open = false;
-        if (el.options.debug) c.log("Closed navigation");
-      }
-      return false;
-    },
 
     _handleToggleStates: function (el) {
       // Mousedown
       navToggle.onmousedown = function () {
         event.preventDefault();
-        TinyNav.prototype._toggle(el);
+        this.toggle();
         if (el.options.debug) c.log("Detected mousedown");
       };
       // Touchstart event fires before the mousedown event
@@ -148,7 +136,7 @@ var TinyNav = (function (window, document) {
       navToggle.ontouchstart = function (event) {
         navToggle.onmousedown = null;
         event.preventDefault();
-        TinyNav.prototype._toggle(el);
+        TinyNav.prototype.toggle(el);
         if (el.options.debug) c.log("Detected touchstart");
       };
       // On click
