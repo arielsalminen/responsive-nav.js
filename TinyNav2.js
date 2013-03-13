@@ -210,6 +210,7 @@ var TinyNav = (function (window, document) {
     _handleToggleStates: function (obj) {
       // Mousedown
       navToggle.onmousedown = function (event) {
+        event.preventDefault();
         obj.wrapper.TinyNav.toggle(event);
         if (obj.options.debug) {
           log("Detected mousedown");
@@ -220,6 +221,7 @@ var TinyNav = (function (window, document) {
       // and can wipe the previous mousedown event
       navToggle.ontouchstart = function (event) {
         navToggle.onmousedown = null;
+        event.preventDefault();
         obj.wrapper.TinyNav.toggle(event);
       };
 
