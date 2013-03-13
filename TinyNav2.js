@@ -16,7 +16,6 @@ var TinyNav = (function (window, document) {
 
     doc = window.document,
     aria = "aria-hidden",
-    ua = navigator.userAgent,
     computed = window.getComputedStyle ? true : false,
     head = doc.getElementsByTagName("head")[0],
     styleElement = doc.createElement("style"),
