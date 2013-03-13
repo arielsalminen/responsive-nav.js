@@ -1,39 +1,11 @@
 /*! TinyNav2.js v0.65 by @viljamis */
-
-* {
+#nav,
+#nav * {
   margin: 0;
   padding: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-body {
-  color: #000;
-  background: #fff;
-  font: normal 100%/1.5 sans-serif;
-}
-
-p {
-  margin-top: 5em;
-  text-align: center;
-  float: left;
-  width: 100%;
-}
-
-#tinynav-toggle {
-  color: #000;
-  text-decoration: none;
-  background: #ddd;
-  border-bottom: 1px solid #fff;
-  padding: .6em 1em;
-  float: right;
 }
 
 #nav,
@@ -76,20 +48,23 @@ p {
   max-height: 9999px;
 }
 
+#tinynav-toggle {
+  color: #000;
+  text-decoration: none;
+  background: #ddd;
+  border-bottom: 1px solid #fff;
+  padding: .6em 1em;
+  float: right;
+}
+
 @media only screen and (min-width: 40em) {
-  
-  body {
-    margin: 0 auto;
-    padding: 2em;
-    max-width: 60em;
-  }
 
   #tinynav-toggle {
     display: none;
   }
 
   .js #nav {
-    max-height: none !important;
+    max-height: none;
   }
 
   #nav li {
