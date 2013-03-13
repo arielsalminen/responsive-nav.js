@@ -10,9 +10,8 @@
 
 var TinyNav = (function (window, document) {
 
-  var c = console,
-    checkResize,
-    navToggle,
+  var navToggle,
+    c = console,
     doc = window.document,
     aria = "aria-hidden",
     ua = navigator.userAgent,
@@ -47,8 +46,7 @@ var TinyNav = (function (window, document) {
     },
 
     TinyNav = function (el, options) {
-      var i,
-        navInner;
+      var i;
 
       // Wrapper
       this.wrapper = typeof el === "string" ? doc.querySelector(el) : el;
