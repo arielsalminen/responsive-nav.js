@@ -11,15 +11,16 @@
 var TinyNav = (function (window, document) {
 
   var navToggle,
-    c = console,
+    checkResize,
+
     doc = window.document,
     aria = "aria-hidden",
     ua = navigator.userAgent,
-    resizeEvent = 'onorientationchange' in window ? 'orientationchange' : 'resize',
     computed = window.getComputedStyle ? true : false,
     head = doc.getElementsByTagName("head")[0],
-    styleEl = doc.createElement("style"),
-    nav_open = false,
+    styleElement = doc.createElement("style"),
+
+    navOpen = false,
     closed = "closed",
     opened = "opened",
 
@@ -45,20 +46,28 @@ var TinyNav = (function (window, document) {
       }
     },
 
+    log = function (s) {
+      try {
+        console.log(s);
+      } catch (e) {
+        alert(s);
+      }
+    },
+
     TinyNav = function (el, options) {
       var i;
 
       // Wrapper
       this.wrapper = typeof el === "string" ? doc.querySelector(el) : el;
 
-      // Save this for later
-      this.wrapper.tinynav = this;
+      // Save this
+      this.wrapper.TinyNav = this;
 
-      // Default settings
+      // Default options
       this.options = {
+        navInner: "#nav ul", // Selector: selector for the inner wrapper
         label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-        debug: false, // Boolean: log debug messages to console, true or false
-        navInner: "#nav ul" // Selector: selector for the inner wrapper
+        debug: false // Boolean: log debug messages to console, true or false
       };
 
       // User defined options
@@ -66,70 +75,77 @@ var TinyNav = (function (window, document) {
         this.options[i] = options[i];
       }
 
-      this.wrapper.className = this.wrapper.className + " closed";
-
-      // Fixes overflow: hidden; bug in Opera Mobile
-      if (ua.match(/(Opera Mobi)/)) {
-        this.wrapper.style.position = "absolute";
-      }
-
+      // Inner wrapper
       var inner = this.options.navInner;
       this.wrapper.inner = typeof inner === "string" ? doc.querySelector(inner) : inner;
 
       // Init
       TinyNav.prototype.init(this);
-
-      // Debug
-      if (this.options.debug) {
-        c.log("Inited Tinynav2.js");
-      }
     };
 
   TinyNav.prototype = {
 
     init: function (obj) {
-      if (this.initiated) {
-        return;
+      if (obj.options.debug) {
+        log("Inited Tinynav2.js");
       }
-      this.initiated = true;
+
+      obj.wrapper.className = obj.wrapper.className + " closed";
+
+      // Fix overflow: hidden; bug in Opera Mobile
+      if (ua.match(/(Opera Mobi)/)) {
+        obj.wrapper.style.position = "absolute";
+      }
+
       this._createStyles(obj);
       this._createToggle(obj);
-      function checkResize() {
+
+      checkResize = function () {
         TinyNav.prototype._resizer(obj);
-      }
+      };
+
       addEvent(window, "load", checkResize);
       addEvent(window, "resize", checkResize);
     },
 
     destroy: function () {
-      this.initiated = false;
-      styleEl.parentNode.removeChild(styleEl);
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
-      this.wrapper.tinynav = null;
-      //this.wrapper.removeAttribute(aria);
+      this.wrapper.removeAttribute(aria);
+      this.wrapper.TinyNav = null;
+      this.wrapper.inner = null;
+
       this._removeToggle();
+
       removeEvent(window, "load", checkResize);
       removeEvent(window, "resize", checkResize);
+
+      styleElement.parentNode.removeChild(styleElement);
+
+      if (this.options.debug) {
+        log("TinyNav2 destroyed");
+      }
     },
 
     toggle: function (obj) {
-      if (!nav_open) {
+      if (!navOpen) {
         this.wrapper.className = this.wrapper.className.replace(closed, opened);
         if (computed) {
           this.wrapper.setAttribute(aria, false);
         }
-        nav_open = true;
+        navOpen = true;
+
         if (this.options.debug) {
-          c.log("Opened navigation");
+          log("Opened navigation");
         }
       } else {
         this.wrapper.className = this.wrapper.className.replace(opened, closed);
         if (computed) {
           this.wrapper.setAttribute(aria, true);
         }
-        nav_open = false;
+        navOpen = false;
+
         if (this.options.debug) {
-          c.log("Closed navigation");
+          log("Closed navigation");
         }
       }
       return false;
@@ -137,62 +153,61 @@ var TinyNav = (function (window, document) {
 
 
     _createStyles: function (obj) {
-      if (!styleEl.parentNode) {
-        head.appendChild(styleEl);
+      if (!styleElement.parentNode) {
+        head.appendChild(styleElement);
+
         if (obj.options.debug) {
-          c.log("Created 'styleEl' to <head>");
+          log("Created 'styleElement' to <head>");
         }
       }
     },
 
     _removeStyles: function (obj) {
-      if (styleEl.parentNode) {
-        styleEl.parentNode.removeChild(styleEl);
+      if (styleElement.parentNode) {
+        styleElement.parentNode.removeChild(styleElement);
+
         if (obj.options.debug) {
-          c.log("Removed 'styleEl' from <head>");
+          log("Removed 'styleElement' from <head>");
         }
       }
     },
 
     _createToggle: function (obj) {
       var toggle = doc.createElement("a");
+
       toggle.setAttribute("href", "#");
       toggle.setAttribute("id", "tinynav-toggle");
       toggle.innerHTML = obj.options.label;
+
       obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper.nextSibling);
       navToggle = doc.querySelector("#tinynav-toggle");
-      if (obj.options.debug) {
-        c.log("Navigation toggle created");
-      }
+
       this._handleToggleStates(obj);
+
+      if (obj.options.debug) {
+        log("Navigation toggle created");
+      }
     },
 
     _removeToggle: function (obj) {
       navToggle.parentNode.removeChild(navToggle);
-      if (obj.options.debug) {
-        c.log("Navigation toggle removed");
+
+      if (this.options.debug) {
+        log("Navigation toggle removed");
       }
     },
 
     _handleToggleStates: function (obj) {
       // Mousedown
       navToggle.onmousedown = function (event) {
-        event.preventDefault();
-        obj.wrapper.tinynav.toggle();
-        if (obj.options.debug) {
-          c.log("Detected mousedown");
-        }
+        obj.wrapper.TinyNav.toggle(event);
       };
 
       // Touchstart event fires before the mousedown event
       // and can wipe the previous mousedown event
       navToggle.ontouchstart = function (event) {
         navToggle.onmousedown = null;
-        event.preventDefault();
-        obj.wrapper.tinynav.toggle();
-        if (obj.options.debug) {
-          c.log("Detected touchstart");
-        }
+        obj.wrapper.TinyNav.toggle(event);
       };
 
       // On click
@@ -211,10 +226,12 @@ var TinyNav = (function (window, document) {
 
           var savedHeight = obj.wrapper.inner.offsetHeight,
             innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
-          styleEl.innerHTML = innerStyles;
+
+          styleElement.innerHTML = innerStyles;
           innerStyles = '';
+
           if (obj.options.debug) {
-            c.log("Calculated max-height of " + savedHeight + " pixels and updated 'styleEl'");
+            log("Calculated max-height of " + savedHeight + " pixels and updated 'styleElement'");
           }
         } else {
           navToggle.setAttribute(aria, true);

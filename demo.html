@@ -19,23 +19,23 @@
     </div>
 
     <p>The source code is hosted on <a href="https://github.com/viljamis/TinyNav2.js">GitHub</a>.</p>
-    <script src="TinyNav2.js"></script>
+    <script src="tinynav2.js"></script>
     <script>
+    
+    var navigation;
 
       // Adds "js" class to <html>
       var docEl = document.documentElement;
       docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
 
-      // TinyNav2
-      var navigation = new TinyNav("#nav", { // Selector: Outer wrapper, default is "#nav"
+      // Init TinyNav
+      navigation = new TinyNav("#nav", { // Selector: Outer wrapper, default is "#nav"
         navInner: "#nav ul", // Selector: Inner wrapper, default is "#nav ul"
         label: "Menu", // String: Label for the navigation toggle, default is "Menu"
         debug: true // Boolean: log debug messages to console, true or false, default is false
       });
-
-      // TinyNav2 public methods
+      
       //navigation.destroy();
-      //navigation.toggle();
 
     </script>
   </body>
