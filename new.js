@@ -13,17 +13,17 @@ var TinyNav = (function (window, document) {
     closed = "closed",
     opened = "opened",
 
-    getElement = function (el) {
-      return doc.getElementById(el);
-    },
 
     TinyNav = function (el, options) {
       var i,
-      navToggle,
-      navInner;
+        navToggle,
+        navInner;
 
-      // Determine the wrapper
+      // Wrapper
       this.wrapper = typeof el == "string" ? doc.querySelector(el) : el;
+
+      // Save this for later
+      this.wrapper.tinynav = this;
 
       // Default settings
       this.options = {
@@ -52,124 +52,155 @@ var TinyNav = (function (window, document) {
       if (this.options.debug) c.log("Inited Tinynav2.js");
     };
 
+
   TinyNav.prototype = {
-    init: function (el) {
+
+
+    init: function (obj) {
+
       if (this.initiated) return;
       this.initiated = true;
-      this._createStyles(el);
-      this._createToggle(el);
+      this._createStyles(obj);
+      this._createToggle(obj);
       function checkResize() {
-        TinyNav.prototype._resizer(el);
+        TinyNav.prototype._resizer(obj);
       }
       window.addEventListener("load", checkResize, false);
       window.addEventListener(resizeEvent, checkResize, false);
+
     },
 
+
     destroy: function () {
+
       this.initiated = false;
       styleEl.parentNode.removeChild(styleEl);
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
+      this.wrapper.tinynav = null;
       //this.wrapper.removeAttribute(aria);
       this._removeToggle();
       window.removeEventListener("load", checkResize, false);
       window.removeEventListener(resizeEvent, checkResize, false);
+
     },
 
-    toggle: function (el) {
-      
-      var that = this || el;
-      
+
+    toggle: function (obj) {
+
       if (!nav_open) {
-        that.wrapper.className = that.wrapper.className.replace(closed, opened);
+        this.wrapper.className = this.wrapper.className.replace(closed, opened);
         if (computed) {
-          that.wrapper.setAttribute(aria, false);
+          this.wrapper.setAttribute(aria, false);
         }
         nav_open = true;
-        if (that.options.debug) c.log("Opened navigation");
+        if (this.options.debug) c.log("Opened navigation");
       } else {
-        that.wrapper.className = that.wrapper.className.replace(opened, closed);
+        this.wrapper.className = this.wrapper.className.replace(opened, closed);
         if (computed) {
-          that.wrapper.setAttribute(aria, true);
+          this.wrapper.setAttribute(aria, true);
         }
         nav_open = false;
-        if (that.options.debug) c.log("Closed navigation");
+        if (this.options.debug) c.log("Closed navigation");
       }
       return false;
+
     },
 
-    _createStyles: function (el) {
+
+    _createStyles: function (obj) {
+
       if (!styleEl.parentNode) {
         head.appendChild(styleEl);
-        if (el.options.debug) c.log("Created 'styleEl' to <head>");
+        if (obj.options.debug) c.log("Created 'styleEl' to <head>");
       }
+
     },
 
-    _removeStyles: function (el) {
+
+    _removeStyles: function (obj) {
+
       if (styleEl.parentNode) {
         styleEl.parentNode.removeChild(styleEl);
-        if (el.options.debug) c.log("Removed 'styleEl' from <head>");
+        if (obj.options.debug) c.log("Removed 'styleEl' from <head>");
       }
+
     },
 
-    _createToggle: function (el) {
+
+    _createToggle: function (obj) {
+
       var toggle = doc.createElement("a");
       toggle.setAttribute("href", "#");
       toggle.setAttribute("id", "tinynav-toggle");
-      toggle.innerHTML = el.options.label;
-      el.wrapper.parentNode.insertBefore(toggle, el.wrapper.nextSibling);
-      navToggle = getElement("tinynav-toggle");
-      if (el.options.debug) c.log("Navigation toggle created");
-      this._handleToggleStates(el);
+      toggle.innerHTML = obj.options.label;
+      obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper.nextSibling);
+      navToggle = doc.querySelector("#tinynav-toggle");
+      if (obj.options.debug) c.log("Navigation toggle created");
+      this._handleToggleStates(obj);
+
     },
 
-    _removeToggle: function (el) {
+
+    _removeToggle: function (obj) {
+
       navToggle.parentNode.removeChild(navToggle);
-      if (el.options.debug) c.log("Navigation toggle removed");
+      if (obj.options.debug) c.log("Navigation toggle removed");
+
     },
 
-    _handleToggleStates: function (el) {
+
+    _handleToggleStates: function (obj) {
       // Mousedown
-      navToggle.onmousedown = function () {
+      navToggle.onmousedown = function (event) {
         event.preventDefault();
-        TinyNav.prototype.toggle(el);
-        if (el.options.debug) c.log("Detected mousedown");
+        obj.wrapper.tinynav.toggle();
+        if (obj.options.debug) c.log("Detected mousedown");
       };
+
       // Touchstart event fires before the mousedown event
       // and can wipe the previous mousedown event
       navToggle.ontouchstart = function (event) {
         navToggle.onmousedown = null;
         event.preventDefault();
-        TinyNav.prototype.toggle(el);
-        if (el.options.debug) c.log("Detected touchstart");
+        obj.wrapper.tinynav.toggle();
+        if (obj.options.debug) c.log("Detected touchstart");
       };
+
       // On click
       navToggle.onclick = function () {
         return false;
       };
+
     },
 
-    _resizer: function (el) {
+
+    _resizer: function (obj) {
+
       if (computed) {
         if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
           navToggle.setAttribute(aria, false);
-          el.wrapper.setAttribute(aria, true);
+          obj.wrapper.setAttribute(aria, true);
 
-          this._createStyles(el);
+          this._createStyles(obj);
 
-          var savedHeight = el.wrapper.inner.offsetHeight,
+          var savedHeight = obj.wrapper.inner.offsetHeight,
             innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
           styleEl.innerHTML = innerStyles;
           innerStyles = '';
-          if (el.options.debug) c.log("Calculated max-height of " + savedHeight + " pixels and updated 'styleEl'");
+          if (obj.options.debug) c.log("Calculated max-height of " + savedHeight + " pixels and updated 'styleEl'");
         } else {
           navToggle.setAttribute(aria, true);
-          el.wrapper.setAttribute(aria, false);
+          obj.wrapper.setAttribute(aria, false);
 
-          this._removeStyles(el);
+          this._removeStyles(obj);
         }
       }
+
     }
+
+
   };
+
 
   return TinyNav;
 })(window, document);
