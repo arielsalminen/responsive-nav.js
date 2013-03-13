@@ -6,7 +6,8 @@
  * Available under the MIT license
  */
 
-/*jslint forin: true, browser: true, sloppy: true, vars: true, plusplus: true, indent: 2, devel: true, nomen: true */
+/*jslint forin: true, browser: true, sloppy: true, vars: true,
+plusplus: true, indent: 2, devel: true, nomen: true */
 
 var TinyNav = (function (window, document) {
 
@@ -65,10 +66,10 @@ var TinyNav = (function (window, document) {
 
       // Default options
       this.options = {
-        inner: "#nav ul", // Selector: selector for the inner wrapper
-        transition: 300, // Integer: Speed of the transition, in milliseconds
+        inner: "#nav ul", // Selector: Inner wrapper, default is "#nav ul"
+        transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
         label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-        debug: false // Boolean: log debug messages to console, true or false
+        debug: false // Boolean: Log debug messages to console, true or false, default is "false"
       };
 
       // User defined options
@@ -86,7 +87,7 @@ var TinyNav = (function (window, document) {
 
   TinyNav.prototype = {
 
-    // Public methods
+    // Public methods 
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
       this.wrapper.removeAttribute(aria);
