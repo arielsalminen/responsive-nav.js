@@ -65,7 +65,8 @@ var TinyNav = (function (window, document) {
 
       // Default options
       this.options = {
-        navInner: "#nav ul", // Selector: selector for the inner wrapper
+        inner: "#nav ul", // Selector: selector for the inner wrapper
+        transition: 300, // Integer: Speed of the transition, in milliseconds
         label: "Menu", // String: Label for the navigation toggle, default is "Menu"
         debug: false // Boolean: log debug messages to console, true or false
       };
@@ -76,38 +77,16 @@ var TinyNav = (function (window, document) {
       }
 
       // Inner wrapper
-      var inner = this.options.navInner;
-      this.wrapper.inner = typeof inner === "string" ? doc.querySelector(inner) : inner;
+      var innerWrapper = this.options.inner;
+      this.wrapper.inner = typeof innerWrapper === "string" ? doc.querySelector(innerWrapper) : innerWrapper;
 
       // Init
-      TinyNav.prototype.init(this);
+      TinyNav.prototype._init(this);
     };
 
   TinyNav.prototype = {
 
-    init: function (obj) {
-      if (obj.options.debug) {
-        log("Inited Tinynav2.js");
-      }
-
-      obj.wrapper.className = obj.wrapper.className + " closed";
-
-      // Fix overflow: hidden; bug in Opera Mobile
-      if (ua.match(/(Opera Mobi)/)) {
-        obj.wrapper.style.position = "absolute";
-      }
-
-      this._createStyles(obj);
-      this._createToggle(obj);
-
-      checkResize = function () {
-        TinyNav.prototype._resizer(obj);
-      };
-
-      addEvent(window, "load", checkResize);
-      addEvent(window, "resize", checkResize);
-    },
-
+    // Public methods
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
       this.wrapper.removeAttribute(aria);
@@ -129,19 +108,31 @@ var TinyNav = (function (window, document) {
     toggle: function (obj) {
       if (!navOpen) {
         this.wrapper.className = this.wrapper.className.replace(closed, opened);
+        this.wrapper.style.position = "static";
+
         if (computed) {
           this.wrapper.setAttribute(aria, false);
         }
+
         navOpen = true;
 
         if (this.options.debug) {
           log("Opened navigation");
         }
       } else {
-        this.wrapper.className = this.wrapper.className.replace(opened, closed);
+        var time = parseFloat(this.options.transition) + 10,
+          wrapper = this.wrapper;
+
+        wrapper.className = wrapper.className.replace(opened, closed);
+
+        setTimeout(function() {
+          wrapper.style.position = "absolute";
+        }, time);
+
         if (computed) {
           this.wrapper.setAttribute(aria, true);
         }
+
         navOpen = false;
 
         if (this.options.debug) {
@@ -151,6 +142,25 @@ var TinyNav = (function (window, document) {
       return false;
     },
 
+    // Private methods
+    _init: function (obj) {
+      if (obj.options.debug) {
+        log("Inited Tinynav2.js");
+      }
+
+      obj.wrapper.className = obj.wrapper.className + " closed";
+
+      this._createStyles(obj);
+      this._createToggle(obj);
+      this._transitions(obj);
+
+      checkResize = function () {
+        TinyNav.prototype._resizer(obj);
+      };
+
+      addEvent(window, "load", checkResize);
+      addEvent(window, "resize", checkResize);
+    },
 
     _createStyles: function (obj) {
       if (!styleElement.parentNode) {
@@ -201,6 +211,9 @@ var TinyNav = (function (window, document) {
       // Mousedown
       navToggle.onmousedown = function (event) {
         obj.wrapper.TinyNav.toggle(event);
+        if (obj.options.debug) {
+          log("Detected mousedown");
+        }
       };
 
       // Touchstart event fires before the mousedown event
@@ -216,11 +229,25 @@ var TinyNav = (function (window, document) {
       };
     },
 
+    _transitions: function (obj) {
+      var objStyle = obj.wrapper.style,
+        time = parseFloat(obj.options.transition);
+
+      objStyle.WebkitTransition = "max-height " + time + "ms";
+      objStyle.MozTransition = "max-height " + time + "ms";
+      objStyle.OTransition = "max-height " + time + "ms";
+      objStyle.transition = "max-height " + time + "ms";
+    },
+
     _resizer: function (obj) {
       if (computed) {
         if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
           navToggle.setAttribute(aria, false);
-          obj.wrapper.setAttribute(aria, true);
+
+          if (obj.wrapper.className === closed) {
+            obj.wrapper.setAttribute(aria, true);
+            obj.wrapper.style.position = "absolute";
+          }
 
           this._createStyles(obj);
 
@@ -236,6 +263,7 @@ var TinyNav = (function (window, document) {
         } else {
           navToggle.setAttribute(aria, true);
           obj.wrapper.setAttribute(aria, false);
+          obj.wrapper.style.position = "static";
 
           this._removeStyles(obj);
         }

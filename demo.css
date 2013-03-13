@@ -66,18 +66,13 @@ p {
 .js #nav {
   clip: rect(0 0 0 0);
   max-height: 0;
+  position: absolute;
   display: block;
   overflow: hidden;
-  -moz-transition: max-height .4s ease;
-  -o-transition: max-height .4s ease;
-  -webkit-transition: max-height .4s ease;
-  transition: max-height .4s ease;
 }
 
-
-
 #nav.opened {
-  position: static !important; /* Don't remove, will otherwise break in Opera Mobile */
+  position: static;
   max-height: 9999px;
 }
 
@@ -96,7 +91,7 @@ p {
   .js #nav {
     max-height: none !important;
   }
-  
+
   #nav li {
     text-align: center;
     width: 25%;
