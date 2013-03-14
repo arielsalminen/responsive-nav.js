@@ -126,7 +126,7 @@ var TinyNav = (function (window, document) {
 
         wrapper.className = wrapper.className.replace(opened, closed);
 
-        setTimeout(function() {
+        setTimeout(function () {
           wrapper.style.position = "absolute";
         }, time);
 
