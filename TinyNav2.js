@@ -65,10 +65,11 @@ var TinyNav = (function (window, document) {
 
       // Default options
       this.options = {
-        inner: "#nav ul", // Selector: Inner wrapper, default is "#nav ul"
-        transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
-        label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-        debug: false // Boolean: Log debug messages to console, true or false, default is "false"
+        inner: "#nav ul",   // Selector: Inner wrapper, default is "#nav ul"
+        transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
+        label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
+        insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
+        debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
       };
 
       // User defined options
