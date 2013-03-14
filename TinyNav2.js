@@ -190,7 +190,12 @@ var TinyNav = (function (window, document) {
       toggle.setAttribute("id", "tinynav-toggle");
       toggle.innerHTML = obj.options.label;
 
-      obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper.nextSibling);
+      if (obj.options.insert === "after") {
+        obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper.nextSibling);
+      } else {
+        obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper);
+      }
+
       navToggle = doc.querySelector("#tinynav-toggle");
 
       this._handleToggleStates(obj);
