@@ -254,7 +254,7 @@ var TinyNav = (function (window, document) {
         if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
           navToggle.setAttribute(aria, false);
 
-          if (obj.wrapper.className === closed) {
+          if (obj.wrapper.className.match(/\bclosed\b/)) {
             obj.wrapper.setAttribute(aria, true);
             obj.wrapper.style.position = "absolute";
           }
