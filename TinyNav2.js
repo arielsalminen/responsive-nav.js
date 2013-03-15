@@ -62,8 +62,8 @@ var TinyNav = (function (window, document) {
         inner: "#nav ul",   // Selector: Inner wrapper, default is "#nav ul"
         transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
         label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
-        customToggle: "",   // Selector: Specify a custom toggle here, default is ""
         insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
+        customToggle: "",   // Selector: Specify a custom toggle here, default is ""
         debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
       };
 
@@ -84,7 +84,7 @@ var TinyNav = (function (window, document) {
           } catch (e) {
             alert(s);
           }
-        }
+        };
       }
 
       // Init
