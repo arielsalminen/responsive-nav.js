@@ -59,7 +59,7 @@ body {
   max-height: 9999px;
 }
 
-#tinynav-toggle {
+#nav-toggle {
   color: #000;
   text-decoration: none;
   background: #ddd;
@@ -70,7 +70,7 @@ body {
 
 @media only screen and (min-width: 40em) {
 
-  #tinynav-toggle {
+  #nav-toggle {
     display: none;
   }
 

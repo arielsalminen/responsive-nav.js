@@ -9,7 +9,7 @@
 /*jslint forin: true, browser: true, sloppy: true, vars: true,
 plusplus: true, indent: 2, devel: true, nomen: true */
 
-var TinyNav = (function (window, document) {
+var responsiveNav = (function (window, document) {
 
   var navToggle,
     checkResize,
@@ -48,14 +48,14 @@ var TinyNav = (function (window, document) {
 
     log = function (s) { },
 
-    TinyNav = function (el, options) {
+    responsiveNav = function (el, options) {
       var i;
 
       // Wrapper
       this.wrapper = typeof el === "string" ? doc.querySelector(el) : el;
 
       // Save this
-      this.wrapper.TinyNav = this;
+      this.wrapper.responsiveNav = this;
 
       // Default options
       this.options = {
@@ -88,16 +88,16 @@ var TinyNav = (function (window, document) {
       }
 
       // Init
-      TinyNav.prototype._init(this);
+      responsiveNav.prototype._init(this);
     };
 
-  TinyNav.prototype = {
+  responsiveNav.prototype = {
 
     // Public methods 
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
       this.wrapper.removeAttribute(aria);
-      this.wrapper.TinyNav = null;
+      this.wrapper.responsiveNav = null;
       this.wrapper.inner = null;
 
       this._removeToggle();
@@ -145,7 +145,7 @@ var TinyNav = (function (window, document) {
 
     // Private methods
     _init: function (obj) {
-      log("Inited Tinynav2.js");
+      log("Inited responsiveNav2.js");
 
       obj.wrapper.className = obj.wrapper.className + " closed";
 
@@ -154,7 +154,7 @@ var TinyNav = (function (window, document) {
       this._transitions(obj);
 
       checkResize = function () {
-        TinyNav.prototype._resizer(obj);
+        responsiveNav.prototype._resizer(obj);
       };
 
       addEvent(window, "load", checkResize);
@@ -182,7 +182,7 @@ var TinyNav = (function (window, document) {
         var toggle = doc.createElement("a");
 
         toggle.setAttribute("href", "#");
-        toggle.setAttribute("id", "tinynav-toggle");
+        toggle.setAttribute("id", "nav-toggle");
         toggle.innerHTML = obj.options.label;
 
         if (obj.options.insert === "after") {
@@ -191,7 +191,7 @@ var TinyNav = (function (window, document) {
           obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper);
         }
 
-        navToggle = doc.querySelector("#tinynav-toggle");
+        navToggle = doc.querySelector("#nav-toggle");
 
         this._handleToggleStates(obj);
 
@@ -216,7 +216,7 @@ var TinyNav = (function (window, document) {
         if (obj.preventDefault) {
           event.preventDefault();
         }
-        obj.wrapper.TinyNav.toggle(event);
+        obj.wrapper.responsiveNav.toggle(event);
       };
 
       // Touchstart event fires before the mousedown event
@@ -224,7 +224,7 @@ var TinyNav = (function (window, document) {
       navToggle.ontouchstart = function (event) {
         navToggle.onmousedown = null;
         event.preventDefault();
-        obj.wrapper.TinyNav.toggle(event);
+        obj.wrapper.responsiveNav.toggle(event);
       };
 
       // On click
@@ -274,5 +274,5 @@ var TinyNav = (function (window, document) {
 
   };
 
-  return TinyNav;
+  return responsiveNav;
 })(window, document);
