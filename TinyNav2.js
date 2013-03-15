@@ -62,6 +62,7 @@ var TinyNav = (function (window, document) {
         inner: "#nav ul",   // Selector: Inner wrapper, default is "#nav ul"
         transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
         label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
+        customToggle: "",   // Selector: Specify a custom toggle here, default is ""
         insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
         debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
       };
@@ -177,23 +178,30 @@ var TinyNav = (function (window, document) {
     },
 
     _createToggle: function (obj) {
-      var toggle = doc.createElement("a");
+      if (!obj.options.customToggle) {
+        var toggle = doc.createElement("a");
 
-      toggle.setAttribute("href", "#");
-      toggle.setAttribute("id", "tinynav-toggle");
-      toggle.innerHTML = obj.options.label;
+        toggle.setAttribute("href", "#");
+        toggle.setAttribute("id", "tinynav-toggle");
+        toggle.innerHTML = obj.options.label;
 
-      if (obj.options.insert === "after") {
-        obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper.nextSibling);
+        if (obj.options.insert === "after") {
+          obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper.nextSibling);
+        } else {
+          obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper);
+        }
+
+        navToggle = doc.querySelector("#tinynav-toggle");
+
+        this._handleToggleStates(obj);
+
+        log("Default navigation toggle created");
       } else {
-        obj.wrapper.parentNode.insertBefore(toggle, obj.wrapper);
+        navToggle = doc.querySelector(obj.options.customToggle);
+        this._handleToggleStates(obj);
+
+        log("Custom navigation toggle created");
       }
-
-      navToggle = doc.querySelector("#tinynav-toggle");
-
-      this._handleToggleStates(obj);
-
-      log("Navigation toggle created");
     },
 
     _removeToggle: function (obj) {
