@@ -1,6 +1,6 @@
-/*! TinyNav2 v1.0
- * https://github.com/viljamis/tinyNav2.js
- * http://tinynav2.viljamis.com
+/*! responsive-nav.js v1.0
+ * https://github.com/viljamis/responsive-nav.js
+ * http://responsive-nav.com
  *
  * Copyright (c) 2013 @viljamis
  * Available under the MIT license

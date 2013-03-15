@@ -1,11 +1,11 @@
-# TinyNav2.js
+# responsive-nav.js
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-TinyNav2 is a tiny JavaScript plugin (weighs under 1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS transitions for best possible performance. It also uses a "clever" workaround which makes it possible to transition from `height: 0` to `height: auto` which isn't normally possible with CSS transitions.
+responsive-nav.js is a tiny JavaScript plugin (weighs under 1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS transitions for best possible performance. It also uses a "clever" workaround which makes it possible to transition from `height: 0` to `height: auto` which isn't normally possible with CSS transitions.
 
 Please note that this is still a work-in-progress, so there are some bugs in certain browsers like <del>Opera Mobile</del>. Anyway, I will deal with them soon, so don't worry. Usage instructions and better demos are also coming.
 
-Check out also the previous version: [TinyNav 1](http://tinynav.viljamis.com)
+Check out also the previous version: [TinyNav](http://tinynav.viljamis.com)
 
 #### Features:
  * Under 1kb minified and gzipped
@@ -20,7 +20,7 @@ Check out also the previous version: [TinyNav 1](http://tinynav.viljamis.com)
 Demo
 ======
 
-For a demo go to [http://tinynav2.viljamis.com](http://tinynav2.viljamis.com). 
+For a demo go to...
 
 
 
@@ -29,7 +29,7 @@ License
 
 Licensed under the MIT license.
 
-Copyright (c) 2011-2012 Viljami Salminen, http://viljamis.com/
+Copyright (c) 2013 Viljami Salminen, http://viljamis.com/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -40,6 +40,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Changelog
 ======
+
+v1.00 (2013-03-XX) - Release
 
 v0.65 (2013-03-11) - Removes the need to add "closed" class.
 
