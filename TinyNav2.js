@@ -1,4 +1,4 @@
-/*! tinyNav2.js v1.0
+/*! TinyNav2 v1.0
  * https://github.com/viljamis/tinyNav2.js
  * http://tinynav2.viljamis.com
  *
@@ -107,7 +107,7 @@ var TinyNav = (function (window, document) {
 
       styleElement.parentNode.removeChild(styleElement);
 
-      log("TinyNav2 destroyed");
+      log("Destroyed!");
     },
 
     toggle: function (obj) {
@@ -121,7 +121,7 @@ var TinyNav = (function (window, document) {
 
         navOpen = true;
 
-        log("Opened navigation");
+        log("Opened nav");
       } else {
         var time = parseFloat(this.options.transition) + 10,
           wrapper = this.wrapper;
@@ -138,7 +138,7 @@ var TinyNav = (function (window, document) {
 
         navOpen = false;
 
-        log("Closed navigation");
+        log("Closed nav");
       }
       return false;
     },
@@ -195,19 +195,19 @@ var TinyNav = (function (window, document) {
 
         this._handleToggleStates(obj);
 
-        log("Default navigation toggle created");
+        log("Default nav toggle created");
       } else {
         navToggle = doc.querySelector(obj.options.customToggle);
         this._handleToggleStates(obj);
 
-        log("Custom navigation toggle created");
+        log("Custom nav toggle created");
       }
     },
 
     _removeToggle: function (obj) {
       navToggle.parentNode.removeChild(navToggle);
 
-      log("Navigation toggle removed");
+      log("Nav toggle removed");
     },
 
     _handleToggleStates: function (obj) {
@@ -217,7 +217,6 @@ var TinyNav = (function (window, document) {
           event.preventDefault();
         }
         obj.wrapper.TinyNav.toggle(event);
-        log("Detected mousedown");
       };
 
       // Touchstart event fires before the mousedown event
@@ -262,7 +261,7 @@ var TinyNav = (function (window, document) {
           styleElement.innerHTML = innerStyles;
           innerStyles = '';
 
-          log("Calculated max-height of " + savedHeight + " pixels and updated 'styleElement'");
+          log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
         } else {
           navToggle.setAttribute(aria, true);
           obj.wrapper.setAttribute(aria, false);
