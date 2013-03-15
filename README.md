@@ -12,8 +12,7 @@ Check out also the previous version: [TinyNav](http://tinynav.viljamis.com)
  * Uses CSS3 transitions and touchstart
  * Automatically calculates needed height for the navigation so you don't have to
  * Simple markup using an unordered list
- * Custom settings for the toggle label and nav selectors
- * 1.0 version will work in all major desktop and mobile browsers
+* etc stuff....
 
 
 
@@ -21,6 +20,12 @@ Demo
 ======
 
 For a demo go to...
+
+
+Usage instructions
+======
+
+...
 
 
 
