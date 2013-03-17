@@ -12,7 +12,6 @@ plusplus: true, indent: 2, devel: true, nomen: true */
 var responsiveNav = (function (window, document) {
 
   var navToggle,
-    checkResize,
 
     aria = "aria-hidden",
     computed = window.getComputedStyle ? true : false,
@@ -97,8 +96,8 @@ var responsiveNav = (function (window, document) {
 
       this._removeToggle();
 
-      removeEvent(window, "load", checkResize);
-      removeEvent(window, "resize", checkResize);
+      removeEvent(window, "load", this);
+      removeEvent(window, "resize", this);
 
       styleElement.parentNode.removeChild(styleElement);
 
