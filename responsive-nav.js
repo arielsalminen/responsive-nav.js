@@ -14,11 +14,10 @@ var responsiveNav = (function (window, document) {
   var navToggle,
     checkResize,
 
-    doc = window.document,
     aria = "aria-hidden",
     computed = window.getComputedStyle ? true : false,
-    head = doc.getElementsByTagName("head")[0],
-    styleElement = doc.createElement("style"),
+    head = document.getElementsByTagName("head")[0],
+    styleElement = document.createElement("style"),
 
     navOpen = false,
     closed = "closed",
@@ -52,7 +51,7 @@ var responsiveNav = (function (window, document) {
       var i;
 
       // Wrapper
-      this.wrapper = typeof el === "string" ? doc.querySelector(el) : el;
+      this.wrapper = typeof el === "string" ? document.querySelector(el) : el;
 
       // Default options
       this.options = {
@@ -71,7 +70,7 @@ var responsiveNav = (function (window, document) {
 
       // Inner wrapper
       var innerWrapper = this.options.inner;
-      this.wrapper.inner = typeof innerWrapper === "string" ? doc.querySelector(innerWrapper) : innerWrapper;
+      this.wrapper.inner = typeof innerWrapper === "string" ? document.querySelector(innerWrapper) : innerWrapper;
 
       // Debug logger
       if (this.options.debug) {
@@ -182,7 +181,7 @@ var responsiveNav = (function (window, document) {
 
     _createToggle: function () {
       if (!this.options.customToggle) {
-        var toggle = doc.createElement("a");
+        var toggle = document.createElement("a");
 
         toggle.setAttribute("href", "#");
         toggle.setAttribute("id", "nav-toggle");
@@ -194,13 +193,13 @@ var responsiveNav = (function (window, document) {
           this.wrapper.parentNode.insertBefore(toggle, this.wrapper);
         }
 
-        navToggle = doc.querySelector("#nav-toggle");
+        navToggle = document.querySelector("#nav-toggle");
 
         this._handleToggleStates();
 
         log("Default nav toggle created");
       } else {
-        navToggle = doc.querySelector(this.options.customToggle);
+        navToggle = document.querySelector(this.options.customToggle);
         this._handleToggleStates();
 
         log("Custom nav toggle created");
@@ -253,7 +252,7 @@ var responsiveNav = (function (window, document) {
         if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
           navToggle.setAttribute(aria, false);
 
-          if (this.wrapper.className.match(/\bclosed\b/)) {
+          if (this.wrapper.className.match(/(^|\s)closed(\s|$)/)) {
             this.wrapper.setAttribute(aria, true);
             this.wrapper.style.position = "absolute";
           }
