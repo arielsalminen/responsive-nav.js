@@ -88,7 +88,7 @@ var responsiveNav = (function (window, document) {
       }
 
       // Init
-      responsiveNav.prototype._init(this);
+      this._init(this);
     };
 
   responsiveNav.prototype = {
