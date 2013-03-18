@@ -6,8 +6,8 @@
  * Available under the MIT license
  */
 
-/*jslint forin: true, browser: true, sloppy: true, vars: true,
-plusplus: true, indent: 2, devel: true, nomen: true */
+/* jshint strict:true, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true, bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
+/* exported ResponsiveNav */
 
 var ResponsiveNav = (function (window, document) {
 
@@ -81,7 +81,7 @@ var ResponsiveNav = (function (window, document) {
       return firstChild;
     },
 
-    log = function (s) { },
+    log = function () { },
 
     ResponsiveNav = function (el, options) {
       var i;
@@ -185,19 +185,19 @@ var ResponsiveNav = (function (window, document) {
       var evt = e || window.event;
 
       switch (evt.type) {
-        case "mousedown":
-          this.__onmousedown(evt);
-          break;
-        case "touchstart":
-          this.__ontouchstart(evt);
-          break;
-        case "click":
-          this.__click(evt);
-          break;
-        case "load":
-        case "resize":
-          this.__resize(evt);
-          break;
+      case "mousedown":
+        this.__onmousedown(evt);
+        break;
+      case "touchstart":
+        this.__ontouchstart(evt);
+        break;
+      case "click":
+        this.__click(evt);
+        break;
+      case "load":
+      case "resize":
+        this.__resize(evt);
+        break;
       }
     },
 
