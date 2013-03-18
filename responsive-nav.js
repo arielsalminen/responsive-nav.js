@@ -136,6 +136,9 @@ var ResponsiveNav = (function (window, document) {
 
       removeEvent(window, "load", this);
       removeEvent(window, "resize", this);
+      removeEvent(navToggle, "mousedown", this);
+      removeEvent(navToggle, "touchstart", this);
+      removeEvent(navToggle, "click", this);
 
       navToggle.parentNode.removeChild(navToggle);
       styleElement.parentNode.removeChild(styleElement);
