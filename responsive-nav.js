@@ -27,11 +27,11 @@ var responsiveNav = (function (window, document) {
         // BBOS6 doesn't support handleEvent, catch and polyfill
         try {
           el.addEventListener(evt, fn, bubble);
-        } catch(e) {
-          if (typeof fn == 'object' && fn.handleEvent) {
-            el.addEventListener(evt, function(e){
+        } catch (e) {
+          if (typeof fn === 'object' && fn.handleEvent) {
+            el.addEventListener(evt, function (e) {
               // Bind fn as this and set first arg as event object
-              fn.handleEvent.call(fn,e);
+              fn.handleEvent.call(fn, e);
             }, bubble);
           } else {
             throw e;
@@ -39,8 +39,8 @@ var responsiveNav = (function (window, document) {
         }
       } else if ('attachEvent' in el) {
         // check if the callback is an object and contains handleEvent
-        if (typeof fn == 'object' && fn.handleEvent) {
-          el.attachEvent('on' + evt, function(){
+        if (typeof fn === 'object' && fn.handleEvent) {
+          el.attachEvent('on' + evt, function () {
             // Bind fn as this
             fn.handleEvent.call(fn);
           });
@@ -55,11 +55,11 @@ var responsiveNav = (function (window, document) {
         // BBOS6 doesn't support handleEvent, catch and polyfill
         try {
           el.removeEventListener(evt, fn, bubble);
-        } catch(e) {
-          if (typeof fn == 'object' && fn.handleEvent) {
-            el.removeEventListener(evt, function(e) {
+        } catch (e) {
+          if (typeof fn === 'object' && fn.handleEvent) {
+            el.removeEventListener(evt, function (e) {
               // Bind fn as this and set first arg as event object
-              fn.handleEvent.call(fn,e);
+              fn.handleEvent.call(fn, e);
             }, bubble);
           } else {
             throw e;
@@ -67,8 +67,8 @@ var responsiveNav = (function (window, document) {
         }
       } else if ('detachEvent' in el) {
         // check if the callback is an object and contains handleEvent
-        if (typeof fn == 'object' && fn.handleEvent) {
-          el.detachEvent("on" + evt, function() {
+        if (typeof fn === 'object' && fn.handleEvent) {
+          el.detachEvent("on" + evt, function () {
             // Bind fn as this
             fn.handleEvent.call(fn);
           });
@@ -115,7 +115,7 @@ var responsiveNav = (function (window, document) {
           }
         };
       }
-      
+
       // Init
       this._init(this);
     };
@@ -131,7 +131,7 @@ var responsiveNav = (function (window, document) {
       this._removeToggle();
 
       removeEvent(window, "load", this);
-      removeEvent(window, resizeEvent, this);
+      removeEvent(window, "resize", this);
 
       styleElement.parentNode.removeChild(styleElement);
 
@@ -176,12 +176,12 @@ var responsiveNav = (function (window, document) {
         t = evt.target || evt.srcElement;
 
       switch (evt.type) {
-        case "load":
-          this._resize(evt);
-          break;
-        case "resize":
-          this._resize(evt);
-          break;
+      case "load":
+        this._resize(evt);
+        break;
+      case "resize":
+        this._resize(evt);
+        break;
       }
     },
 
@@ -194,7 +194,7 @@ var responsiveNav = (function (window, document) {
       this._createStyles();
       this._createToggle();
       this._transitions();
-      
+
       addEvent(window, "load", this);
       addEvent(window, "resize", this);
     },
