@@ -130,7 +130,7 @@ var ResponsiveNav = (function (window, document) {
 
   ResponsiveNav.prototype = {
 
-    // Public methods 
+    // Public methods
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
       this.wrapper.removeAttribute(aria);
@@ -185,6 +185,8 @@ var ResponsiveNav = (function (window, document) {
       switch (evt.type) {
         case "load":
           this._handleToggleStates(evt);
+          this._resize(evt);
+          break;
         case "resize":
           this._resize(evt);
           break;
