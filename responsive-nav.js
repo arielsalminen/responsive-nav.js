@@ -136,11 +136,10 @@ var ResponsiveNav = (function (window, document) {
       this.wrapper.removeAttribute(aria);
       this.wrapper.inner = null;
 
-      this._removeToggle();
-
       removeEvent(window, "load", this);
       removeEvent(window, "resize", this);
 
+      navToggle.parentNode.removeChild(navToggle);
       styleElement.parentNode.removeChild(styleElement);
 
       log("Destroyed!");
@@ -199,7 +198,6 @@ var ResponsiveNav = (function (window, document) {
 
       this.wrapper.className = this.wrapper.className + " closed";
 
-      this._createStyles();
       this._createToggle();
       this._transitions();
 
@@ -246,12 +244,6 @@ var ResponsiveNav = (function (window, document) {
 
         log("Custom nav toggle created");
       }
-    },
-
-    _removeToggle: function () {
-      navToggle.parentNode.removeChild(navToggle);
-
-      log("Nav toggle removed");
     },
 
     _handleToggleStates: function () {
