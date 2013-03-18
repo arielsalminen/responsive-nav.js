@@ -197,7 +197,6 @@ var ResponsiveNav = (function (window, document) {
       this.wrapper.className = this.wrapper.className + " closed";
 
       this._createToggle();
-      this._transitions();
 
       addEvent(window, "load", this);
       addEvent(window, "resize", this);
@@ -290,6 +289,7 @@ var ResponsiveNav = (function (window, document) {
           }
 
           this._createStyles();
+          this._transitions();
 
           var savedHeight = this.wrapper.inner.offsetHeight,
             innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
@@ -301,7 +301,7 @@ var ResponsiveNav = (function (window, document) {
         } else {
           navToggle.setAttribute(aria, true);
           this.wrapper.setAttribute(aria, false);
-          this.wrapper.style.position = "static";
+          this.wrapper.removeAttribute("style");
 
           this._removeStyles();
         }

@@ -55,6 +55,7 @@ body {
 }
 
 #nav.opened {
+  position: static;
   max-height: 9999px;
 }
 
@@ -74,6 +75,7 @@ body {
   }
 
   .js #nav {
+    position: static;
     max-height: none;
   }
 
