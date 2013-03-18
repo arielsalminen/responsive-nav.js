@@ -184,6 +184,7 @@ var ResponsiveNav = (function (window, document) {
 
       switch (evt.type) {
         case "load":
+          this._handleToggleStates(evt);
         case "resize":
           this._resize(evt);
           break;
@@ -236,13 +237,10 @@ var ResponsiveNav = (function (window, document) {
 
         navToggle = document.getElementById("nav-toggle");
 
-        this._handleToggleStates();
-
         log("Default nav toggle created");
       } else {
         var toggleEl = this.options.customToggle.replace("#", "");
         navToggle = document.getElementById(toggleEl);
-        this._handleToggleStates();
 
         log("Custom nav toggle created");
       }
