@@ -92,6 +92,15 @@ var responsiveNav = (function (window, document) {
     responsiveNav = function (el, options) {
       var i;
 
+      // Default options
+      this.options = {
+        transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
+        label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
+        insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
+        customToggle: "",   // Selector: Specify the ID of a custom toggle, default is ""
+        debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
+      };
+
       // Wrapper
       var wrapperEl = el.replace("#", "");
       this.wrapper = document.getElementById(wrapperEl);
@@ -99,14 +108,8 @@ var responsiveNav = (function (window, document) {
       // Inner wrapper
       this.wrapper.inner = getFirstChild(this.wrapper);
 
-      // Default options
-      this.options = {
-        transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
-        label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
-        insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
-        customToggle: "",   // Selector: Specify a custom toggle here, default is ""
-        debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
-      };
+      // Transition speed
+      this.wrapper.speed = parseFloat(this.options.transition);
 
       // User defined options
       for (i in options) {
@@ -159,14 +162,14 @@ var responsiveNav = (function (window, document) {
 
         log("Opened nav");
       } else {
-        var time = parseFloat(this.options.transition) + 10,
+        var speed = this.wrapper.speed + 10,
           wrapper = this.wrapper;
 
         wrapper.className = wrapper.className.replace(opened, closed);
 
         setTimeout(function () {
           wrapper.style.position = "absolute";
-        }, time);
+        }, speed);
 
         if (computed) {
           this.wrapper.setAttribute(aria, true);
@@ -284,12 +287,12 @@ var responsiveNav = (function (window, document) {
 
     _transitions: function () {
       var objStyle = this.wrapper.style,
-        time = parseFloat(this.options.transition);
+        speed = this.wrapper.speed;
 
-      objStyle.WebkitTransition = "max-height " + time + "ms";
-      objStyle.MozTransition = "max-height " + time + "ms";
-      objStyle.OTransition = "max-height " + time + "ms";
-      objStyle.transition = "max-height " + time + "ms";
+      objStyle.WebkitTransition = "max-height " + speed + "ms";
+      objStyle.MozTransition = "max-height " + speed + "ms";
+      objStyle.OTransition = "max-height " + speed + "ms";
+      objStyle.transition = "max-height " + speed + "ms";
     },
 
     _resize: function () {
