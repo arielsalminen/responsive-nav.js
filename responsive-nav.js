@@ -17,8 +17,6 @@ var ResponsiveNav = (function (window, document) {
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
     navOpen = false,
-    closed = "closed",
-    opened = "opened",
 
     // fn arg can be an object or a function, thanks to handleEvent
     // read more about the explanation at: http://www.thecssninja.com/javascript/handleevent
@@ -147,7 +145,7 @@ var ResponsiveNav = (function (window, document) {
 
     toggle: function () {
       if (!navOpen) {
-        this.wrapper.className = this.wrapper.className.replace(closed, opened);
+        this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
         this.wrapper.style.position = "static";
 
         if (computed) {
@@ -161,7 +159,7 @@ var ResponsiveNav = (function (window, document) {
         var speed = this.options.transition + 10,
           wrapper = this.wrapper;
 
-        wrapper.className = wrapper.className.replace(opened, closed);
+        wrapper.className = wrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
 
         setTimeout(function () {
           wrapper.style.position = "absolute";
