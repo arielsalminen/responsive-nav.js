@@ -50,13 +50,11 @@ var ResponsiveNav = (function (window, document) {
 
     removeEvent = function (el, evt, fn, bubble) {
       if ('removeEventListener' in el) {
-        // BBOS6 doesn't support handleEvent, catch and polyfill
         try {
           el.removeEventListener(evt, fn, bubble);
         } catch (e) {
           if (typeof fn === 'object' && fn.handleEvent) {
             el.removeEventListener(evt, function (e) {
-              // Bind fn as this and set first arg as event object
               fn.handleEvent.call(fn, e);
             }, bubble);
           } else {
@@ -64,10 +62,8 @@ var ResponsiveNav = (function (window, document) {
           }
         }
       } else if ('detachEvent' in el) {
-        // check if the callback is an object and contains handleEvent
         if (typeof fn === 'object' && fn.handleEvent) {
           el.detachEvent("on" + evt, function () {
-            // Bind fn as this
             fn.handleEvent.call(fn);
           });
         } else {
@@ -132,6 +128,7 @@ var ResponsiveNav = (function (window, document) {
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
       this.wrapper.removeAttribute(aria);
+      this.wrapper = null;
       this.wrapper.inner = null;
 
       removeEvent(window, "load", this);
@@ -156,8 +153,8 @@ var ResponsiveNav = (function (window, document) {
         }
 
         navOpen = true;
-
         log("Opened nav");
+
       } else {
         var speed = this.options.transition + 10,
           wrapper = this.wrapper;
@@ -173,7 +170,6 @@ var ResponsiveNav = (function (window, document) {
         }
 
         navOpen = false;
-
         log("Closed nav");
       }
       return false;
@@ -181,6 +177,7 @@ var ResponsiveNav = (function (window, document) {
 
     handleEvent: function (e) {
       var evt = e || window.event;
+
       switch (evt.type) {
         case "mousedown":
           this.__onmousedown(evt);
@@ -203,7 +200,6 @@ var ResponsiveNav = (function (window, document) {
       log("Inited ResponsiveNav2.js");
 
       this.wrapper.className = this.wrapper.className + " closed";
-
       this.__createToggle();
 
       addEvent(window, "load", this);
@@ -216,7 +212,6 @@ var ResponsiveNav = (function (window, document) {
     __createStyles: function () {
       if (!styleElement.parentNode) {
         head.appendChild(styleElement);
-
         log("Created 'styleElement' to <head>");
       }
     },
@@ -224,7 +219,6 @@ var ResponsiveNav = (function (window, document) {
     __removeStyles: function () {
       if (styleElement.parentNode) {
         styleElement.parentNode.removeChild(styleElement);
-
         log("Removed 'styleElement' from <head>");
       }
     },
@@ -232,7 +226,6 @@ var ResponsiveNav = (function (window, document) {
     __createToggle: function () {
       if (!this.options.customToggle) {
         var toggle = document.createElement("a");
-
         toggle.setAttribute("href", "#");
         toggle.setAttribute("id", "nav-toggle");
         toggle.innerHTML = this.options.label;
@@ -244,12 +237,11 @@ var ResponsiveNav = (function (window, document) {
         }
 
         navToggle = document.getElementById("nav-toggle");
-
         log("Default nav toggle created");
+
       } else {
         var toggleEl = this.options.customToggle.replace("#", "");
         navToggle = document.getElementById(toggleEl);
-
         log("Custom nav toggle created");
       }
     },
@@ -260,8 +252,7 @@ var ResponsiveNav = (function (window, document) {
     },
 
     __ontouchstart: function (e) {
-      // Touchstart event fires before the mousedown event
-      // and can wipe the previous mousedown event
+      // Touchstart event fires before the mousedown event and can wipe it
       navToggle.onmousedown = null;
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       this.toggle(e);
@@ -296,15 +287,14 @@ var ResponsiveNav = (function (window, document) {
 
           var savedHeight = this.wrapper.inner.offsetHeight,
             innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
-
           styleElement.innerHTML = innerStyles;
           innerStyles = '';
-
           log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
+
         } else {
           navToggle.setAttribute(aria, true);
           this.wrapper.setAttribute(aria, false);
-          this.wrapper.removeAttribute("style");
+          this.wrapper.style.position = "static";
 
           this.__removeStyles();
         }
