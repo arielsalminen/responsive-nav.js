@@ -12,35 +12,69 @@ plusplus: true, indent: 2, devel: true, nomen: true */
 var responsiveNav = (function (window, document) {
 
   var navToggle,
-
     aria = "aria-hidden",
     computed = window.getComputedStyle ? true : false,
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
-
     navOpen = false,
     closed = "closed",
     opened = "opened",
 
-    addEvent = function (obj, type, fn) {
-      if (obj.addEventListener) {
-        obj.addEventListener(type, fn, false);
-      } else if (obj.attachEvent) {
-        obj["e" + type + fn] = fn;
-        obj[type + fn] = function () {
-          obj["e" + type + fn](window.event);
-        };
-        obj.attachEvent("on" + type, obj[type + fn]);
+    // fn arg can be an object or a function, thanks to handleEvent
+    // read more about the explanation at: http://www.thecssninja.com/javascript/handleevent
+    addEvent = function (el, evt, fn, bubble) {
+      if ('addEventListener' in el) {
+        // BBOS6 doesn't support handleEvent, catch and polyfill
+        try {
+          el.addEventListener(evt, fn, bubble);
+        } catch(e) {
+          if (typeof fn == 'object' && fn.handleEvent) {
+            el.addEventListener(evt, function(e){
+              // Bind fn as this and set first arg as event object
+              fn.handleEvent.call(fn,e);
+            }, bubble);
+          } else {
+            throw e;
+          }
+        }
+      } else if ('attachEvent' in el) {
+        // check if the callback is an object and contains handleEvent
+        if (typeof fn == 'object' && fn.handleEvent) {
+          el.attachEvent('on' + evt, function(){
+            // Bind fn as this
+            fn.handleEvent.call(fn);
+          });
+        } else {
+          el.attachEvent('on' + evt, fn);
+        }
       }
     },
 
-    removeEvent = function (obj, type, fn) {
-      if (obj.removeEventListener) {
-        obj.removeEventListener(type, fn, false);
-      } else if (obj.detachEvent) {
-        obj.detachEvent("on" + type, obj[type + fn]);
-        obj[type + fn] = null;
-        obj["e" + type + fn] = null;
+    removeEvent = function (el, evt, fn, bubble) {
+      if ('removeEventListener' in el) {
+        // BBOS6 doesn't support handleEvent, catch and polyfill
+        try {
+          el.removeEventListener(evt, fn, bubble);
+        } catch(e) {
+          if (typeof fn == 'object' && fn.handleEvent) {
+            el.removeEventListener(evt, function(e) {
+              // Bind fn as this and set first arg as event object
+              fn.handleEvent.call(fn,e);
+            }, bubble);
+          } else {
+            throw e;
+          }
+        }
+      } else if ('detachEvent' in el) {
+        // check if the callback is an object and contains handleEvent
+        if (typeof fn == 'object' && fn.handleEvent) {
+          el.detachEvent("on" + evt, function() {
+            // Bind fn as this
+            fn.handleEvent.call(fn);
+          });
+        } else {
+          el.detachEvent('on' + evt, fn);
+        }
       }
     },
 
@@ -81,9 +115,9 @@ var responsiveNav = (function (window, document) {
           }
         };
       }
-
+      
       // Init
-      this._init();
+      this._init(this);
     };
 
   responsiveNav.prototype = {
@@ -97,7 +131,7 @@ var responsiveNav = (function (window, document) {
       this._removeToggle();
 
       removeEvent(window, "load", this);
-      removeEvent(window, "resize", this);
+      removeEvent(window, resizeEvent, this);
 
       styleElement.parentNode.removeChild(styleElement);
 
@@ -137,13 +171,16 @@ var responsiveNav = (function (window, document) {
       return false;
     },
 
-    handleEvent: function(e) {
-      switch(e.type) {
+    handleEvent: function (e) {
+      var evt = e || window.event,
+        t = evt.target || evt.srcElement;
+
+      switch (evt.type) {
         case "load":
-          this._resizer(e);
+          this._resize(evt);
           break;
         case "resize":
-          this._resizer(e);
+          this._resize(evt);
           break;
       }
     },
@@ -157,7 +194,7 @@ var responsiveNav = (function (window, document) {
       this._createStyles();
       this._createToggle();
       this._transitions();
-
+      
       addEvent(window, "load", this);
       addEvent(window, "resize", this);
     },
@@ -246,7 +283,7 @@ var responsiveNav = (function (window, document) {
       objStyle.transition = "max-height " + time + "ms";
     },
 
-    _resizer: function () {
+    _resize: function () {
       if (computed) {
         if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
           navToggle.setAttribute(aria, false);
