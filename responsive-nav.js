@@ -116,8 +116,8 @@ var ResponsiveNav = (function (window, document) {
       if (document.getElementById(wrapperEl)) {
         this.wrapper = document.getElementById(wrapperEl);
       } else {
-        // If el doesn't exists…
-        log("The ID you are using doesn't exist in the DOM!");
+        // If el doesn't exists, stop here.
+        log("The nav element you are trying to select doesn't exist");
         return;
       }
 
