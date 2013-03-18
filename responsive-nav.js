@@ -78,17 +78,29 @@ var responsiveNav = (function (window, document) {
       }
     },
 
+    getFirstChild = function (e) {
+       var firstChild = e.firstChild;
+       // skip TextNodes
+       while (firstChild != null && firstChild.nodeType != 1) {
+         firstChild = firstChild.nextSibling;
+       }
+       return firstChild;
+    },
+
     log = function (s) { },
 
     responsiveNav = function (el, options) {
       var i;
 
       // Wrapper
-      this.wrapper = typeof el === "string" ? document.querySelector(el) : el;
+      var wrapperEl = el.replace("#", "");
+      this.wrapper = document.getElementById(wrapperEl);
+
+      // Inner wrapper
+      this.wrapper.inner = getFirstChild(this.wrapper);
 
       // Default options
       this.options = {
-        inner: "#nav ul",   // Selector: Inner wrapper, default is "#nav ul"
         transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
         label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
         insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
@@ -100,10 +112,6 @@ var responsiveNav = (function (window, document) {
       for (i in options) {
         this.options[i] = options[i];
       }
-
-      // Inner wrapper
-      var innerWrapper = this.options.inner;
-      this.wrapper.inner = typeof innerWrapper === "string" ? document.querySelector(innerWrapper) : innerWrapper;
 
       // Debug logger
       if (this.options.debug) {
@@ -229,13 +237,14 @@ var responsiveNav = (function (window, document) {
           this.wrapper.parentNode.insertBefore(toggle, this.wrapper);
         }
 
-        navToggle = document.querySelector("#nav-toggle");
+        navToggle = document.getElementById("nav-toggle");
 
         this._handleToggleStates();
 
         log("Default nav toggle created");
       } else {
-        navToggle = document.querySelector(this.options.customToggle);
+        var toggleEl = this.options.customToggle.replace("#", "");
+        navToggle = document.getElementById(toggleEl);
         this._handleToggleStates();
 
         log("Custom nav toggle created");
