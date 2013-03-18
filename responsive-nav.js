@@ -79,12 +79,12 @@ var responsiveNav = (function (window, document) {
     },
 
     getFirstChild = function (e) {
-       var firstChild = e.firstChild;
-       // skip TextNodes
-       while (firstChild != null && firstChild.nodeType != 1) {
-         firstChild = firstChild.nextSibling;
-       }
-       return firstChild;
+      var firstChild = e.firstChild;
+      // skip TextNodes
+      while (firstChild !== null && firstChild.nodeType !== 1) {
+        firstChild = firstChild.nextSibling;
+      }
+      return firstChild;
     },
 
     log = function (s) { },
