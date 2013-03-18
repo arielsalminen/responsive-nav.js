@@ -95,13 +95,6 @@ var ResponsiveNav = (function (window, document) {
         debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
       };
 
-      // Wrapper
-      var wrapperEl = el.replace("#", "");
-      this.wrapper = document.getElementById(wrapperEl);
-
-      // Inner wrapper
-      this.wrapper.inner = getFirstChild(this.wrapper);
-
       // User defined options
       for (i in options) {
         this.options[i] = options[i];
@@ -117,6 +110,19 @@ var ResponsiveNav = (function (window, document) {
           }
         };
       }
+
+      // Wrapper
+      var wrapperEl = el.replace("#", "");
+      if (document.getElementById(wrapperEl)) {
+        this.wrapper = document.getElementById(wrapperEl);
+      } else {
+        // If el doesn't exists…
+        log("The ID you are using doesn't exist in the DOM!");
+        return;
+      }
+
+      // Inner wrapper
+      this.wrapper.inner = getFirstChild(this.wrapper);
 
       // Init
       this.__init(this);
