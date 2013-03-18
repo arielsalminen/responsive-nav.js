@@ -9,7 +9,7 @@
 /*jslint forin: true, browser: true, sloppy: true, vars: true,
 plusplus: true, indent: 2, devel: true, nomen: true */
 
-var responsiveNav = (function (window, document) {
+var ResponsiveNav = (function (window, document) {
 
   var navToggle,
     aria = "aria-hidden",
@@ -89,7 +89,7 @@ var responsiveNav = (function (window, document) {
 
     log = function (s) { },
 
-    responsiveNav = function (el, options) {
+    ResponsiveNav = function (el, options) {
       var i;
 
       // Default options
@@ -107,9 +107,6 @@ var responsiveNav = (function (window, document) {
 
       // Inner wrapper
       this.wrapper.inner = getFirstChild(this.wrapper);
-
-      // Transition speed
-      this.wrapper.speed = parseFloat(this.options.transition);
 
       // User defined options
       for (i in options) {
@@ -131,7 +128,7 @@ var responsiveNav = (function (window, document) {
       this._init(this);
     };
 
-  responsiveNav.prototype = {
+  ResponsiveNav.prototype = {
 
     // Public methods 
     destroy: function () {
@@ -162,7 +159,7 @@ var responsiveNav = (function (window, document) {
 
         log("Opened nav");
       } else {
-        var speed = this.wrapper.speed + 10,
+        var speed = this.options.transition + 10,
           wrapper = this.wrapper;
 
         wrapper.className = wrapper.className.replace(opened, closed);
@@ -198,7 +195,7 @@ var responsiveNav = (function (window, document) {
 
     // Private methods
     _init: function () {
-      log("Inited responsiveNav2.js");
+      log("Inited ResponsiveNav2.js");
 
       this.wrapper.className = this.wrapper.className + " closed";
 
@@ -287,12 +284,12 @@ var responsiveNav = (function (window, document) {
 
     _transitions: function () {
       var objStyle = this.wrapper.style,
-        speed = this.wrapper.speed;
+        transition = "max-height " + this.options.transition + "ms";
 
-      objStyle.WebkitTransition = "max-height " + speed + "ms";
-      objStyle.MozTransition = "max-height " + speed + "ms";
-      objStyle.OTransition = "max-height " + speed + "ms";
-      objStyle.transition = "max-height " + speed + "ms";
+      objStyle.WebkitTransition = transition;
+      objStyle.MozTransition = transition;
+      objStyle.OTransition = transition;
+      objStyle.transition = transition;
     },
 
     _resize: function () {
@@ -326,5 +323,5 @@ var responsiveNav = (function (window, document) {
 
   };
 
-  return responsiveNav;
+  return ResponsiveNav;
 })(window, document);
