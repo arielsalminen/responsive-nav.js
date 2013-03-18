@@ -6,7 +6,7 @@
  * Available under the MIT license
  */
 
-/* jshint strict:true, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true, bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
+/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true, bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
 /* exported ResponsiveNav */
 
 var ResponsiveNav = (function (window, document) {
