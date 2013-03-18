@@ -180,16 +180,13 @@ var ResponsiveNav = (function (window, document) {
     },
 
     handleEvent: function (e) {
-      var evt = e || window.event,
-        t = evt.target || evt.srcElement;
+      var evt = e || window.event;
 
       switch (evt.type) {
-      case "load":
-        this._resize(evt);
-        break;
-      case "resize":
-        this._resize(evt);
-        break;
+        case "load":
+        case "resize":
+          this._resize(evt);
+          break;
       }
     },
 
