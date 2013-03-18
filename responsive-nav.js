@@ -156,14 +156,14 @@ var ResponsiveNav = (function (window, document) {
         log("Opened nav");
 
       } else {
-        var speed = this.options.transition + 10,
+        var afterTransitionTime = this.options.transition + 10,
           wrapper = this.wrapper;
 
         wrapper.className = wrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
 
         setTimeout(function () {
           wrapper.style.position = "absolute";
-        }, speed);
+        }, afterTransitionTime);
 
         if (computed) {
           this.wrapper.setAttribute(aria, true);
