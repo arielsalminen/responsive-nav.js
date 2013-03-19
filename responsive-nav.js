@@ -6,7 +6,8 @@
  * Available under the MIT license
  */
 
-/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true, bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
+/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true,
+bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
 /* exported ResponsiveNav */
 
 var ResponsiveNav = (function (window, document) {
@@ -19,7 +20,7 @@ var ResponsiveNav = (function (window, document) {
     navOpen = false,
 
     // fn arg can be an object or a function, thanks to handleEvent
-    // read more about the explanation at: http://www.thecssninja.com/javascript/handleevent
+    // read more at: http://www.thecssninja.com/javascript/handleevent
     addEvent = function (el, evt, fn, bubble) {
       if ("addEventListener" in el) {
         // BBOS6 doesn't support handleEvent, catch and polyfill
