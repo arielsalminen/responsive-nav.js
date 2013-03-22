@@ -46,7 +46,6 @@ var navigation = new ResponsiveNav("#nav");
 ```
 
 4. Customizable options:
-
 ```javascript
 var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
 	transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
