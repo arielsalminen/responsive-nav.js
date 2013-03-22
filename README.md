@@ -1,37 +1,69 @@
-# responsive-nav.js
-### Responsive navigation plugin without library dependencies and with fast touch screen support.
+# Responsive Nav.js
 
-responsive-nav.js is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS transitions for best possible performance. It also uses a "clever" workaround which makes it possible to transition from `max-height: 0` to `max-height: auto` which isn't normally possible with CSS transitions.
+### Responsive Navigation plugin without library dependencies and with fast touch screen support.
 
-Please note that this is still a work-in-progress, so there are some bugs in certain browsers like <del>Opera Mobile</del>. Anyway, I will deal with them soon, so don't worry. Usage instructions and better demos are also coming.
+Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3 transitions.
 
-Check out also the previous version: [TinyNav](http://tinynav.viljamis.com)
+## Features
 
-#### Features:
- * 1kb minified and gzipped
- * Uses CSS3 transitions and touchstart
- * Simple markup using an unordered list
- * Removes the 300ms delay between a physical tap and the click event
- * Makes it possible to use CSS transition with `max-height: auto` which isn't normally possible
- * Works in all major desktop and mobile browsers including IE6 and up
-
+* ~1kb minified and gzipped
+* Doesn’t require any external libraries
+* Simple markup using lists
+* Uses CSS3 transitions and touchstart
+* Removes the 300ms delay between a physical tap and the click event
+* Makes it possible to use CSS3 transition with max-height: auto
+* Works in all major desktop and mobile browsers including IE6 and up (tested in the Helsinki Device Lab)
 
 
-Demo
-======
+## Usage instructions
 
-For a demo go to...
+1. Link files:
+```html
+	<script src="responsive-nav.js"></script>
+	<link rel="stylesheet" href="responsive-nav.css">
+```
+
+2. Add markup:
+```html
+	<div id="nav">
+		<ul>
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">Contact</a></li>
+	 	</ul>
+	</div>
+```
+
+3. Hook up the plugin:
+```javascript
+var navigation = new ResponsiveNav("#nav");
+```
 
 
-Usage instructions
-======
+## Customisable options
 
-...
+```javascript
+var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
+	transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
+	label: "Menu", // String: Label for the navigation toggle, default is "Menu"
+	insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
+	customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
+	debug: true // Boolean: Log debug messages to console, true or false, default is "false"
+});
+```
+
+
+## Public methods
+
+```javascript
+navigation.destroy();
+navigation.toggle();
+```
 
 
 
-License
-======
+## License
 
 Licensed under the MIT license.
 
@@ -44,25 +76,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-Changelog
-======
+## Changelog
 
-v1.00 (2013-03-XX) - Release
-
-v0.65 (2013-03-11) - Removes the need to add "closed" class.
-
-v0.61 (2013-03-09) - Works now in Opera Mobile.
-
-v0.6 (2013-03-07) - TinyNav2 now automatically creates a toggle link for the menu so you don't have to.
-
-v0.52 (2013-03-07) - Adds new option called "debug".
-
-v0.51 (2013-03-07) - Fixes errors in the console.
-
-v0.5 (2013-03-06) - TinyNav2 now calculates the needed height for the navigation so you don't have to. Includes also bug fixes.
-
-v0.3 (2013-03-06) - Adds styles for the demo. You can now also [view the demo online](http://tinynav2.viljamis.com)
-
-v0.2 (2013-03-06) - Added aria-hidden on resize and toggle, thank you [@stowball](https://github.com/stowball)!
-
-v0.1 (2013-03-05) - Release
+v1.00 (2013-04-XX) - Release
