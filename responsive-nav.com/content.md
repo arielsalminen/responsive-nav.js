@@ -23,46 +23,46 @@ Download & View on GitHub ->
 
 1. Link files:
 ```html
-<script src="responsive-nav.js"></script>
-<link rel="stylesheet" href="responsive-nav.css">
+	<script src="responsive-nav.js"></script>
+	<link rel="stylesheet" href="responsive-nav.css">
 ```
 
 2. Add markup:
 ```html
-<div id="nav">
-	<ul>
-		<li class="active"><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Projects</a></li>
-		<li><a href="#">Contact</a></li>
- 	</ul>
-</div>
+	<div id="nav">
+		<ul>
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">Contact</a></li>
+	 	</ul>
+	</div>
 ```
 
 3. Hook up the plugin:
-```javasript
-var navigation = new ResponsiveNav("#nav");
+```javascript
+	var navigation = new ResponsiveNav("#nav");
 ```
 
 
 ## Customisable options
 
 ```javascript
-var navigation = new ResponsiveNav("#nav", {
-	transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
-	label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-	insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
-	customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
-	debug: true // Boolean: Log debug messages to console, true or false, default is "false"
-});
+	var navigation = new ResponsiveNav("#nav", {
+		transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
+		label: "Menu", // String: Label for the navigation toggle, default is "Menu"
+		insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
+		customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
+		debug: true // Boolean: Log debug messages to console, true or false, default is "false"
+	});
 ```
 
 
 ## Public methods
 
 ```javascript
-navigation.destroy();
-navigation.toggle();
+	navigation.destroy();
+	navigation.toggle();
 ```
 
 
