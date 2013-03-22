@@ -1,6 +1,6 @@
 # Responsive Nav.js
 
-## Responsive Navigation plugin without library dependencies and with fast touch screen support. Try it out by resizing this window.
+### Responsive Navigation plugin without library dependencies and with fast touch screen support. Try it out by resizing this window.
 
 Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3 transitions.
 
@@ -71,7 +71,7 @@ navigation.toggle();
 If you have a question or a bug report, please post it to GitHub issues.
 
 
-Download & View on GitHub ->
+## Footer
 
 Brought to you by Viljami S. Follow @viljamis on Twitter to stay up to date. Check out also the previous version called TinyNav.js.
 
