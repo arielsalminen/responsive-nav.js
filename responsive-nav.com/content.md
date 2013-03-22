@@ -41,28 +41,28 @@ Download & View on GitHub ->
 
 3. Hook up the plugin:
 ```javascript
-	var navigation = new ResponsiveNav("#nav");
+var navigation = new ResponsiveNav("#nav");
 ```
 
 
 ## Customisable options
 
 ```javascript
-	var navigation = new ResponsiveNav("#nav", {
-		transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
-		label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-		insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
-		customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
-		debug: true // Boolean: Log debug messages to console, true or false, default is "false"
-	});
+var navigation = new ResponsiveNav("#nav", {
+	transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
+	label: "Menu", // String: Label for the navigation toggle, default is "Menu"
+	insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
+	customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
+	debug: true // Boolean: Log debug messages to console, true or false, default is "false"
+});
 ```
 
 
 ## Public methods
 
 ```javascript
-	navigation.destroy();
-	navigation.toggle();
+navigation.destroy();
+navigation.toggle();
 ```
 
 
