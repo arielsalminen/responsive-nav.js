@@ -47,13 +47,13 @@ var navigation = new ResponsiveNav("#nav");
 
 4. Customizable options:
 ```javascript
-var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
-	transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
-	label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-	insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
-	customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
-	debug: true // Boolean: Log debug messages to console, true or false, default is "false"
-});
+	var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper, default is "#nav"
+		transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
+		label: "Menu", // String: Label for the navigation toggle, default is "Menu"
+		insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
+		customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
+		debug: true // Boolean: Log debug messages to console, true or false, default is "false"
+	});
 ```
 
 
