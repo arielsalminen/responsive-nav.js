@@ -61,6 +61,9 @@ var navigation = new ResponsiveNav("#nav");
 
 ```javascript
 navigation.destroy();
+```
+
+```javascript
 navigation.toggle();
 ```
 
