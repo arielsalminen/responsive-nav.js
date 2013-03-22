@@ -4,7 +4,7 @@
 
 Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3 transitions.
 
-## Features
+#### Features:
 
 * ~1kb minified and gzipped
 * Doesn’t require any external libraries
@@ -15,7 +15,12 @@ Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to crea
 * Works in all major desktop and mobile browsers including IE6 and up (tested in the Helsinki Device Lab)
 
 
-## Usage instructions
+# Demo
+
+For a demo, go to [responsive-nav.com](http://responsive-nav.com).
+
+
+# Usage instructions
 
 1. Link files:
 ```html
@@ -41,7 +46,7 @@ var navigation = new ResponsiveNav("#nav");
 ```
 
 
-## Customisable options
+# Customizable options
 
 ```javascript
 var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
@@ -54,7 +59,7 @@ var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wr
 ```
 
 
-## Public methods
+# Public methods
 
 ```javascript
 navigation.destroy();
@@ -63,7 +68,7 @@ navigation.toggle();
 
 
 
-## License
+# License
 
 Licensed under the MIT license.
 
@@ -76,6 +81,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-## Changelog
+# Changelog
 
 v1.00 (2013-04-XX) - Release
+
+
+# Want to do a pull request?
+
+Great! New ideas are more than welcome, but please check the [Pull Request Guidelines](https://github.com/viljamis/responsive-nav.js/wiki/Pull-Request-Guidelines/) first before doing so.
