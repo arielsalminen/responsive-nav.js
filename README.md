@@ -45,8 +45,7 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 var navigation = new ResponsiveNav("#nav");
 ```
 
-
-# Customizable options
+4. Customizable options:
 
 ```javascript
 var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
