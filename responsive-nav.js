@@ -197,7 +197,7 @@ var ResponsiveNav = (function (window, document) {
         this.__onkeyup(evt);
         break;
       case "click":
-        this.__click(evt);
+        this.__onclick(evt);
         break;
       case "load":
       case "resize":
@@ -276,7 +276,7 @@ var ResponsiveNav = (function (window, document) {
       }
     },
 
-    __click: function (e) {
+    __onclick: function (e) {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
     },
 
