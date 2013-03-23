@@ -142,6 +142,7 @@ var ResponsiveNav = (function (window, document) {
       removeEvent(window, "resize", this);
       removeEvent(navToggle, "mousedown", this);
       removeEvent(navToggle, "touchstart", this);
+      removeEvent(navToggle, "keyup", this);
       removeEvent(navToggle, "click", this);
 
       navToggle.parentNode.removeChild(navToggle);
@@ -192,6 +193,9 @@ var ResponsiveNav = (function (window, document) {
       case "touchstart":
         this.__ontouchstart(evt);
         break;
+      case "keyup":
+        this.__onkeyup(evt);
+        break;
       case "click":
         this.__click(evt);
         break;
@@ -213,6 +217,7 @@ var ResponsiveNav = (function (window, document) {
       addEvent(window, "resize", this);
       addEvent(navToggle, "mousedown", this);
       addEvent(navToggle, "touchstart", this);
+      addEvent(navToggle, "keyup", this);
       addEvent(navToggle, "click", this);
     },
 
@@ -263,6 +268,12 @@ var ResponsiveNav = (function (window, document) {
       navToggle.onmousedown = null;
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       this.toggle(e);
+    },
+
+    __onkeyup: function (e) {
+      if (e.keyCode === 13) {
+        this.toggle(e);
+      }
     },
 
     __click: function (e) {
