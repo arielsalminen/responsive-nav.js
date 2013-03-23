@@ -153,7 +153,7 @@ var ResponsiveNav = (function (window, document) {
     toggle: function () {
       if (!navOpen) {
         this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
-        this.wrapper.style.position = "static";
+        this.wrapper.style.position = "relative";
 
         if (computed) {
           this.wrapper.setAttribute(aria, false);
@@ -301,7 +301,7 @@ var ResponsiveNav = (function (window, document) {
         } else {
           navToggle.setAttribute(aria, true);
           this.wrapper.setAttribute(aria, false);
-          this.wrapper.style.position = "static";
+          this.wrapper.style.position = "relative";
 
           this.__removeStyles();
         }
