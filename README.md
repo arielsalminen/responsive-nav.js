@@ -68,6 +68,10 @@ navigation.toggle();
 ```
 
 
+# CSS explained
+
+Explain here why certain things are the way they are…
+
 
 # License
 
