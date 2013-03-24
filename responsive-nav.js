@@ -89,11 +89,11 @@ var ResponsiveNav = (function (window, document) {
 
       // Default options
       this.options = {
-        transition: 300,    // Integer: Speed of the transition, in milliseconds, default is "300"
-        label: "Menu",      // String: Label for the navigation toggle, default is "Menu"
-        insert: "after",    // String: Insert the toggle before or after the navigation, default is "after"
-        customToggle: "",   // Selector: Specify the ID of a custom toggle, default is ""
-        debug: false        // Boolean: Log debug messages to console, true or false, default is "false"
+        transition: 400,    // Integer: Speed of the transition, in milliseconds
+        label: "Menu",      // String: Label for the navigation toggle
+        insert: "after",    // String: Insert the toggle before or after the navigation
+        customToggle: "",   // Selector: Specify the ID of a custom toggle
+        debug: false        // Boolean: Log debug messages to console, true or false
       };
 
       // User defined options
