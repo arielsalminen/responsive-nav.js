@@ -25,6 +25,7 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 
 1. Link files:
 ```html
+	<!-- Put these into the <head> -->
 	<script src="responsive-nav.js"></script>
 	<link rel="stylesheet" href="responsive-nav.css">
 ```
@@ -42,18 +43,21 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 ```
 
 3. Hook up the plugin:
-```javascript
-var navigation = new ResponsiveNav("#nav");
+```html
+<!-- Put this right before the <body> ending tag -->
+	<script>
+		var navigation = new ResponsiveNav("#nav");
+	</script>
 ```
 
 4. Customizable options:
 ```javascript
-	var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper, default is "#nav"
-		transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
-		label: "Menu", // String: Label for the navigation toggle, default is "Menu"
-		insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
-		customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
-		debug: true // Boolean: Log debug messages to console, true or false, default is "false"
+	var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper
+		transition: 400, // Integer: Speed of the transition, in milliseconds
+		label: "Menu", // String: Label for the navigation toggle
+		insert: "after", // String: Insert the toggle before or after the navigation
+		customToggle: "", // Selector: Specify the ID of a custom toggle
+		debug: false // Boolean: Log debug messages to console, true or false
 	});
 ```
 
