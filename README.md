@@ -45,7 +45,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 3. Hook up the plugin:
 ```html
-<!-- Put this right before the &lt;/body> closing tag -->
+<!-- Put this right before the </body> closing tag -->
 	<script>
 		var navigation = responsiveNav("#nav");
 	</script>
