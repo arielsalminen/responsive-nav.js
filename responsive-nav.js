@@ -266,6 +266,7 @@ var responsiveNav = (function (window, document) {
         var toggle = document.createElement("a");
         toggle.setAttribute("href", "#");
         toggle.setAttribute("id", "nav-toggle");
+        toggle.setAttribute("tabindex", "1");
         toggle.innerHTML = this.options.label;
 
         if (this.options.insert === "after") {
