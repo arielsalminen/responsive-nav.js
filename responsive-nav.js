@@ -8,13 +8,14 @@
 
 /* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true,
 bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
-/* exported ResponsiveNav */
+/* exported responsiveNav */
 
 var responsiveNav = (function (window, document) {
 
   var navToggle,
     aria = "aria-hidden",
     computed = !!window.getComputedStyle,
+    docEl = document.documentElement,
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
     navOpen = false,
@@ -87,6 +88,9 @@ var responsiveNav = (function (window, document) {
     ResponsiveNav = function (el, options) {
       var i;
 
+      // Adds "js" class for <html>
+      docEl.className = docEl.className + ' js ';
+
       // Default options
       this.options = {
         transition: 400,    // Integer: Speed of the transition, in milliseconds
@@ -113,9 +117,9 @@ var responsiveNav = (function (window, document) {
       }
 
       // Wrapper
-      var wrapperEl = el.replace("#", "");
-      if (document.getElementById(wrapperEl)) {
-        this.wrapper = document.getElementById(wrapperEl);
+      this.wrapperEl = el.replace("#", "");
+      if (document.getElementById(this.wrapperEl)) {
+        this.wrapper = document.getElementById(this.wrapperEl);
       } else {
         // If el doesn't exists, stop here.
         log("The nav element you are trying to select doesn't exist");
@@ -137,6 +141,7 @@ var responsiveNav = (function (window, document) {
       this.wrapper.removeAttribute(aria);
       this.wrapper = null;
       this.wrapper.inner = null;
+      __instance = null;
 
       removeEvent(window, "load", this);
       removeEvent(window, "resize", this);
@@ -307,7 +312,7 @@ var responsiveNav = (function (window, document) {
         this.__transitions();
 
         var savedHeight = this.wrapper.inner.offsetHeight,
-          innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
+          innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px }";
         styleElement.innerHTML = innerStyles;
         innerStyles = "";
         log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
@@ -323,13 +328,13 @@ var responsiveNav = (function (window, document) {
 
   };
 
-  var _instance;
+  var __instance;
   function rn (el, options) {
-    if ( !_instance ) {
-      _instance = new ResponsiveNav(el, options);
+    if (!__instance) {
+      __instance = new ResponsiveNav(el, options);
     }
 
-    return _instance;
+    return __instance;
   }
 
   return rn;
