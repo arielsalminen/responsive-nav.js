@@ -46,13 +46,13 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 ```html
 <!-- Put this right before the <body> ending tag -->
 	<script>
-		var navigation = new ResponsiveNav("#nav");
+		var navigation = responsiveNav("#nav");
 	</script>
 ```
 
 4. Customizable options:
 ```javascript
-	var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the wrapper
+	var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
 		transition: 400, // Integer: Speed of the transition, in milliseconds
 		label: "Menu", // String: Label for the navigation toggle
 		insert: "after", // String: Insert the toggle before or after the navigation
