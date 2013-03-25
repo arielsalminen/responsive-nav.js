@@ -86,6 +86,8 @@ body {
 @media screen and (min-width: 40em) {
   #nav li {
     width: 25%;
+    *width: 24.9%; /* IE7 Hack */
+    _width: 19%; /* IE6 Hack */
   }
 }
 
