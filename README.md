@@ -2,11 +2,11 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-Responsive Nav is a tiny JavaScript plugin (weighs ~1kb minified and gzipped) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3 transitions.
+Responsive Nav is a tiny JavaScript plugin (weighs 1.5kb minified and gzipped) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3 transitions.
 
 #### Features:
 
-* Weighs only ~1kb minified and gzipped.
+* Weighs only 1.5kb minified and gzipped.
 * Doesn’t require any external libraries.
 * Uses CSS3 transitions, touch events and simple markup.
 * Removes the 300ms delay between a physical tap and the click&nbsp;event.
@@ -17,7 +17,7 @@ Responsive Nav is a tiny JavaScript plugin (weighs ~1kb minified and gzipped) wh
 
 # Demo
 
-For a demo, go to [responsive-nav.com](http://responsive-nav.com) (Demo and site coming soon!).
+For a demo, go to [responsive-nav.com](http://responsive-nav.com) (Demo and site coming soon! In the meantime, try this: [viljamis.com/responsive-nav/](http://viljamis.com/responsive-nav/)).
 
 
 # Usage instructions
@@ -68,6 +68,21 @@ Following the steps below you will be able to get the plugin up and running. If 
 `navigation.destroy();`
 
 `navigation.toggle();`
+
+
+# Tested on the following platforms
+
+* iOS 4.2.1+
+* Android 1.6+
+* Windows Phone 7.5+
+* Blackberry 7.0+
+* Maemo 5.0+
+* Meego 1.2+
+* webOS 2.0+
+* Symbian 3
+* Windows XP
+* Windows 7
+* Mac OS X
 
 
 # License
