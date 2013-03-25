@@ -85,7 +85,7 @@ body {
 }
 @media screen and (min-width: 40em) {
   #nav li {
-    width: 20%;
+    width: 25%;
   }
 }
 
@@ -103,16 +103,9 @@ body {
     margin: 0;
     padding: 1em;
     float: left;
-    background: transparent;
-    color: #37302a;
-    border: 0;
-  }
-}
-
-@media screen and (min-width: 40em) {
-  #nav .active a {
-    color: #fff;
-    background: #f4421a;
+    text-align: center;
+    border-bottom: 0;
+    border-right: 1px solid white;
   }
 }
 
@@ -127,12 +120,12 @@ body {
   float: right;
   text-indent: -9999px;
   overflow: hidden;
-  background: #f4421a url(data:image/gif;base64,R0lGODlhZABkAIABAP///////yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI2RUQ3MDY1OEMyQzExRTI5M0U0OTA2NkFFMkY0MUYwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI2RUQ3MDY2OEMyQzExRTI5M0U0OTA2NkFFMkY0MUYwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjZFRDcwNjM4QzJDMTFFMjkzRTQ5MDY2QUUyRjQxRjAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjZFRDcwNjQ4QzJDMTFFMjkzRTQ5MDY2QUUyRjQxRjAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQBAAABACwAAAAAZABkAAAClYSPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNarfcLikADovHZPGzjE4Hzup2mO1ue+f0un0Sd8Pz6D2f7PdndkdYaMgl2OeUWBbI6Jh4KDlJWWl5iZmpucnZ6fkJGio6SlpqeoqaqrrK2ur6Chsr21kAADs=) no-repeat 50% 33%;
+  background: #f4421a url("hamburger.gif") no-repeat 50% 33%;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
   #nav-toggle {
-    background-image: url(data:image/gif;base64,R0lGODlhyADIAIABAP///////yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkI2RUQ3MDY5OEMyQzExRTI5M0U0OTA2NkFFMkY0MUYwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkI2RUQ3MDZBOEMyQzExRTI5M0U0OTA2NkFFMkY0MUYwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjZFRDcwNjc4QzJDMTFFMjkzRTQ5MDY2QUUyRjQxRjAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjZFRDcwNjg4QzJDMTFFMjkzRTQ5MDY2QUUyRjQxRjAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PDs6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQBAAABACwAAAAAyADIAAAC/4SPqcvtD6OctNqLs968+w+G4kiW5omm6sq27gvH8kzX9o3n+s73/g8MCofEovGITCqXzKbzCY1Kp9Sq9YrNarfcrvcLDovH5LL5jE6r1+y2+w2Py+f0uv2Oz+v3/L7/DxgoOEhYaHiImKi4yNjo+AgZKTlJWWl5iZmpucnZ6fkJGio6SlpqeoqaqrrK2ur6ChsrO0tba0sZkKu7y9vr+wvMqxlMXGy8O3ysvIycyfysnAw9DSxNfd2Mib2ta81NfRsuPk5ebn6Ovva97b3+3O6+DB9/PE9fbH8fnK//y9/fK53AgQQLGjyIMKEGgPKcMazn8CG+iBL3Uazo7yLGgFcaN2a75LGawpEkS5o8iTKlypUsW7p8CTOmzJk0a9q8iTOnzp08e/r8CTSo0KFEixo9ijSp0qVMmzp9CjWq1KlUq1q9ijWr1q1cu3r9Cjas2LFky5pdVAAAOw==);
+    background-image: url("hamburger-retina.gif");
     -webkit-background-size: 100px 100px;
     -moz-background-size: 100px 100px;
     -o-background-size: 100px 100px;
