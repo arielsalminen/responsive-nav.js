@@ -17,7 +17,7 @@ Responsive Nav is a tiny JavaScript plugin (weighs 1.5kb minified and gzipped) w
 
 # Demo
 
-For a demo, go to [responsive-nav.com](http://responsive-nav.com) (Demo and site coming soon! In the meantime, try this: [viljamis.com/responsive-nav/](http://viljamis.com/responsive-nav/)).
+Better demos and site coming soon. In the meantime, try this: [viljamis.com/responsive-nav/](http://viljamis.com/responsive-nav/).
 
 
 # Usage instructions
