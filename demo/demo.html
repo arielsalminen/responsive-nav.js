@@ -1,16 +1,13 @@
-<!-- responsive-nav.js v1.0 by @viljamis -->
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>responsive-nav.js</title>
+    <title>Responsive Nav</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="responsive-nav.js"></script>
-    <link rel="stylesheet" href="responsive-nav.css">
     <link rel="stylesheet" href="demo.css">
+    <script src="../responsive-nav.js"></script>
   </head>
   <body>
-
 
     <div id="nav">
       <ul>
@@ -21,11 +18,10 @@
       </ul>
     </div>
 
-
     <script>
       // Init Responsive Nav
       var navigation = responsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
-        transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
+        transition: 400, // Integer: Speed of the transition, in milliseconds, default is "300"
         label: "Menu", // String: Label for the navigation toggle, default is "Menu"
         insert: "after", // String: Insert the toggle before or after the navigation, default is "after"
         customToggle: "", // Selector: Specify the ID of a custom toggle, default is ""
@@ -37,6 +33,6 @@
       // navigation.toggle();
     </script>
 
-
+    <!--[if lte IE 9]><script src="respond.js"></script><![endif]-->
   </body>
 </html>
