@@ -1,4 +1,4 @@
-# Responsive Nav.js
+# Responsive Nav
 
 ### Responsive Navigation plugin without library dependencies and with fast touch screen support.
 
@@ -93,7 +93,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-v1.00 (2013-04-XX) - Release
+v1.00 (2013-03-25) - Release
 
 
 # Want to do a pull request?
