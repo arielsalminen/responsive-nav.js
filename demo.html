@@ -26,7 +26,7 @@
       docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
 
       // Init responsive-nav.js
-      var navigation = new ResponsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
+      var navigation = responsiveNav("#nav", { // Selector: The ID of the outer wrapper, default is "#nav"
         transition: 300, // Integer: Speed of the transition, in milliseconds, default is "300"
         label: "Menu", // String: Label for the navigation toggle, default is "Menu"
         insert: "after", // String: Insert the toggle before or after the navigation, default is "after"

@@ -10,11 +10,11 @@
 bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
 /* exported ResponsiveNav */
 
-var ResponsiveNav = (function (window, document) {
+var responsiveNav = (function (window, document) {
 
   var navToggle,
     aria = "aria-hidden",
-    computed = window.getComputedStyle ? true : false,
+    computed = !!window.getComputedStyle,
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
     navOpen = false,
@@ -291,35 +291,46 @@ var ResponsiveNav = (function (window, document) {
     },
 
     __resize: function () {
-      if (computed) {
-        if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
-          navToggle.setAttribute(aria, false);
+      if (!computed) {
+        return;
+      }
 
-          if (this.wrapper.className.match(/(^|\s)closed(\s|$)/)) {
-            this.wrapper.setAttribute(aria, true);
-            this.wrapper.style.position = "absolute";
-          }
+      if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
+        navToggle.setAttribute(aria, false);
 
-          this.__createStyles();
-          this.__transitions();
-
-          var savedHeight = this.wrapper.inner.offsetHeight,
-            innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
-          styleElement.innerHTML = innerStyles;
-          innerStyles = "";
-          log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
-
-        } else {
-          navToggle.setAttribute(aria, true);
-          this.wrapper.setAttribute(aria, false);
-          this.wrapper.style.position = "relative";
-
-          this.__removeStyles();
+        if (this.wrapper.className.match(/(^|\s)closed(\s|$)/)) {
+          this.wrapper.setAttribute(aria, true);
+          this.wrapper.style.position = "absolute";
         }
+
+        this.__createStyles();
+        this.__transitions();
+
+        var savedHeight = this.wrapper.inner.offsetHeight,
+          innerStyles = "#nav.opened{max-height:" + savedHeight + "px }";
+        styleElement.innerHTML = innerStyles;
+        innerStyles = "";
+        log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
+
+      } else {
+        navToggle.setAttribute(aria, true);
+        this.wrapper.setAttribute(aria, false);
+        this.wrapper.style.position = "relative";
+
+        this.__removeStyles();
       }
     }
 
   };
 
-  return ResponsiveNav;
+  var _instance;
+  function rn (el, options) {
+    if ( !_instance ) {
+      _instance = new ResponsiveNav(el, options);
+    }
+
+    return _instance;
+  }
+
+  return rn;
 })(window, document);
