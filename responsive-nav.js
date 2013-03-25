@@ -20,8 +20,8 @@ var responsiveNav = (function (window, document) {
       this.el = el;
       this.getPropertyValue = function(prop) {
         var re = /(\-([a-z]){1})/g;
-        if (prop === 'float') {
-          prop = 'styleFloat';
+        if (prop === "float") {
+          prop = "styleFloat";
         }
         if (re.test(prop)) {
           prop = prop.replace(re, function () {
@@ -110,7 +110,7 @@ var responsiveNav = (function (window, document) {
       var i;
 
       // Adds "js" class for <html>
-      docEl.className = docEl.className + ' js ';
+      docEl.className = docEl.className + " js ";
 
       // Default options
       this.options = {
