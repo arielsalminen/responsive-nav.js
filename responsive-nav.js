@@ -298,7 +298,9 @@ var responsiveNav = (function (window, document) {
     },
 
     __onkeyup: function (e) {
-      if (e.keyCode === 13) {
+      var evt = e || window.event;
+
+      if (evt.keyCode === 13) {
         this.toggle(e);
       }
     },
