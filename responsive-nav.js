@@ -12,9 +12,30 @@ bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:
 
 var responsiveNav = (function (window, document) {
 
+  var computed = !!window.getComputedStyle;
+
+  // getComputedStyle polyfill
+  if (!window.getComputedStyle) {
+    window.getComputedStyle = function(el) {
+      this.el = el;
+      this.getPropertyValue = function(prop) {
+        var re = /(\-([a-z]){1})/g;
+        if (prop === 'float') {
+          prop = 'styleFloat';
+        }
+        if (re.test(prop)) {
+          prop = prop.replace(re, function () {
+            return arguments[2].toUpperCase();
+          });
+        }
+        return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+      };
+      return this;
+    };
+  }
+
   var navToggle,
     aria = "aria-hidden",
-    computed = !!window.getComputedStyle,
     docEl = document.documentElement,
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
@@ -296,10 +317,6 @@ var responsiveNav = (function (window, document) {
     },
 
     __resize: function () {
-      if (!computed) {
-        return;
-      }
-
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
         navToggle.setAttribute(aria, false);
 
@@ -313,7 +330,12 @@ var responsiveNav = (function (window, document) {
 
         var savedHeight = this.wrapper.inner.offsetHeight,
           innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px }";
-        styleElement.innerHTML = innerStyles;
+
+        // This line causes troubles on old IE's for some reason, so let's hide it
+        if (computed) {
+          styleElement.innerHTML = innerStyles;
+        }
+
         innerStyles = "";
         log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
 
