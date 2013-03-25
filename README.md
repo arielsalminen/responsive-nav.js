@@ -13,6 +13,7 @@ Responsive Nav is a tiny JavaScript plugin (weighs 1.5kb minified and gzipped) w
 * Makes it possible to use CSS3 transitions with max-height:&nbsp;auto.
 * Built accessibility in mind, <del>meaning that everything will work on the screen readers&nbsp;too.</del> Needs more testing, want to help me?
 * Works in all major desktop and mobile browsers including IE6 and&nbsp;up.
+* Navigation is accessible even when JavaScript is disabled.
 
 
 # Demo
