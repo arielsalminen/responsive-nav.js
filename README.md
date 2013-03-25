@@ -1,19 +1,18 @@
 # Responsive Nav
 
-### Responsive Navigation plugin without library dependencies and with fast touch screen support.
+### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
 Responsive Nav is a tiny JavaScript plugin (weighs ~1kb) which helps you to create toggled navigation for smaller screens. It uses touchstart and CSS3 transitions for the best possible performance. It also uses a “clever” workaround which makes it possible to transition from max-height: 0 to max-height: auto which isn’t normally possible with CSS3 transitions.
 
 #### Features:
 
-* ~1kb minified and gzipped
-* Doesn’t require any external libraries
-* Simple markup using lists
-* Uses CSS3 transitions and touchstart
-* Removes the 300ms delay between a physical tap and the click event
-* Makes it possible to use CSS3 transition with max-height: auto
-* Built accessibility in mind, meaning that it works on screen readers too
-* Works in all major desktop and mobile browsers including IE6 and up
+* Weighs only ~1kb minified and gzipped.
+* Doesn’t require any external libraries.
+* Uses CSS3 transitions, touch events and simple markup.
+* Removes the 300ms delay between a physical tap and the click&nbsp;event.
+* Makes it possible to use CSS3 transitions with max-height:&nbsp;auto.
+* Built accessibility in mind, meaning that everything will work on the screen readers&nbsp;too.
+* Works in all major desktop and mobile browsers including IE6 and&nbsp;up.
 
 
 # Demo
@@ -22,6 +21,8 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 
 
 # Usage instructions
+
+Following the steps below you will be able to get the plugin up and running. If you have any problems, please post them to GitHub issues.
 
 1. Link files:
 ```html
@@ -44,7 +45,7 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 
 3. Hook up the plugin:
 ```html
-<!-- Put this right before the <body> ending tag -->
+<!-- Put this right before the &lt;/body> closing tag -->
 	<script>
 		var navigation = responsiveNav("#nav");
 	</script>
@@ -64,13 +65,9 @@ For a demo, go to [responsive-nav.com](http://responsive-nav.com).
 
 # Public methods
 
-```javascript
-navigation.destroy();
-```
+`navigation.destroy();`
 
-```javascript
-navigation.toggle();
-```
+`navigation.toggle();`
 
 
 # CSS explained
@@ -93,7 +90,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-v1.00 (2013-03-25) - Release
+`v1.00` (2013-03-25) - Release
 
 
 # Want to do a pull request?
