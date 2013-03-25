@@ -19,9 +19,9 @@
   list-style: none;
 }
 
-@media only screen and (min-width: 40em) {
+@media screen and (min-width: 40em) {
   .js #nav {
-    position: static;
+    position: relative;
     max-height: none;
   }
   #nav-toggle {
