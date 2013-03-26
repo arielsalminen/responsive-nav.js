@@ -101,7 +101,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`v1.00` (2013-03-25) - Release
+`v1.00` (2013-03-25) - Release. Big thank you's for the help go out to [@cubiq](https://twitter.com/cubiq), [@stowball](https://twitter.com/stowball), [jcxplorer](https://twitter.com/jcxplorer) and [vesan](https://twitter.com/vesan)!
 
 
 # Want to do a pull request?
