@@ -106,4 +106,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Want to do a pull request?
 
-Great! New ideas are more than welcome, but please check the [Pull Request Guidelines](https://github.com/viljamis/responsive-nav.js/wiki/Pull-Request-Guidelines/) first before doing so.
+Great! New ideas are more than welcome, but please check the [Pull Request Guidelines](CONTRIBUTING.md) first before doing so.
