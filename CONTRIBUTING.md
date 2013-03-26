@@ -1,4 +1,6 @@
-# Please follow these conventions below if you want to do a pull request.
+# Pull Request Guidelines
+
+Please follow these conventions below if you want to do a pull request.
 
 ## General
 
