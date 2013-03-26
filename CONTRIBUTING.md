@@ -13,7 +13,7 @@ Please follow these conventions below if you want to do a pull request.
 * Don’t use tabs to indent, instead use Soft Tabs (spaces) with tab size of 2.
 * Don’t leave trailing whitespaces.
 * Use JShint with the following settings to check and format your JavaScript: 
-```javascript
+```
 /* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true,
 bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
 /* exported responsiveNav */
