@@ -159,6 +159,7 @@ var responsiveNav = (function (window, document) {
     // Public methods
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
+      this.wrapper.className = this.wrapper.className.replace(/(^|\s)opened(\s|$)/, " ");
       this.wrapper.removeAttribute("style");
       this.wrapper.removeAttribute(aria);
       this.wrapper = null;
@@ -171,7 +172,12 @@ var responsiveNav = (function (window, document) {
       removeEvent(navToggle, "keyup", this, false);
       removeEvent(navToggle, "click", this, false);
 
-      navToggle.parentNode.removeChild(navToggle);
+      if (!this.options.customToggle) {
+        navToggle.parentNode.removeChild(navToggle);
+      } else {
+        navToggle.removeAttribute(aria);
+      }
+
       if (styleElement.parentNode) {
         styleElement.parentNode.removeChild(styleElement);
       }
@@ -229,7 +235,7 @@ var responsiveNav = (function (window, document) {
 
     // Private methods
     __init: function () {
-      log("Inited ResponsiveNav2.js");
+      log("Inited Responsive Nav");
 
       this.wrapper.className = this.wrapper.className + " closed";
       this.__createToggle();
