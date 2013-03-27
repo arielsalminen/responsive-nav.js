@@ -178,30 +178,23 @@ var responsiveNav = (function (window, document) {
     },
 
     toggle: function () {
-      if (!navOpen) {
-        this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
-        this.wrapper.style.position = "relative";
+      var navWrapper = this.wrapper;
 
-        if (computed) {
-          this.wrapper.setAttribute(aria, false);
-        }
+      if (!navOpen) {
+        navWrapper.className = navWrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
+        navWrapper.style.position = "relative";
+        navWrapper.setAttribute(aria, false);
 
         navOpen = true;
         log("Opened nav");
 
       } else {
-        var afterTransitionTime = this.options.transition + 10,
-          wrapper = this.wrapper;
-
-        wrapper.className = wrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
+        navWrapper.className = navWrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
+        navWrapper.setAttribute(aria, true);
 
         setTimeout(function () {
-          wrapper.style.position = "absolute";
-        }, afterTransitionTime);
-
-        if (computed) {
-          this.wrapper.setAttribute(aria, true);
-        }
+          navWrapper.style.position = "absolute";
+        }, this.options.transition + 10);
 
         navOpen = false;
         log("Closed nav");
@@ -299,7 +292,6 @@ var responsiveNav = (function (window, document) {
 
     __onkeyup: function (e) {
       var evt = e || window.event;
-
       if (evt.keyCode === 13) {
         this.toggle(e);
       }
@@ -334,19 +326,18 @@ var responsiveNav = (function (window, document) {
         var savedHeight = this.wrapper.inner.offsetHeight,
           innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px }";
 
-        // This line causes troubles on old IE's for some reason, so let's hide it
+        // Hide from old IE
         if (computed) {
           styleElement.innerHTML = innerStyles;
+          innerStyles = "";
         }
 
-        innerStyles = "";
         log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
 
       } else {
         navToggle.setAttribute(aria, true);
         this.wrapper.setAttribute(aria, false);
         this.wrapper.style.position = "relative";
-
         this.__removeStyles();
       }
     }
