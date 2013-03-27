@@ -159,20 +159,22 @@ var responsiveNav = (function (window, document) {
     // Public methods
     destroy: function () {
       this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
+      this.wrapper.removeAttribute("style");
       this.wrapper.removeAttribute(aria);
       this.wrapper = null;
-      this.wrapper.inner = null;
       __instance = null;
 
-      removeEvent(window, "load", this);
-      removeEvent(window, "resize", this);
-      removeEvent(navToggle, "mousedown", this);
-      removeEvent(navToggle, "touchstart", this);
-      removeEvent(navToggle, "keyup", this);
-      removeEvent(navToggle, "click", this);
+      removeEvent(window, "load", this, false);
+      removeEvent(window, "resize", this, false);
+      removeEvent(navToggle, "mousedown", this, false);
+      removeEvent(navToggle, "touchstart", this, false);
+      removeEvent(navToggle, "keyup", this, false);
+      removeEvent(navToggle, "click", this, false);
 
       navToggle.parentNode.removeChild(navToggle);
-      styleElement.parentNode.removeChild(styleElement);
+      if (styleElement.parentNode) {
+        styleElement.parentNode.removeChild(styleElement);
+      }
 
       log("Destroyed!");
     },
@@ -232,12 +234,12 @@ var responsiveNav = (function (window, document) {
       this.wrapper.className = this.wrapper.className + " closed";
       this.__createToggle();
 
-      addEvent(window, "load", this);
-      addEvent(window, "resize", this);
-      addEvent(navToggle, "mousedown", this);
-      addEvent(navToggle, "touchstart", this);
-      addEvent(navToggle, "keyup", this);
-      addEvent(navToggle, "click", this);
+      addEvent(window, "load", this, false);
+      addEvent(window, "resize", this, false);
+      addEvent(navToggle, "mousedown", this, false);
+      addEvent(navToggle, "touchstart", this, false);
+      addEvent(navToggle, "keyup", this, false);
+      addEvent(navToggle, "click", this, false);
     },
 
     __createStyles: function () {
