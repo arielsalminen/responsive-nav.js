@@ -35,7 +35,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 ```html
 	<div id="nav">
 		<ul>
-			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Home</a></li>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Projects</a></li>
 			<li><a href="#">Contact</a></li>
