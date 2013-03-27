@@ -11,9 +11,8 @@ Responsive Nav is a tiny JavaScript plugin (weighs 1.5kb minified and gzipped) w
 * Uses CSS3 transitions, touch events and simple markup.
 * Removes the 300ms delay between a physical tap and the click event.
 * Makes it possible to use CSS3 transitions with max-height: auto.
-* Built accessibility in mind, meaning that everything should work on the screen readers too.
+* Built accessibility in mind, meaning that everything works on screen readers and JavaScript disabled too.
 * Works in all major desktop and mobile browsers including IE6 and up.
-* Navigation is accessible even when JavaScript is disabled.
 
 
 # Demo
