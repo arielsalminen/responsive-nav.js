@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.01
+/*! responsive-nav.js v1.03
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -111,6 +111,7 @@ var responsiveNav = (function (window, document) {
 
       // Default options
       this.options = {
+        animate: true,        // Boolean: Use CSS3 transitions, true or false
         transition: 400,      // Integer: Speed of the transition, in milliseconds
         label: "Menu",        // String: Label for the navigation toggle
         insert: "after",      // String: Insert the toggle before or after the navigation
@@ -319,13 +320,15 @@ var responsiveNav = (function (window, document) {
     },
 
     __transitions: function () {
-      var objStyle = this.wrapper.style,
-        transition = "max-height " + this.options.transition + "ms";
+      if (this.options.animate) {
+        var objStyle = this.wrapper.style,
+          transition = "max-height " + this.options.transition + "ms";
 
-      objStyle.WebkitTransition = transition;
-      objStyle.MozTransition = transition;
-      objStyle.OTransition = transition;
-      objStyle.transition = transition;
+        objStyle.WebkitTransition = transition;
+        objStyle.MozTransition = transition;
+        objStyle.OTransition = transition;
+        objStyle.transition = transition;
+      }
     },
 
     __resize: function () {
