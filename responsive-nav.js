@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.03
+/*! responsive-nav.js v1.04
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -204,9 +204,13 @@ var responsiveNav = (function (window, document) {
         navWrapper.className = navWrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
         navWrapper.setAttribute(aria, true);
 
-        setTimeout(function () {
+        if (this.options.animate) {
+          setTimeout(function () {
+            navWrapper.style.position = "absolute";
+          }, this.options.transition + 10);
+        } else {
           navWrapper.style.position = "absolute";
-        }, this.options.transition + 10);
+        }
 
         navOpen = false;
         log("Closed nav");
