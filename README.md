@@ -58,6 +58,9 @@ Following the steps below you will be able to get the plugin up and running. If 
 		label: "Menu", // String: Label for the navigation toggle
 		insert: "after", // String: Insert the toggle before or after the navigation
 		customToggle: "", // Selector: Specify the ID of a custom toggle
+		tabIndex: 1, // Integer: Specify the default toggle's tabindex
+		openPos: "relative", // String: Position of the opened nav, relative or static
+		jsClass: "js", // String: 'JS enabled' class which is added to <html> el
 		debug: false // Boolean: Log debug messages to console, true or false
 	});
 ```
