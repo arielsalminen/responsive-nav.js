@@ -83,6 +83,7 @@ body {
   float: left;
   width: 100%;
 }
+
 @media screen and (min-width: 40em) {
   #nav li {
     width: 25%;
@@ -100,6 +101,7 @@ body {
   padding: 0.7em 1em;
   float: left;
 }
+
 @media screen and (min-width: 40em) {
   #nav a {
     margin: 0;
@@ -108,6 +110,17 @@ body {
     text-align: center;
     border-bottom: 0;
     border-right: 1px solid white;
+  }
+}
+
+#nav ul ul a {
+  background: #ca3716;
+  padding-left: 2em;
+}
+
+@media screen and (min-width: 40em) {
+  #nav ul ul a {
+    display: none;
   }
 }
 
