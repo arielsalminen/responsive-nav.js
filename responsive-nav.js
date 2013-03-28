@@ -109,22 +109,25 @@ var responsiveNav = (function (window, document) {
     ResponsiveNav = function (el, options) {
       var i;
 
-      // Adds "js" class for <html>
-      docEl.className = docEl.className + " js ";
-
       // Default options
       this.options = {
-        transition: 400,    // Integer: Speed of the transition, in milliseconds
-        label: "Menu",      // String: Label for the navigation toggle
-        insert: "after",    // String: Insert the toggle before or after the navigation
-        customToggle: "",   // Selector: Specify the ID of a custom toggle
-        debug: false        // Boolean: Log debug messages to console, true or false
+        transition: 400,      // Integer: Speed of the transition, in milliseconds
+        label: "Menu",        // String: Label for the navigation toggle
+        insert: "after",      // String: Insert the toggle before or after the navigation
+        customToggle: "",     // Selector: Specify the ID of a custom toggle
+        tabIndex: 1,          // Integer: Specify the default toggle's tabindex
+        openPos: "relative",  // String: Position of the opened nav, relative or static
+        jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
+        debug: false          // Boolean: Log debug messages to console, true or false
       };
 
       // User defined options
       for (i in options) {
         this.options[i] = options[i];
       }
+
+      // Adds "js" class for <html>
+      docEl.className = docEl.className + " " + this.options.jsClass + " ";
 
       // Debug logger
       if (this.options.debug) {
@@ -190,7 +193,7 @@ var responsiveNav = (function (window, document) {
 
       if (!navOpen) {
         navWrapper.className = navWrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
-        navWrapper.style.position = "relative";
+        navWrapper.style.position = this.options.openPos;
         navWrapper.setAttribute(aria, false);
 
         navOpen = true;
@@ -267,7 +270,7 @@ var responsiveNav = (function (window, document) {
         var toggle = document.createElement("a");
         toggle.setAttribute("href", "#");
         toggle.setAttribute("id", "nav-toggle");
-        toggle.setAttribute("tabindex", "1");
+        toggle.setAttribute("tabindex", this.options.tabIndex);
         toggle.innerHTML = this.options.label;
 
         if (this.options.insert === "after") {
@@ -281,8 +284,14 @@ var responsiveNav = (function (window, document) {
 
       } else {
         var toggleEl = this.options.customToggle.replace("#", "");
-        navToggle = document.getElementById(toggleEl);
-        log("Custom nav toggle created");
+
+        if (document.getElementById(toggleEl)) {
+          navToggle = document.getElementById(toggleEl);
+          log("Custom nav toggle created");
+        } else {
+          log("The custom nav toggle you are trying to select doesn't exist");
+          return;
+        }
       }
     },
 
@@ -345,7 +354,7 @@ var responsiveNav = (function (window, document) {
       } else {
         navToggle.setAttribute(aria, true);
         this.wrapper.setAttribute(aria, false);
-        this.wrapper.style.position = "relative";
+        this.wrapper.style.position = this.options.openPos;
         this.__removeStyles();
       }
     }
