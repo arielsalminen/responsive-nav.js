@@ -104,7 +104,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`v1.04` (2013-03-28) - Big fixes
+`v1.04` (2013-03-28) - Bug fixes
 
 `v1.03` (2013-03-28) - Adds option to disable CSS3 transitions
 
