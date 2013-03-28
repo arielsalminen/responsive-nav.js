@@ -54,6 +54,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 4. Customizable options:
 ```javascript
 	var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+	    animate: true, // Boolean: Use CSS3 transitions, true or false
 		transition: 400, // Integer: Speed of the transition, in milliseconds
 		label: "Menu", // String: Label for the navigation toggle
 		insert: "after", // String: Insert the toggle before or after the navigation
@@ -102,6 +103,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 # Changelog
+
+`v1.03` (2013-03-28) - Adds option to disable CSS3 transitions
 
 `v1.02` (2013-03-28) - Adds three new options: "tabIndex", "openPos" and "jsClass"
 
