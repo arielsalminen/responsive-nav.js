@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.04
+/*! responsive-nav.js v1.05
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -120,9 +120,9 @@ var responsiveNav = (function (window, document) {
         openPos: "relative",  // String: Position of the opened nav, relative or static
         jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
         debug: false,         // Boolean: Log debug messages to console, true or false
-        init: function(){},   // Function: Plugin inited callback
-        open: function(){},   // Function: Nav opening callback
-        close: function(){}   // Function: Nav closing callback
+        init: function(){},   // Function: Responsive Nav inited callback
+        open: function(){},   // Function: Navigation opening callback
+        close: function(){}   // Function: Navigation closing callback
       };
 
       // User defined options
