@@ -62,7 +62,10 @@ Following the steps below you will be able to get the plugin up and running. If 
 		tabIndex: 1, // Integer: Specify the default toggle's tabindex
 		openPos: "relative", // String: Position of the opened nav, relative or static
 		jsClass: "js", // String: 'JS enabled' class which is added to <html> el
-		debug: false // Boolean: Log debug messages to console, true or false
+		debug: false, // Boolean: Log debug messages to console, true or false
+		init: function(){}, // Function: Responsive Nav inited callback
+		open: function(){}, // Function: Navigation opening callback
+		close: function(){} // Function: Navigation closing callback
 	});
 ```
 
@@ -103,6 +106,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 # Changelog
+
+`v1.05` (2013-03-31) - Adds callback functionality and removes unnecessary CSS.
 
 `v1.04` (2013-03-28) - Bug fixes
 
