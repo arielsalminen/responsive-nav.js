@@ -10,11 +10,6 @@
   overflow: hidden;
 }
 
-#nav.opened {
-  position: relative;
-  max-height: 9999px;
-}
-
 #nav ul {
   margin: 0;
   padding: 0;
