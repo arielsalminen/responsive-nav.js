@@ -119,7 +119,10 @@ var responsiveNav = (function (window, document) {
         tabIndex: 1,          // Integer: Specify the default toggle's tabindex
         openPos: "relative",  // String: Position of the opened nav, relative or static
         jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
-        debug: false          // Boolean: Log debug messages to console, true or false
+        debug: false,         // Boolean: Log debug messages to console, true or false
+        init: function(){},   // Function: Plugin inited callback
+        open: function(){},   // Function: Nav opening callback
+        close: function(){}   // Function: Nav closing callback
       };
 
       // User defined options
@@ -198,6 +201,7 @@ var responsiveNav = (function (window, document) {
         navWrapper.setAttribute(aria, false);
 
         navOpen = true;
+        this.options.open();
         log("Opened nav");
 
       } else {
@@ -213,6 +217,7 @@ var responsiveNav = (function (window, document) {
         }
 
         navOpen = false;
+        this.options.close();
         log("Closed nav");
       }
       return false;
@@ -336,6 +341,8 @@ var responsiveNav = (function (window, document) {
     },
 
     __resize: function () {
+      this.options.init();
+
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
         navToggle.setAttribute(aria, false);
 
@@ -373,7 +380,6 @@ var responsiveNav = (function (window, document) {
     if (!__instance) {
       __instance = new ResponsiveNav(el, options);
     }
-
     return __instance;
   }
 
