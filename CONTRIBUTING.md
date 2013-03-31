@@ -15,8 +15,8 @@ Please follow these conventions below if you want to do a pull request.
 * Use JShint with the following settings to check and format your JavaScript:
 
 ```
-/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true, boss:true,
-bitwise:true, undef:true, unused:true, browser:true, devel:true, indent:2, expr:true */
+/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true,
+boss:true, bitwise:true, browser:true, devel:true, indent:2, expr:true */
 /* exported responsiveNav */
 ```
 
