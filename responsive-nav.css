@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.04 by @viljamis */
+/*! responsive-nav.js v1.05 by @viljamis */
 
 .js #nav {
   clip: rect(0 0 0 0);
@@ -6,11 +6,6 @@
   position: absolute;
   display: block;
   overflow: hidden;
-}
-
-#nav.opened {
-  position: relative;
-  max-height: 9999px;
 }
 
 #nav ul {
