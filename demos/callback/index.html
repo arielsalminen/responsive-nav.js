@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Nav &middot; Callback Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../responsive-nav.css">
+    <script src="../../responsive-nav.js"></script>
+  </head>
+  <body>
+
+    <div id="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
+    <script>
+      var navigation = responsiveNav("#nav", {
+        init: function () {
+          console.log("Responsive Nav Inited!");
+        },
+        open: function () {
+          console.log("Opening…");
+        },
+        close: function () {
+          console.log("Closing…");
+        }
+      });
+    </script>
+
+  </body>
+</html>

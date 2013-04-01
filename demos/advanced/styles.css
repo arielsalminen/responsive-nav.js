@@ -1,32 +1,4 @@
 /* ------------------------------------------
-  NECESSARY STYLES FOR RESPONSIVE NAV
---------------------------------------------- */
-
-.js #nav {
-  clip: rect(0 0 0 0);
-  max-height: 0;
-  position: absolute;
-  display: block;
-  overflow: hidden;
-}
-
-#nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media screen and (min-width: 40em) {
-  .js #nav {
-    position: relative;
-    max-height: none;
-  }
-  #nav-toggle {
-    display: none;
-  }
-}
-
-/* ------------------------------------------
   DEMO PAGE'S STYLES
 --------------------------------------------- */
 body, div,

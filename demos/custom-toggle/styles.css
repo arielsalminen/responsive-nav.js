@@ -1,0 +1,14 @@
+button {
+  color: white;
+  padding: 1em;
+  border: 0;
+  cursor: pointer;
+}
+
+button.closed {
+  background: red;
+}
+
+button.opened {
+  background: green;
+}

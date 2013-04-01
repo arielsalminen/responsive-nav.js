@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Nav &middot; Respond.js Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../responsive-nav.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="../../responsive-nav.js"></script>
+  </head>
+  <body>
+
+    <div id="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
+    <script>
+      var navigation = responsiveNav("#nav", {
+        animate: true,        // Boolean: Use CSS3 transitions, true or false
+        transition: 400,      // Integer: Speed of the transition, in milliseconds
+        label: "Menu",        // String: Label for the navigation toggle
+        insert: "after",      // String: Insert the toggle before or after the navigation
+        customToggle: "",     // Selector: Specify the ID of a custom toggle
+        tabIndex: 1,          // Integer: Specify the default toggle's tabindex
+        openPos: "relative",  // String: Position of the opened nav, relative or static
+        jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
+        debug: false,         // Boolean: Log debug messages to console, true or false
+        init: function(){},   // Function: Init callback
+        open: function(){},   // Function: Open callback
+        close: function(){}   // Function: Close callback
+      });
+    </script>
+  </body>
+</html>
