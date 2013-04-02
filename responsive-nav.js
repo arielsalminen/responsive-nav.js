@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.05
+/*! responsive-nav.js v1.06
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -34,7 +34,9 @@ var responsiveNav = (function (window, document) {
     };
   }
 
-  var navToggle,
+  var nav,
+    opts,
+    navToggle,
     aria = "aria-hidden",
     docEl = document.documentElement,
     head = document.getElementsByTagName("head")[0],
@@ -104,7 +106,13 @@ var responsiveNav = (function (window, document) {
       return firstChild;
     },
 
-    log = function () { },
+    setAttributes = function (el, attrs) {
+      for (var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+      }
+    },
+
+    log = function () {},
 
     ResponsiveNav = function (el, options) {
       var i;
@@ -157,20 +165,24 @@ var responsiveNav = (function (window, document) {
       // Inner wrapper
       this.wrapper.inner = getFirstChild(this.wrapper);
 
+      // For minification
+      opts = this.options;
+      nav = this.wrapper;
+
       // Init
-      this.__init(this);
+      this._init(this);
     };
 
   ResponsiveNav.prototype = {
 
     // Public methods
     destroy: function () {
-      this.wrapper.className = this.wrapper.className.replace(/(^|\s)closed(\s|$)/, " ");
-      this.wrapper.className = this.wrapper.className.replace(/(^|\s)opened(\s|$)/, " ");
-      this.wrapper.removeAttribute("style");
-      this.wrapper.removeAttribute(aria);
-      this.wrapper = null;
-      __instance = null;
+      nav.className = nav.className.replace(/(^|\s)closed(\s|$)/, " ");
+      nav.className = nav.className.replace(/(^|\s)opened(\s|$)/, " ");
+      nav.removeAttribute("style");
+      nav.removeAttribute(aria);
+      nav = null;
+      _instance = null;
 
       removeEvent(window, "load", this, false);
       removeEvent(window, "resize", this, false);
@@ -179,7 +191,7 @@ var responsiveNav = (function (window, document) {
       removeEvent(navToggle, "keyup", this, false);
       removeEvent(navToggle, "click", this, false);
 
-      if (!this.options.customToggle) {
+      if (!opts.customToggle) {
         navToggle.parentNode.removeChild(navToggle);
       } else {
         navToggle.removeAttribute(aria);
@@ -193,31 +205,29 @@ var responsiveNav = (function (window, document) {
     },
 
     toggle: function () {
-      var navWrapper = this.wrapper;
-
       if (!navOpen) {
-        navWrapper.className = navWrapper.className.replace(/(^|\s)closed(\s|$)/, " opened ");
-        navWrapper.style.position = this.options.openPos;
-        navWrapper.setAttribute(aria, false);
+        nav.className = nav.className.replace(/(^|\s)closed(\s|$)/, " opened ");
+        nav.style.position = opts.openPos;
+        setAttributes(nav, {"aria": "false"});
 
         navOpen = true;
-        this.options.open();
+        opts.open();
         log("Opened nav");
 
       } else {
-        navWrapper.className = navWrapper.className.replace(/(^|\s)opened(\s|$)/, " closed ");
-        navWrapper.setAttribute(aria, true);
+        nav.className = nav.className.replace(/(^|\s)opened(\s|$)/, " closed ");
+        setAttributes(nav, {"aria": "true"});
 
-        if (this.options.animate) {
+        if (opts.animate) {
           setTimeout(function () {
-            navWrapper.style.position = "absolute";
-          }, this.options.transition + 10);
+            nav.style.position = "absolute";
+          }, opts.transition + 10);
         } else {
-          navWrapper.style.position = "absolute";
+          nav.style.position = "absolute";
         }
 
         navOpen = false;
-        this.options.close();
+        opts.close();
         log("Closed nav");
       }
       return false;
@@ -228,30 +238,30 @@ var responsiveNav = (function (window, document) {
 
       switch (evt.type) {
       case "mousedown":
-        this.__onmousedown(evt);
+        this._onmousedown(evt);
         break;
       case "touchstart":
-        this.__ontouchstart(evt);
+        this._ontouchstart(evt);
         break;
       case "keyup":
-        this.__onkeyup(evt);
+        this._onkeyup(evt);
         break;
       case "click":
-        this.__onclick(evt);
+        this._onclick(evt);
         break;
       case "load":
       case "resize":
-        this.__resize(evt);
+        this._resize(evt);
         break;
       }
     },
 
     // Private methods
-    __init: function () {
+    _init: function () {
       log("Inited Responsive Nav");
 
-      this.wrapper.className = this.wrapper.className + " closed";
-      this.__createToggle();
+      nav.className = nav.className + " closed";
+      this._createToggle();
 
       addEvent(window, "load", this, false);
       addEvent(window, "resize", this, false);
@@ -261,39 +271,41 @@ var responsiveNav = (function (window, document) {
       addEvent(navToggle, "click", this, false);
     },
 
-    __createStyles: function () {
+    _createStyles: function () {
       if (!styleElement.parentNode) {
         head.appendChild(styleElement);
         log("Created 'styleElement' to <head>");
       }
     },
 
-    __removeStyles: function () {
+    _removeStyles: function () {
       if (styleElement.parentNode) {
         styleElement.parentNode.removeChild(styleElement);
         log("Removed 'styleElement' from <head>");
       }
     },
 
-    __createToggle: function () {
-      if (!this.options.customToggle) {
+    _createToggle: function () {
+      if (!opts.customToggle) {
         var toggle = document.createElement("a");
-        toggle.setAttribute("href", "#");
-        toggle.setAttribute("id", "nav-toggle");
-        toggle.setAttribute("tabindex", this.options.tabIndex);
-        toggle.innerHTML = this.options.label;
+        toggle.innerHTML = opts.label;
+        setAttributes(toggle, {
+          "href": "#",
+          "id": "nav-toggle",
+          "tabindex": opts.tabIndex
+        });
 
-        if (this.options.insert === "after") {
-          this.wrapper.parentNode.insertBefore(toggle, this.wrapper.nextSibling);
+        if (opts.insert === "after") {
+          nav.parentNode.insertBefore(toggle, nav.nextSibling);
         } else {
-          this.wrapper.parentNode.insertBefore(toggle, this.wrapper);
+          nav.parentNode.insertBefore(toggle, nav);
         }
 
         navToggle = document.getElementById("nav-toggle");
         log("Default nav toggle created");
 
       } else {
-        var toggleEl = this.options.customToggle.replace("#", "");
+        var toggleEl = opts.customToggle.replace("#", "");
 
         if (document.getElementById(toggleEl)) {
           navToggle = document.getElementById(toggleEl);
@@ -305,33 +317,33 @@ var responsiveNav = (function (window, document) {
       }
     },
 
-    __onmousedown: function (e) {
+    _onmousedown: function (e) {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       this.toggle(e);
     },
 
-    __ontouchstart: function (e) {
+    _ontouchstart: function (e) {
       // Touchstart event fires before the mousedown event and can wipe it
       navToggle.onmousedown = null;
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
       this.toggle(e);
     },
 
-    __onkeyup: function (e) {
+    _onkeyup: function (e) {
       var evt = e || window.event;
       if (evt.keyCode === 13) {
         this.toggle(e);
       }
     },
 
-    __onclick: function (e) {
+    _onclick: function (e) {
       e.preventDefault ? e.preventDefault() : e.returnValue = false;
     },
 
-    __transitions: function () {
-      if (this.options.animate) {
-        var objStyle = this.wrapper.style,
-          transition = "max-height " + this.options.transition + "ms";
+    _transitions: function () {
+      if (opts.animate) {
+        var objStyle = nav.style,
+          transition = "max-height " + opts.transition + "ms";
 
         objStyle.WebkitTransition = transition;
         objStyle.MozTransition = transition;
@@ -340,21 +352,21 @@ var responsiveNav = (function (window, document) {
       }
     },
 
-    __resize: function () {
-      this.options.init();
+    _resize: function () {
+      opts.init();
 
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
-        navToggle.setAttribute(aria, false);
+        setAttributes(navToggle, {"aria": "false"});
 
-        if (this.wrapper.className.match(/(^|\s)closed(\s|$)/)) {
-          this.wrapper.setAttribute(aria, true);
-          this.wrapper.style.position = "absolute";
+        if (nav.className.match(/(^|\s)closed(\s|$)/)) {
+          setAttributes(nav, {"aria": "true"});
+          nav.style.position = "absolute";
         }
 
-        this.__createStyles();
-        this.__transitions();
+        this._createStyles();
+        this._transitions();
 
-        var savedHeight = this.wrapper.inner.offsetHeight,
+        var savedHeight = nav.inner.offsetHeight,
           innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px }";
 
         // Hide from old IE
@@ -366,21 +378,21 @@ var responsiveNav = (function (window, document) {
         log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
 
       } else {
-        navToggle.setAttribute(aria, true);
-        this.wrapper.setAttribute(aria, false);
-        this.wrapper.style.position = this.options.openPos;
-        this.__removeStyles();
+        setAttributes(navToggle, {"aria": "true"});
+        setAttributes(nav, {"aria": "false"});
+        nav.style.position = opts.openPos;
+        this._removeStyles();
       }
     }
 
   };
 
-  var __instance;
+  var _instance;
   function rn (el, options) {
-    if (!__instance) {
-      __instance = new ResponsiveNav(el, options);
+    if (!_instance) {
+      _instance = new ResponsiveNav(el, options);
     }
-    return __instance;
+    return _instance;
   }
 
   return rn;
