@@ -16,7 +16,7 @@ Please follow these conventions below if you want to do a pull request.
 
 ```
 /* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true,
-boss:true, bitwise:true, browser:true, devel:true, indent:2, expr:true */
+boss:true, bitwise:true, browser:true, devel:true, indent:2 */
 /* exported responsiveNav */
 ```
 
