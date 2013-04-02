@@ -7,7 +7,7 @@
  */
 
 /* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true,
-boss:true, bitwise:true, browser:true, devel:true, indent:2, expr:true */
+boss:true, bitwise:true, browser:true, devel:true, indent:2 */
 /* exported responsiveNav */
 
 var responsiveNav = (function (window, document) {
@@ -241,7 +241,6 @@ var responsiveNav = (function (window, document) {
         opts.close();
         log("Closed nav");
       }
-      return false;
     },
 
     handleEvent: function (e) {
@@ -327,15 +326,24 @@ var responsiveNav = (function (window, document) {
       }
     },
 
+    _preventDefault: function(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      } else {
+        e.returnValue = false;
+      }
+    },
+
     _onmousedown: function (e) {
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      this._preventDefault(e);
       this.toggle(e);
     },
 
     _ontouchstart: function (e) {
-      // Touchstart event fires before the mousedown event and can wipe it
+      // Touchstart event fires before
+      // the mousedown and can wipe it
       navToggle.onmousedown = null;
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      this._preventDefault(e);
       this.toggle(e);
     },
 
@@ -347,7 +355,7 @@ var responsiveNav = (function (window, document) {
     },
 
     _onclick: function (e) {
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
+      this._preventDefault(e);
     },
 
     _transitions: function () {
