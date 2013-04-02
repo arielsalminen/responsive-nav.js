@@ -112,6 +112,15 @@ var responsiveNav = (function (window, document) {
       }
     },
 
+    addClass = function (el, cls) {
+      el.className += " " + cls;
+    },
+
+    removeClass = function (el, cls) {
+      var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
+      el.className = el.className.replace(reg, " ");
+    },
+
     log = function () {},
 
     ResponsiveNav = function (el, options) {
@@ -139,7 +148,7 @@ var responsiveNav = (function (window, document) {
       }
 
       // Adds "js" class for <html>
-      docEl.className = docEl.className + " " + this.options.jsClass + " ";
+      addClass(docEl, this.options.jsClass);
 
       // Debug logger
       if (this.options.debug) {
@@ -177,8 +186,8 @@ var responsiveNav = (function (window, document) {
 
     // Public methods
     destroy: function () {
-      nav.className = nav.className.replace(/(^|\s)closed(\s|$)/, " ");
-      nav.className = nav.className.replace(/(^|\s)opened(\s|$)/, " ");
+      removeClass(nav, "closed");
+      removeClass(nav, "opened");
       nav.removeAttribute("style");
       nav.removeAttribute(aria);
       nav = null;
@@ -206,7 +215,8 @@ var responsiveNav = (function (window, document) {
 
     toggle: function () {
       if (!navOpen) {
-        nav.className = nav.className.replace(/(^|\s)closed(\s|$)/, " opened ");
+        removeClass(nav, "closed");
+        addClass(nav, "opened");
         nav.style.position = opts.openPos;
         setAttributes(nav, {"aria": "false"});
 
@@ -215,7 +225,8 @@ var responsiveNav = (function (window, document) {
         log("Opened nav");
 
       } else {
-        nav.className = nav.className.replace(/(^|\s)opened(\s|$)/, " closed ");
+        removeClass(nav, "opened");
+        addClass(nav, "closed");
         setAttributes(nav, {"aria": "true"});
 
         if (opts.animate) {
@@ -259,8 +270,7 @@ var responsiveNav = (function (window, document) {
     // Private methods
     _init: function () {
       log("Inited Responsive Nav");
-
-      nav.className = nav.className + " closed";
+      addClass(nav, "closed");
       this._createToggle();
 
       addEvent(window, "load", this, false);
@@ -367,7 +377,7 @@ var responsiveNav = (function (window, document) {
         this._transitions();
 
         var savedHeight = nav.inner.offsetHeight,
-          innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px }";
+          innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
 
         // Hide from old IE
         if (computed) {
@@ -376,7 +386,6 @@ var responsiveNav = (function (window, document) {
         }
 
         log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
-
       } else {
         setAttributes(navToggle, {"aria": "true"});
         setAttributes(nav, {"aria": "false"});
