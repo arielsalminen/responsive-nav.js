@@ -83,10 +83,14 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Android 1.6+
 * Windows Phone 7.5+
 * Blackberry 7.0+
+* Blackberry Tablet 2.0+
+* Kindle 3.3+	
 * Maemo 5.0+
 * Meego 1.2+
-* webOS 2.0+
 * Symbian 3
+* Symbian Belle
+* Symbian S40 Asha
+* webOS 2.0+
 * Windows XP
 * Windows 7
 * Mac OS X
@@ -107,15 +111,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`v1.06` (2013-04-02) - Simplifies the codebase and fixes bugs
+
 `v1.05` (2013-03-31) - Adds callback functionality and removes unnecessary CSS.
 
-`v1.04` (2013-03-28) - Bug fixes
-
-`v1.03` (2013-03-28) - Adds option to disable CSS3 transitions
-
-`v1.02` (2013-03-28) - Adds three new options: "tabIndex", "openPos" and "jsClass"
-
-`v1.01` (2013-03-27) - Bug fixes
+`v1.03` (2013-03-28) - Adds option to disable CSS3 transitions + three other options called "tabIndex", "openPos" and "jsClass".
 
 `v1.00` (2013-03-25) - Release. Big thank you’s for the help go out to [@cubiq](https://twitter.com/cubiq), [@stowball](https://twitter.com/stowball), [@jcxplorer](https://twitter.com/jcxplorer) and [@vesan](https://twitter.com/vesan)!
 
