@@ -114,11 +114,12 @@ var responsiveNav = (function (window, document) {
 
     addClass = function (el, cls) {
       el.className += " " + cls;
+      el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
     },
 
     removeClass = function (el, cls) {
       var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
-      el.className = el.className.replace(reg, " ");
+      el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
     },
 
     log = function () {},
