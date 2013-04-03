@@ -116,7 +116,7 @@ var responsiveNav = (function (window, document) {
       return new RegExp(
         "(\\s|^)" + cls + "(\\s|$)"
       ).test(el.className);
-    }
+    },
 
     addClass = function (el, cls) {
       if (!hasClass(el, cls)) {
