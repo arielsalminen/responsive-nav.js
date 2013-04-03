@@ -22,14 +22,15 @@
     <button id="toggle" class="closed">Toggle Menu</button>
 
     <script>
-      var toggle = document.getElementById("toggle");
       var navigation = responsiveNav("#nav", {
         customToggle: "#toggle",
         open: function () {
-          toggle.className = toggle.className.replace(/(^|\s)closed(\s|$)/, " opened ");
+          var toggle = document.getElementById("toggle");
+          toggle.className = toggle.className.replace(/(^|\s)closed(\s|$)/, "opened");
         },
         close: function () {
-          toggle.className = toggle.className.replace(/(^|\s)opened(\s|$)/, " closed ");
+          var toggle = document.getElementById("toggle");
+          toggle.className = toggle.className.replace(/(^|\s)opened(\s|$)/, "closed");
         }
       });
     </script>
