@@ -112,13 +112,24 @@ var responsiveNav = (function (window, document) {
       }
     },
 
+    hasClass = function(el, cls) {
+      return new RegExp(
+        "(\\s|^)" + cls + "(\\s|$)"
+      ).test(el.className);
+    }
+
     addClass = function (el, cls) {
-      el.className += " " + cls;
+      if (!hasClass(el, cls)) {
+        el.className += (el.className ? " " : "") + cls;
+      }
     },
 
     removeClass = function (el, cls) {
-      var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
-      el.className = el.className.replace(reg, " ");
+      if (hasClass(el, cls)) {
+        el.className = el.className.replace(new RegExp(
+          "(\\s|^)" + cls + "(\\s|$)")," "
+        ).replace(/^\s+|\s+$/g, "");
+      }
     },
 
     log = function () {},
