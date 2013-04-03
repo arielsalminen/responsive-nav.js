@@ -37,7 +37,6 @@ var responsiveNav = (function (window, document) {
   var nav,
     opts,
     navToggle,
-    aria = "aria-hidden",
     docEl = document.documentElement,
     head = document.getElementsByTagName("head")[0],
     styleElement = document.createElement("style"),
@@ -200,7 +199,7 @@ var responsiveNav = (function (window, document) {
       removeClass(nav, "closed");
       removeClass(nav, "opened");
       nav.removeAttribute("style");
-      nav.removeAttribute(aria);
+      nav.removeAttribute("aria-hidden");
       nav = null;
       _instance = null;
 
@@ -214,7 +213,7 @@ var responsiveNav = (function (window, document) {
       if (!opts.customToggle) {
         navToggle.parentNode.removeChild(navToggle);
       } else {
-        navToggle.removeAttribute(aria);
+        navToggle.removeAttribute("aria-hidden");
       }
 
       if (styleElement.parentNode) {
@@ -229,7 +228,7 @@ var responsiveNav = (function (window, document) {
         removeClass(nav, "closed");
         addClass(nav, "opened");
         nav.style.position = opts.openPos;
-        setAttributes(nav, {"aria": "false"});
+        setAttributes(nav, {"aria-hidden": "false"});
 
         navOpen = true;
         opts.open();
@@ -238,7 +237,7 @@ var responsiveNav = (function (window, document) {
       } else {
         removeClass(nav, "opened");
         addClass(nav, "closed");
-        setAttributes(nav, {"aria": "true"});
+        setAttributes(nav, {"aria-hidden": "true"});
 
         if (opts.animate) {
           setTimeout(function () {
@@ -385,10 +384,10 @@ var responsiveNav = (function (window, document) {
       opts.init();
 
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
-        setAttributes(navToggle, {"aria": "false"});
+        setAttributes(navToggle, {"aria-hidden": "false"});
 
         if (nav.className.match(/(^|\s)closed(\s|$)/)) {
-          setAttributes(nav, {"aria": "true"});
+          setAttributes(nav, {"aria-hidden": "true"});
           nav.style.position = "absolute";
         }
 
@@ -406,8 +405,8 @@ var responsiveNav = (function (window, document) {
 
         log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
       } else {
-        setAttributes(navToggle, {"aria": "true"});
-        setAttributes(nav, {"aria": "false"});
+        setAttributes(navToggle, {"aria-hidden": "true"});
+        setAttributes(nav, {"aria-hidden": "false"});
         nav.style.position = opts.openPos;
         this._removeStyles();
       }
