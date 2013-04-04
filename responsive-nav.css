@@ -1,5 +1,9 @@
 /*! responsive-nav.js v1.07 by @viljamis */
 
+#nav {
+  -webkit-transform: translate3d(0,0,0);
+}
+
 #nav ul {
   margin: 0;
   padding: 0;

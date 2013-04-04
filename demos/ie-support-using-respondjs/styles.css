@@ -2,6 +2,10 @@
   NECESSARY STYLES FOR RESPONSIVE NAV
 --------------------------------------------- */
 
+#nav {
+  -webkit-transform: translate3d(0,0,0);
+}
+
 #nav ul {
   margin: 0;
   padding: 0;
@@ -21,6 +25,10 @@
   position: absolute;
   display: block;
   overflow: hidden;
+}
+
+#nav.opened {
+  max-height: 9999px;
 }
 
 @media screen and (min-width: 40em) {
