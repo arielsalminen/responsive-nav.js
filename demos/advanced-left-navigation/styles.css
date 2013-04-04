@@ -97,7 +97,6 @@ a:hover {
 }
 
 #nav {
-  -webkit-transform: translate3d(0,0,0);
   position: absolute;
   width: 24%;
   top: 2em;
