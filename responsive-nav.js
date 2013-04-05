@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.07
+/*! responsive-nav.js v1.08
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -379,7 +379,6 @@ var responsiveNav = (function (window, document) {
         styleElement.innerHTML = innerStyles;
         innerStyles = "";
       }
-
       log("Calculated max-height of " + savedHeight + "px and updated 'styleElement'");
     },
 
@@ -387,6 +386,7 @@ var responsiveNav = (function (window, document) {
       if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
         setAttributes(navToggle, {"aria-hidden": "false"});
 
+        // If the navigation is hidden
         if (nav.className.match(/(^|\s)closed(\s|$)/)) {
           setAttributes(nav, {"aria-hidden": "true"});
           nav.style.position = "absolute";
@@ -401,6 +401,7 @@ var responsiveNav = (function (window, document) {
         this._removeStyles();
       }
 
+      // Init callback
       opts.init();
     }
 
