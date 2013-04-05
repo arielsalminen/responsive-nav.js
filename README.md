@@ -111,6 +111,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`v1.08` (2013-04-05) - Performance optimization
+
 `v1.07` (2013-04-03) - Simplifies the codebase and fixes few bugs
 
 `v1.05` (2013-03-31) - Adds callback functionality and removes unnecessary CSS.
