@@ -167,8 +167,7 @@ var responsiveNav = (function (window, document) {
         this.wrapper = document.getElementById(this.wrapperEl);
       } else {
         // If el doesn't exists, stop here.
-        log("The nav element you are trying to select doesn't exist");
-        return;
+        throw new Error("The nav element you are trying to select doesn't exist");
       }
 
       // Inner wrapper
@@ -320,8 +319,7 @@ var responsiveNav = (function (window, document) {
           navToggle = document.getElementById(toggleEl);
           log("Custom nav toggle created");
         } else {
-          log("The custom nav toggle you are trying to select doesn't exist");
-          return;
+          throw new Error("The custom nav toggle you are trying to select doesn't exist");
         }
       }
     },
