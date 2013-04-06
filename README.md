@@ -114,7 +114,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`v1.08` (2013-04-05) - Performance optimization and 6 additional usage examples
+`v1.09` (2013-04-06) - Performance optimization, bug fixes and 6 additional usage examples
 
 `v1.07` (2013-04-03) - Simplifies the codebase and fixes few bugs
 
