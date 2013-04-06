@@ -101,6 +101,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 # Roadmap
 
+* Start using Grunt and add needed files to the repository
 * Allow multiple instances of the navigation (get rid of the Singleton pattern)
 * Switch to using classes for everything else expect the container
 * Better support for multiple navigation levels
