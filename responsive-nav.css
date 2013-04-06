@@ -19,6 +19,7 @@
   position: absolute;
   display: block;
   overflow: hidden;
+  zoom: 1;
 }
 
 #nav.opened {
