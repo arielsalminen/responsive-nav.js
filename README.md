@@ -99,6 +99,14 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Mac OS X
 
 
+# Roadmap
+
+* Allow multiple instances of the navigation (get rid of the Singleton pattern)
+* Switch to using classes for everything else expect the container
+* Better support for multiple navigation levels
+* Better window.resize handling
+
+
 # License
 
 Licensed under the MIT license.
