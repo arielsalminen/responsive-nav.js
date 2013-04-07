@@ -25,7 +25,7 @@ Better demos and site coming soon. In the meantime, try this: [viljamis.com/resp
 
 # Usage instructions
 
-Following the steps below you will be able to get the plugin up and running. If you have any problems, please use tools like <a href="http://stackoverflow.com">Stackoverflow</a>, as GitHub issues are only meant for bug reports.
+Following the steps below you will be able to get the plugin up and running. If you have any problems, please use tools like [Stackoverflow](http://stackoverflow.com), as GitHub issues are only meant for bug reports.
 
 1. Link files:
 ```html
