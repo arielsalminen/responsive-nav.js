@@ -3,12 +3,16 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB when minified and Gzip’ed. It helps you deliver toggled navigation to small screens, and it uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB minified and Gzip’ed. It helps you deliver toggled navigation to small screens, and it uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+
+Responsive Nav is the successor of [TinyNav.js](http://tinynav.viljamis.com/) which was released in 2011. While TinyNav worked so that it converted a regular navigation to a select menu, Responsive Nav only hides the original navigation and adds a toggle which opens and closes it. Responsive Nav doesn’t basically alter the html structure of the document at all, so it’s in that sense a much simpler solution. Responsive Nav also doesn’t have the same usability issues that the previous version had.
+
+Responsive Nav works by calculating in the background the max-height needed to fit all the menu items. When the user taps the navigation toggle the plugin uses CSS3 transitions to transition from a height that is set to 0 to the max-height it calculated earlier. Responsive Nav also attaches a touchstart event listener to the toggle, which makes it possible to remove the default 300 ms delay that happens when using click events.
 
 #### Features:
 
 * Simple, semantic markup.
-* Weighs only 1.6 KB when minified and Gzip’ed.
+* Weighs only 1.6 KB minified and Gzip’ed.
 * Doesn’t require any external library.
 * Uses CSS3 transitions and touch events.
 * Removes the 300 ms delay between a physical tap and the click event.
