@@ -170,6 +170,7 @@ a:hover {
   }
   .main {
     -webkit-overflow-scrolling: auto;
+    box-shadow: none;
     padding: 0 2em 2em;
     border-radius: 0;
     position: relative;
