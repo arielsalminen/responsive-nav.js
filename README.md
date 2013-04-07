@@ -110,6 +110,16 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Better window.resize handling
 
 
+# Special thanks
+
+In random order:
+
+* [Matteo Spinelli](https://twitter.com/cubiq)
+* [Matt Stow](https://twitter.com/stowball)
+* [Joao Carlos](https://twitter.com/jcxplorer)
+* [Vesa Vänskä](https://twitter.com/vesan)
+
+
 # License
 
 Licensed under the MIT license.
