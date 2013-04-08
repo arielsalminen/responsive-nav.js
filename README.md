@@ -3,9 +3,8 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-Responsive Nav is a tiny JS plugin which weighs only 1.6 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
 
-Responsive Nav is the successor of [TinyNav.js](http://tinynav.viljamis.com/) which was released in 2011. While TinyNav worked so that it converted a regular navigation to a select menu, Responsive Nav only hides the original navigation and adds a toggle which opens and closes it. Responsive Nav doesn’t basically alter the html structure of the document at all, so it’s in that sense a much simpler solution. Responsive Nav also doesn’t have the same usability issues that the previous version had.
 
 #### Features:
 
@@ -103,10 +102,11 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 # Roadmap
 
-* Start using Grunt and add needed files to the repository
+* Start using Grunt and add needed config to the repository
 * Allow multiple instances of the navigation (get rid of the Singleton pattern)
-* Switch to using classes for everything else expect the container
+* Switch to using classes for everything else except the container
 * Better support for multiple navigation levels
+* Stop triggering the menu on right click
 * Better window.resize handling
 
 
