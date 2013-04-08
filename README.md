@@ -23,6 +23,7 @@ Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB minified and
 
 * [Official website](http://responsive-nav.com) (works as a demo, too!)
 * [Live demo](http://responsive-nav.com/demo/)
+* [IE support with Respond.js](http://responsive-nav.com/demo-respondjs/)
 * Seven additional examples included in this repository's [demos folder](https://github.com/viljamis/responsive-nav.js/tree/master/demos)
 
 
