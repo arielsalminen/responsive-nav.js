@@ -144,7 +144,11 @@ var responsiveNav = (function (window, document) {
 
       // User defined options
       for (i in options) {
-        this.options[i] = options[i];
+        if (i in this.options) {
+          this.options[i] = options[i];
+        } else {
+          throw new Error("Responsive nav doesn't support option: " + i);
+        }
       }
 
       // Adds "js" class for <html>
