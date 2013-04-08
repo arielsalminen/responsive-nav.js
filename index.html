@@ -1,26 +1,127 @@
 <!DOCTYPE html>
-<html class="preload no-js no-fontface no-touch" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Responsive Nav</title>
     <meta name="author" content="@viljamis">
+    <meta name="description" content="Responsive navigation plugin without library dependencies and with fast touch screen support">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
+    <script src="//use.typekit.net/sxv1brn.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    <link href="/stylesheets/styles.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <!--[if lte IE 9]><script src="/javascripts/respond.js" type="text/javascript"></script><![endif]-->
   </head>
-  <style>
-    body {
-      font-family: "Comic Sans MS", "Comic Sans", "Marker Felt-Thin", "Trebuchet MS", sans-serif;
-      text-align: center;
-      max-width: 20em;
-      margin: 1em auto;
-    }
-    img {
-      height: auto;
-      max-width: 100%;
-    }
-  </style>
-  <body>
-    <h1>Almost there!</h1>
-    <img src="dog.gif" alt="dog">
-    <p>In the meantime, check the <a href="https://github.com/viljamis/responsive-nav.js" rel="external">GitHub&nbsp;repository</a>.</p>
+  <body onload="prettyPrint()">
+    <div class="border" id="home"></div>
+    <div class="wrapper">
+      <div id="nav">
+        <ul>
+          <li class="active"><a href="http://responsive-nav.com">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#instructions">Usage Instructions</a></li>
+          <li><a href="https://github.com/viljamis/responsive-nav.js" rel="external">View on GitHub</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="intro">
+  <h1>Responsive Nav</h1>
+  <div class="intro-container">
+    <p>Responsive navigation plugin without library dependencies and with fast touch screen support. Try it out by resizing&nbsp;this&nbsp;window.</p>
+    <a href="https://github.com/viljamis/responsive-nav.js/archive/master.zip" rel="external" class="btn">Download</a>
+  </div>
+</div>
+
+<a href="http://responsive-nav.com/demo/" class="image">
+  <div data-picture data-alt="Responsive Nav displayd in various sizes">
+    <div data-src="images/illustration.jpg"></div>
+    <div data-src="images/illustration_small.jpg" data-media="(max-width: 46.24em)"></div>
+    <!-- Fallback content for non-JS browsers -->
+    <noscript><img src="images/illustration.jpg" alt="Responsive Nav displayd in various sizes"></noscript>
+  </div>
+</a>
+
+<div id="features" class="section">
+  <h2>Features</h2>
+  <p>Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from height: 0 to height: auto, which isn’t normally possible with CSS3 transitions. <a href="http://responsive-nav.com/demo/">View&nbsp;live&nbsp;demo</a> or resize this window to see the plugin in&nbsp;action. <!--Read also the release post on <a href="http://www.smashingmagazine.com/?p=158306">Smashing&nbsp;Magazine</a>.--></p>
+  <ul class="list-1">
+    <li>Weighs only 1.6 KB minified and Gzip’ed.</li>
+    <li>Doesn’t require any external libraries.</li>
+    <li>Uses CSS3 transitions, touch events and simple markup.</li>
+    <li>Removes the 300 ms delay between a physical tap and the click&nbsp;event.</li>
+  </ul><ul class="list-2">
+    <li>Makes it possible to use CSS3 transitions with height:&nbsp;auto.</li>
+    <li>Built with accessibility in mind, meaning that everything works on screen readers and with JavaScript disabled,&nbsp;too.</li>
+    <li>Works in all major desktop and mobile browsers, including IE 6 and&nbsp;up.</li>
+  </ul>
+</div>
+
+<div id="instructions" class="section">
+  <h2>Usage Instructions</h2>
+  <p>Following the steps below you will be able to get the plugin up and running. If you notice any bugs, please post them to <a href="https://github.com/viljamis/responsive-nav.js/issues">GitHub&nbsp;issues</a>.</p>
+  
+<h3>Link files</h3>
+<pre class="prettyprint lang-html"><code>&lt;!-- Put these into the &lt;head> -->
+&lt;link rel="stylesheet" href="responsive-nav.css">
+&lt;script src="responsive-nav.js">&lt;/script>
+</code></pre>
+
+<h3>Add markup</h3>
+<pre class="prettyprint lang-html"><code>&lt;div id="nav">
+  &lt;ul>
+    &lt;li>&lt;a href="#">Home&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#">About&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#">Projects&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#">Contact&lt;/a>&lt;/li>
+  &lt;/ul>
+&lt;/div>
+</code></pre>
+
+<h3>Hook up the plugin</h3>
+<pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> closing tag -->
+&lt;script>
+  var navigation = responsiveNav("#nav");
+&lt;/script>
+</code></pre>
+
+<h3>Customizable options</h3>
+<pre class="prettyprint lang-js"><code>var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+  animate: true, // Boolean: Use CSS3 transitions, true or false
+  transition: 400, // Integer: Speed of the transition, in milliseconds
+  label: "Menu", // String: Label for the navigation toggle
+  insert: "after", // String: Insert the toggle before or after the navigation
+  customToggle: "", // Selector: Specify the ID of a custom toggle
+  tabIndex: 1, // Integer: Specify the default toggle's tabindex
+  openPos: "relative", // String: Position of the opened nav, relative or static
+  jsClass: "js", // String: 'JS enabled' class which is added to &lt;html> el
+  debug: false, // Boolean: Log debug messages to console, true or false
+  init: function(){}, // Function: Init callback
+  open: function(){}, // Function: Open callback
+  close: function(){} // Function: Close callback
+});
+</code></pre>
+
+<h3>Public methods</h3>
+<pre class="prettyprint lang-js"><code>// Destroy
+navigation.destroy();
+
+// Toggle
+navigation.toggle();
+</code></pre>
+</div>
+
+<div id="download" class="section">
+  <a href="https://github.com/viljamis/responsive-nav.js/archive/master.zip" rel="external" class="btn">Download</a>
+  <span>or</span>
+  <a href="https://github.com/viljamis/responsive-nav.js" rel="external" class="btn repo">View source on GitHub</a>
+</div>
+      </div>
+      <div class="footer">Brought to you by <a href="http://viljamis.com" rel="external">@viljamis</a>. Follow&nbsp;me on <a href="http://twitter.com/viljamis" rel="external">Twitter</a>&nbsp;for&nbsp;updates.</div>
+    </div>
+    <script>
+      // Init responsive-nav.js
+      var navigation = responsiveNav("#nav");
+    </script>
   </body>
 </html>
