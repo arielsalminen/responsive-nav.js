@@ -9,9 +9,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
   document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
 }
-
-// Adds "js" class to the <html> element
-document.documentElement.className += " js";
+;
 // matchMedia polyfill, Author: Scott Jehl, Paul Irish, Nicholas Zakas
 // + Picturefill. Author: Scott Jehl, Filament Group, 2012
 window.matchMedia=window.matchMedia||function(a){var d,c=a.documentElement,g=c.firstElementChild||c.firstChild,b=a.createElement("body"),e=a.createElement("div");e.id="mq-test-1";e.style.cssText="position:absolute;top:-100em";b.style.background="none";b.appendChild(e);return function(a){e.innerHTML='&shy;<style media="'+a+'"> #mq-test-1 { width: 42px; }</style>';c.insertBefore(b,g);d=42===e.offsetWidth;c.removeChild(b);return{matches:d,media:a}}}(document);
