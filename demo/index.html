@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!--[if lte IE 8]><link rel="stylesheet" href="responsive-nav.css"><![endif]-->
     <!--[if gt IE 8]><!--><link rel="stylesheet" href="styles.css"><!--<![endif]-->
+    <script>document.documentElement.className += " js";</script>
     <script src="responsive-nav.js"></script>
   </head>
   <body>
@@ -45,9 +46,12 @@
     </div>
 
     <script>
-      var navigation = responsiveNav("#nav", {customToggle: "#toggle"});
+      var navigation = responsiveNav("#nav", {
+        customToggle: "#toggle",
+        jsClass: "rn-js"
+      });
     </script>
-
+    
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-39967427-1']);
