@@ -106,7 +106,6 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Allow multiple instances of the navigation (get rid of the Singleton pattern)
 * Switch to using classes for everything else except the container
 * Better support for multiple navigation levels
-* Stop triggering the menu on right click
 * Better window.resize handling
 
 
