@@ -21,12 +21,14 @@ Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB minified and
 
 # Demo
 
-Better demos and site coming soon. In the meantime, try this: [viljamis.com/responsive-nav/](http://viljamis.com/responsive-nav/).
+* [Official website](http://responsive-nav.com) (works as a demo, too!)
+* [Live demo](http://responsive-nav.com/demo/)
+* Seven additional examples included in this repository's [demos folder](https://github.com/viljamis/responsive-nav.js/tree/master/demos)
 
 
 # Usage instructions
 
-Following the steps below you will be able to get the plugin up and running. If you have any problems, please use tools like [Stackoverflow](http://stackoverflow.com), as GitHub issues is only meant for bug reports.
+Following the steps below you will be able to get the plugin up and running. If you notice any bugs, please post them to [GitHub issues](https://github.com/viljamis/responsive-nav.js/issues).
 
 1. Link files:
 ```html
