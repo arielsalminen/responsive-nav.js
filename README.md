@@ -108,6 +108,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Start using Grunt and add needed config to the repository
 * Allow multiple instances of the navigation (get rid of the Singleton pattern)
 * Better support for multiple navigation levels
+* Investigate if it would be smoother using translateY
 * Better window.resize handling
 
 
