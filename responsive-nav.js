@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.1
+/*! responsive-nav.js v1.11
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -147,7 +147,7 @@ var responsiveNav = (function (window, document) {
         if (i in this.options) {
           this.options[i] = options[i];
         } else {
-          throw new Error("Responsive nav doesn't support option: " + i);
+          throw new Error("Responsive Nav doesn't support option: " + i);
         }
       }
 
