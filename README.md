@@ -88,7 +88,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 * iOS 4.2.1+
 * Android 1.6+
-* Windows Phone 7.5+
+* Windows Phone 7.5 & 7.8
 * Blackberry 7.0+
 * Blackberry Tablet 2.0+
 * Kindle 3.3+	
