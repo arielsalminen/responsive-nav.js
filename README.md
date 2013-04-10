@@ -66,7 +66,6 @@ Following the steps below you will be able to get the plugin up and running. If 
 		label: "Menu", // String: Label for the navigation toggle
 		insert: "after", // String: Insert the toggle before or after the navigation
 		customToggle: "", // Selector: Specify the ID of a custom toggle
-		tabIndex: 1, // Integer: Specify the default toggle's tabindex
 		openPos: "relative", // String: Position of the opened nav, relative or static
 		jsClass: "js", // String: 'JS enabled' class which is added to <html> el
 		debug: false, // Boolean: Log debug messages to console, true or false
@@ -137,7 +136,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`v1.12` (2013-04-10) - Adds touchend listener and stopProganation + prevents ghost click from happening on some Android browsers.
+`v1.13` (2013-04-10) - Adds touchend listener and stopProganation + prevents ghost click from happening on some Android browsers. "tabIndex" setting is being removed.
 
 `v1.11` (2013-04-09) - Performance optimization, bug fixes and 6 additional usage examples
 
