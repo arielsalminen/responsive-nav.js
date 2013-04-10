@@ -357,7 +357,7 @@ var responsiveNav = (function (window, document) {
       this.toggle(e);
     },
 
-    _ontouchend: function (e) {
+    _ontouchend: function () {
       // Prevents ghost click from happening on some Android browsers
       var that = this;
       nav.addEventListener("click", that._preventDefault, true);
