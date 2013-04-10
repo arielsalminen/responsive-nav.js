@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <title>Responsive Nav &mdash; Responsive Navigation Plugin</title>
@@ -7,11 +7,15 @@
     <meta name="description" content="Responsive navigation plugin without library dependencies and with fast touch screen support">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
+    <script>
+      var doc = document, docEl = doc.documentElement;
+      docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
+    </script>
     <script src="//use.typekit.net/sxv1brn.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
-    <link href="/stylesheets/styles.css" rel="stylesheet">
-    <script src="/javascripts/all.js"></script>
-    <!--[if lte IE 9]><script src="/javascripts/respond.js"></script><![endif]-->
+    <link href="/stylesheets/styles.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <!--[if lte IE 9]><script src="/javascripts/respond.js" type="text/javascript"></script><![endif]-->
   </head>
   <body onload="prettyPrint()">
     <div class="border" id="home"></div>

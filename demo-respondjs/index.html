@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <title>Responsive Nav &middot; IE Support Using Respond.js</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <script>
+      var doc = document, docEl = doc.documentElement;
+      docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
+    </script>
     <script src="responsive-nav.js"></script>
   </head>
   <body>
