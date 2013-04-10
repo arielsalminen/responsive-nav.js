@@ -44,9 +44,9 @@
 
 <div id="features" class="section">
   <h2>Features</h2>
-  <p>Responsive Nav is a tiny JavaScript plugin which weighs only 1.6 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from height: 0 to height: auto, which isn’t normally possible with CSS3 transitions. <a href="http://responsive-nav.com/demo/">View&nbsp;live&nbsp;demo</a> or resize this window to see the plugin in&nbsp;action. <!--Read also the release post on <a href="http://www.smashingmagazine.com/?p=158306">Smashing&nbsp;Magazine</a>.--></p>
+  <p>Responsive Nav is a tiny JavaScript plugin which weighs only 1.7 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from height: 0 to height: auto, which isn’t normally possible with CSS3 transitions. <a href="http://responsive-nav.com/demo/">View&nbsp;live&nbsp;demo</a> or resize this window to see the plugin in&nbsp;action. <!--Read also the release post on <a href="http://www.smashingmagazine.com/?p=158306">Smashing&nbsp;Magazine</a>.--></p>
   <ul class="list-1">
-    <li>Weighs only 1.6 KB minified and Gzip’ed.</li>
+    <li>Weighs only 1.7 KB minified and Gzip’ed.</li>
     <li>Doesn’t require any external libraries.</li>
     <li>Uses CSS3 transitions, touch events and simple markup.</li>
     <li>Removes the 300 ms delay between a physical tap and the click&nbsp;event.</li>
@@ -92,7 +92,6 @@
   label: "Menu", // String: Label for the navigation toggle
   insert: "after", // String: Insert the toggle before or after the navigation
   customToggle: "", // Selector: Specify the ID of a custom toggle
-  tabIndex: 1, // Integer: Specify the default toggle's tabindex
   openPos: "relative", // String: Position of the opened nav, relative or static
   jsClass: "js", // String: 'JS enabled' class which is added to &lt;html> el
   debug: false, // Boolean: Log debug messages to console, true or false
@@ -125,7 +124,7 @@ navigation.toggle();
       var navigation = responsiveNav("#nav");
     </script>
 
-    <script type="text/javascript">
+    <script>
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-39967427-1']);
       _gaq.push(['_trackPageview']);
