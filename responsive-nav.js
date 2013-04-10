@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.11
+/*! responsive-nav.js v1.12
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -201,6 +201,7 @@ var responsiveNav = (function (window, document) {
       removeEvent(window, "resize", this, false);
       removeEvent(navToggle, "mousedown", this, false);
       removeEvent(navToggle, "touchstart", this, false);
+      removeEvent(navToggle, "touchend", this, false);
       removeEvent(navToggle, "keyup", this, false);
       removeEvent(navToggle, "click", this, false);
 
@@ -253,6 +254,9 @@ var responsiveNav = (function (window, document) {
       case "touchstart":
         this._ontouchstart(evt);
         break;
+      case "touchend":
+        this._ontouchend(evt);
+        break;
       case "keyup":
         this._onkeyup(evt);
         break;
@@ -279,6 +283,7 @@ var responsiveNav = (function (window, document) {
       addEvent(window, "resize", this, false);
       addEvent(navToggle, "mousedown", this, false);
       addEvent(navToggle, "touchstart", this, false);
+      addEvent(navToggle, "touchend", this, false);
       addEvent(navToggle, "keyup", this, false);
       addEvent(navToggle, "click", this, false);
     },
@@ -331,6 +336,7 @@ var responsiveNav = (function (window, document) {
     _preventDefault: function(e) {
       if (e.preventDefault) {
         e.preventDefault();
+        e.stopPropagation();
       } else {
         e.returnValue = false;
       }
@@ -353,6 +359,15 @@ var responsiveNav = (function (window, document) {
       this.toggle(e);
     },
 
+    _ontouchend: function (e) {
+      // Prevents ghost click from happening on some Android browsers
+      var that = this;
+      nav.addEventListener("click", that._preventDefault, true);
+      setTimeout(function () {
+        nav.removeEventListener("click", that._preventDefault, true);
+      }, opts.transition);
+    },
+
     _onkeyup: function (e) {
       var evt = e || window.event;
       if (evt.keyCode === 13) {
@@ -361,6 +376,7 @@ var responsiveNav = (function (window, document) {
     },
 
     _onclick: function (e) {
+      // For older browsers (looking at IE)
       this._preventDefault(e);
     },
 
