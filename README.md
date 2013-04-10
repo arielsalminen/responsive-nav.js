@@ -3,13 +3,13 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only 1.6 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only 1.7 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
 
 
 #### Features:
 
 * Simple, semantic markup.
-* Weighs only 1.6 KB minified and Gzip’ed.
+* Weighs only 1.7 KB minified and Gzip’ed.
 * Doesn’t require any external library.
 * Uses CSS3 transitions and touch events.
 * Removes the 300 ms delay between a physical tap and the click event.
