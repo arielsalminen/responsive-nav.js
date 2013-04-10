@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.12
+/*! responsive-nav.js v1.13
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -133,7 +133,6 @@ var responsiveNav = (function (window, document) {
         label: "Menu",        // String: Label for the navigation toggle
         insert: "after",      // String: Insert the toggle before or after the navigation
         customToggle: "",     // Selector: Specify the ID of a custom toggle
-        tabIndex: 1,          // Integer: Specify the default toggle's tabindex
         openPos: "relative",  // String: Position of the opened nav, relative or static
         jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
         debug: false,         // Boolean: Log debug messages to console, true or false
@@ -308,8 +307,7 @@ var responsiveNav = (function (window, document) {
         toggle.innerHTML = opts.label;
         setAttributes(toggle, {
           "href": "#",
-          "id": "nav-toggle",
-          "tabindex": opts.tabIndex
+          "id": "nav-toggle"
         });
 
         if (opts.insert === "after") {
