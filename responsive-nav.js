@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.13
+/*! responsive-nav.js v1.0.13
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
