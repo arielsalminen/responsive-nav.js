@@ -133,7 +133,6 @@ var responsiveNav = (function (window, document) {
         customToggle: "",     // Selector: Specify the ID of a custom toggle
         openPos: "relative",  // String: Position of the opened nav, relative or static
         jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
-        debug: false,         // Boolean: There just for backwards compatibility
         init: function(){},   // Function: Init callback
         open: function(){},   // Function: Open callback
         close: function(){}   // Function: Close callback
