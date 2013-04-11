@@ -1,0 +1,8 @@
+{
+  "name": "responsive-js",
+  "version": "1.0.11",
+  "main": [
+    "responsive-nav.css",
+    "responsive-nav.js",
+  ]
+}
