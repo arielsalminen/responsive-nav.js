@@ -68,7 +68,6 @@ Following the steps below you will be able to get the plugin up and running. If 
 		customToggle: "", // Selector: Specify the ID of a custom toggle
 		openPos: "relative", // String: Position of the opened nav, relative or static
 		jsClass: "js", // String: 'JS enabled' class which is added to <html> el
-		debug: false, // Boolean: Log debug messages to console, true or false
 		init: function(){}, // Function: Init callback
 		open: function(){}, // Function: Open callback
 		close: function(){} // Function: Close callback
