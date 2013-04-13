@@ -135,7 +135,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`1.0.13` (2013-04-10) - Adds touchend listener and stopProganation + prevents ghost click from happening on some Android browsers. "tabIndex" setting is being removed.
+`1.0.14` (2013-04-13) - Adds touchend listener and stopProganation + prevents ghost click from happening on some Android browsers. "tabIndex" and "debug" settings are being removed.
 
 `v1.11` (2013-04-09) - Performance optimization, bug fixes and 6 additional usage examples
 
