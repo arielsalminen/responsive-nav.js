@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.0.13
+/*! responsive-nav.js v1.0.14
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -140,11 +140,7 @@ var responsiveNav = (function (window, document) {
 
       // User defined options
       for (i in options) {
-        if (i in this.options) {
-          this.options[i] = options[i];
-        } else {
-          throw new Error("Responsive Nav doesn't support option: " + i);
-        }
+        this.options[i] = options[i];
       }
 
       // Adds "js" class for <html>
