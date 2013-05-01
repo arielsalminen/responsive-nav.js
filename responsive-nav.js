@@ -193,6 +193,14 @@ var responsiveNav = (function (window, document) {
     },
 
     toggle: function () {
+      if (navOpen) {
+        this.close();
+      } else {
+        this.open();
+      }
+    },
+
+    open: function() {
       if (!navOpen) {
         removeClass(nav, "closed");
         addClass(nav, "opened");
@@ -201,7 +209,11 @@ var responsiveNav = (function (window, document) {
 
         navOpen = true;
         opts.open();
-      } else {
+      }
+    },
+
+    close: function() {
+      if (navOpen) {
         removeClass(nav, "opened");
         addClass(nav, "closed");
         setAttributes(nav, {"aria-hidden": "true"});
