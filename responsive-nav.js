@@ -1,5 +1,5 @@
-/*! responsive-nav.js v1.0.14
- * https://github.com/viljamis/responsive-nav.js
+/*! 
+ * https://github.com/munkius/responsive-nav.js
  * http://responsive-nav.com
  *
  * Copyright (c) 2013 @viljamis
@@ -193,6 +193,14 @@ var responsiveNav = (function (window, document) {
     },
 
     toggle: function () {
+      if (navOpen) {
+        this.close();
+      } else {
+        this.open();
+      }
+    },
+
+    open: function() {
       if (!navOpen) {
         removeClass(nav, "closed");
         addClass(nav, "opened");
@@ -201,7 +209,11 @@ var responsiveNav = (function (window, document) {
 
         navOpen = true;
         opts.open();
-      } else {
+      }
+    },
+
+    close: function() {
+      if (navOpen) {
         removeClass(nav, "opened");
         addClass(nav, "closed");
         setAttributes(nav, {"aria-hidden": "true"});
@@ -217,6 +229,10 @@ var responsiveNav = (function (window, document) {
         navOpen = false;
         opts.close();
       }
+    },
+
+    isOpen: function() {
+      return navOpen;
     },
 
     handleEvent: function (e) {
