@@ -96,14 +96,27 @@ var responsiveNav = (function (window, document) {
       }
     },
 
-    getFirstChild = function (e) {
-      var firstChild = e.firstChild;
-      // skip TextNodes
-      while (firstChild !== null && firstChild.nodeType !== 1) {
-        firstChild = firstChild.nextSibling;
+
+    getChildren = function (e) {
+      if(e.children.length < 1) throw new Error("The Nav Container has no containing elements") ;
+
+      // Store all children in arary
+      var children = [];
+
+      // loop through children and store in array if child != TextNode 
+      for (var i = 0; i < e.children.length; i++){
+        if( e.children[i].nodeType == 1 ){
+          children.push(e.children[i]);
+        }
       }
-      return firstChild;
+
+      return children;
     },
+
+    getFirstChild = function (e) {
+      return getChildren(e)[0];
+    },
+
 
     setAttributes = function (el, attrs) {
       for (var key in attrs) {
@@ -132,6 +145,7 @@ var responsiveNav = (function (window, document) {
         insert: "after",      // String: Insert the toggle before or after the navigation
         customToggle: "",     // Selector: Specify the ID of a custom toggle
         openPos: "relative",  // String: Position of the opened nav, relative or static
+        firstChild: true,     // Boolean: `true` includes only the first child of the nav, false includes all children
         jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
         init: function(){},   // Function: Init callback
         open: function(){},   // Function: Open callback
@@ -155,8 +169,12 @@ var responsiveNav = (function (window, document) {
         throw new Error("The nav element you are trying to select doesn't exist");
       }
 
-      // Inner wrapper
-      this.wrapper.inner = getFirstChild(this.wrapper);
+      // Inner wrapper. options.multipleContainers is defined
+      if(this.options.firstChild){
+        this.wrapper.inner = getFirstChild(this.wrapper);
+      } else {
+        this.wrapper.inner = getChildren(this.wrapper);
+      }
 
       // For minification
       opts = this.options;
@@ -361,8 +379,19 @@ var responsiveNav = (function (window, document) {
     },
 
     _calcHeight: function () {
-      var savedHeight = nav.inner.offsetHeight,
-        innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
+      window.e = nav.inner;
+
+      // If we have more than one element in nav.inner save the collective height
+      var savedHeight = 0;
+      if(typeof nav.inner == 'array'){
+        for(var i=0; i < nav.inner.length; i++){
+          savedHeight+= nav.inner[0].offsetHeight;
+        }
+      }else{
+        savedHeight = nav.inner.offsetHeight;
+      }
+
+      var innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
 
       // Hide from old IE
       if (computed) {
