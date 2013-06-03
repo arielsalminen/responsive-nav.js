@@ -29,6 +29,8 @@
 @media screen and (min-width: 40em) {
   .js #nav {
     position: relative;
+  }
+  .js #nav.closed {
     max-height: none;
   }
   #nav-toggle {
