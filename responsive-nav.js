@@ -8,6 +8,7 @@
 
 /* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true,
 boss:true, bitwise:true, browser:true, devel:true, indent:2 */
+/* exported responsiveNav */
 
 var responsiveNav = function (el, options) {
 
