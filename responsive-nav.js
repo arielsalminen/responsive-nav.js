@@ -196,8 +196,6 @@ var responsiveNav = function (el, options) {
       if (!navOpen) {
         removeClass(nav, "closed");
         addClass(nav, "opened");
-        removeClass(navToggle, "closed");
-        addClass(navToggle, "opened");
         nav.style.position = opts.openPos;
         setAttributes(nav, {"aria-hidden": "false"});
 
@@ -206,8 +204,6 @@ var responsiveNav = function (el, options) {
       } else {
         removeClass(nav, "opened");
         addClass(nav, "closed");
-        removeClass(navToggle, "opened");
-        addClass(navToggle, "closed");
         setAttributes(nav, {"aria-hidden": "true"});
 
         if (opts.animate) {
