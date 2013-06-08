@@ -281,7 +281,7 @@ var responsiveNav = function (el, options) {
         setAttributes(toggle, {
           "href": "#",
           "id": "nav-toggle-"+this.wrapperEl,
-  	  "class": "nav-toggle"
+          "class": "nav-toggle"
         });
 
         if (opts.insert === "after") {
@@ -397,6 +397,6 @@ var responsiveNav = function (el, options) {
 
   };
   
-	_instance = new ResponsiveNav(el, options);
-	return _instance;
+  var _instance = new ResponsiveNav(el, options);
+  return _instance;
 };
