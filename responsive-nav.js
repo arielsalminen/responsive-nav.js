@@ -131,6 +131,7 @@ var responsiveNav = (function (window, document) {
         label: "Menu",        // String: Label for the navigation toggle
         insert: "after",      // String: Insert the toggle before or after the navigation
         customToggle: "",     // Selector: Specify the ID of a custom toggle
+        closedPos: "absolute",// String: Position of the closed nav, defaults to absolute
         openPos: "relative",  // String: Position of the opened nav, relative or static
         jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
         init: function(){},   // Function: Init callback
@@ -208,10 +209,10 @@ var responsiveNav = (function (window, document) {
 
         if (opts.animate) {
           setTimeout(function () {
-            nav.style.position = "absolute";
+            nav.style.position = opts.closedPos;
           }, opts.transition + 10);
         } else {
-          nav.style.position = "absolute";
+          nav.style.position = opts.closedPos;
         }
 
         navOpen = false;
@@ -378,7 +379,7 @@ var responsiveNav = (function (window, document) {
         // If the navigation is hidden
         if (nav.className.match(/(^|\s)closed(\s|$)/)) {
           setAttributes(nav, {"aria-hidden": "true"});
-          nav.style.position = "absolute";
+          nav.style.position = opts.closedPos;
         }
 
         this._createStyles();
