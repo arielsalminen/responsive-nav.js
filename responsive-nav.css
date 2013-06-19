@@ -1,6 +1,6 @@
 /*! responsive-nav.js v1.0.14 by @viljamis */
 
-#nav ul {
+.nav-collapse ul {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,12 +8,12 @@
   list-style: none;
 }
 
-#nav li {
+.nav-collapse li {
   width: 100%;
   display: block;
 }
 
-.js #nav {
+.js .nav-collapse {
   clip: rect(0 0 0 0);
   max-height: 0;
   position: absolute;
@@ -22,18 +22,18 @@
   zoom: 1;
 }
 
-#nav.opened {
+.nav-collapse.opened {
   max-height: 9999px;
 }
 
 @media screen and (min-width: 40em) {
-  .js #nav {
+  .js .nav-collapse {
     position: relative;
   }
   .js #nav.closed {
     max-height: none;
   }
-  #nav-toggle {
+  .nav-toggle {
     display: none;
   }
 }

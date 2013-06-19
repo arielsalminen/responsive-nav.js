@@ -10,7 +10,7 @@
 boss:true, bitwise:true, browser:true, devel:true, indent:2 */
 /* exported responsiveNav */
 
-var responsiveNav = (function (window, document) {
+var responsiveNav = function (el, options) {
 
   var computed = !!window.getComputedStyle;
 
@@ -280,7 +280,8 @@ var responsiveNav = (function (window, document) {
         toggle.innerHTML = opts.label;
         setAttributes(toggle, {
           "href": "#",
-          "id": "nav-toggle"
+          "id": "nav-toggle-"+this.wrapperEl,
+          "class": "nav-toggle"
         });
 
         if (opts.insert === "after") {
@@ -289,7 +290,7 @@ var responsiveNav = (function (window, document) {
           nav.parentNode.insertBefore(toggle, nav);
         }
 
-        navToggle = document.getElementById("nav-toggle");
+        navToggle = toggle;
       } else {
         var toggleEl = opts.customToggle.replace("#", "");
 
@@ -395,14 +396,7 @@ var responsiveNav = (function (window, document) {
     }
 
   };
-
-  var _instance;
-  function rn (el, options) {
-    if (!_instance) {
-      _instance = new ResponsiveNav(el, options);
-    }
-    return _instance;
-  }
-
-  return rn;
-})(window, document);
+  
+  var _instance = new ResponsiveNav(el, options);
+  return _instance;
+};
