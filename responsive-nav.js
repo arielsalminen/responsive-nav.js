@@ -189,6 +189,8 @@ var responsiveNav = (function (window, document) {
         navToggle.parentNode.removeChild(navToggle);
       } else {
         navToggle.removeAttribute("aria-hidden");
+        removeClass(navToggle, "closed");
+        removeClass(navToggle, "opened");
       }
     },
 
@@ -196,6 +198,8 @@ var responsiveNav = (function (window, document) {
       if (!navOpen) {
         removeClass(nav, "closed");
         addClass(nav, "opened");
+        removeClass(navToggle, "closed");
+        addClass(navToggle, "opened");
         nav.style.position = opts.openPos;
         setAttributes(nav, {"aria-hidden": "false"});
 
@@ -204,6 +208,8 @@ var responsiveNav = (function (window, document) {
       } else {
         removeClass(nav, "opened");
         addClass(nav, "closed");
+        removeClass(navToggle, "opened");
+        addClass(navToggle, "closed");
         setAttributes(nav, {"aria-hidden": "true"});
 
         if (opts.animate) {
