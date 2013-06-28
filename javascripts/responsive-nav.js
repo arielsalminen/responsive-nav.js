@@ -1,12 +1,416 @@
-/*! responsive-nav.js v1.0.14 by @viljamis, http://responsive-nav.com, MIT license */
+/*! responsive-nav.js v1.0.15
+ * https://github.com/viljamis/responsive-nav.js
+ * http://responsive-nav.com
+ *
+ * Copyright (c) 2013 @viljamis
+ * Available under the MIT license
+ */
 
-var responsiveNav=function(g,h){var t=!!g.getComputedStyle;g.getComputedStyle||(g.getComputedStyle=function(a){this.el=a;this.getPropertyValue=function(d){var c=/(\-([a-z]){1})/g;"float"===d&&(d="styleFloat");c.test(d)&&(d=d.replace(c,function(a,d,c){return c.toUpperCase()}));return a.currentStyle[d]?a.currentStyle[d]:null};return this});var b,f,e,u=h.documentElement,v=h.getElementsByTagName("head")[0],m=h.createElement("style"),r=!1,j=function(a,d,c,b){if("addEventListener"in a)try{a.addEventListener(d,
-c,b)}catch(e){if("object"===typeof c&&c.handleEvent)a.addEventListener(d,function(a){c.handleEvent.call(c,a)},b);else throw e;}else"attachEvent"in a&&("object"===typeof c&&c.handleEvent?a.attachEvent("on"+d,function(){c.handleEvent.call(c)}):a.attachEvent("on"+d,c))},k=function(a,d,c,b){if("removeEventListener"in a)try{a.removeEventListener(d,c,b)}catch(e){if("object"===typeof c&&c.handleEvent)a.removeEventListener(d,function(a){c.handleEvent.call(c,a)},b);else throw e;}else"detachEvent"in a&&("object"===
-typeof c&&c.handleEvent?a.detachEvent("on"+d,function(){c.handleEvent.call(c)}):a.detachEvent("on"+d,c))},l=function(a,d){for(var b in d)a.setAttribute(b,d[b])},n=function(a,b){a.className+=" "+b;a.className=a.className.replace(/(^\s*)|(\s*$)/g,"")},p=function(a,b){a.className=a.className.replace(RegExp("(\\s|^)"+b+"(\\s|$)")," ").replace(/(^\s*)|(\s*$)/g,"")},s=function(a,d){var c;this.options={animate:!0,transition:400,label:"Menu",insert:"after",customToggle:"",openPos:"relative",jsClass:"js",
-init:function(){},open:function(){},close:function(){}};for(c in d)this.options[c]=d[c];n(u,this.options.jsClass);this.wrapperEl=a.replace("#","");if(h.getElementById(this.wrapperEl))this.wrapper=h.getElementById(this.wrapperEl);else throw Error("The nav element you are trying to select doesn't exist");c=this.wrapper;for(var e=this.wrapper.firstChild;null!==e&&1!==e.nodeType;)e=e.nextSibling;c.inner=e;f=this.options;b=this.wrapper;this._init(this)};s.prototype={destroy:function(){this._removeStyles();
-p(b,"closed");p(b,"opened");b.removeAttribute("style");b.removeAttribute("aria-hidden");q=b=null;k(g,"load",this,!1);k(g,"resize",this,!1);k(e,"mousedown",this,!1);k(e,"touchstart",this,!1);k(e,"touchend",this,!1);k(e,"keyup",this,!1);k(e,"click",this,!1);f.customToggle?e.removeAttribute("aria-hidden"):e.parentNode.removeChild(e)},toggle:function(){r?(p(b,"opened"),n(b,"closed"),l(b,{"aria-hidden":"true"}),f.animate?setTimeout(function(){b.style.position="absolute"},f.transition+10):b.style.position=
-"absolute",r=!1,f.close()):(p(b,"closed"),n(b,"opened"),b.style.position=f.openPos,l(b,{"aria-hidden":"false"}),r=!0,f.open())},handleEvent:function(a){a=a||g.event;switch(a.type){case "mousedown":this._onmousedown(a);break;case "touchstart":this._ontouchstart(a);break;case "touchend":this._ontouchend(a);break;case "keyup":this._onkeyup(a);break;case "click":this._onclick(a);break;case "load":this._transitions(a);this._resize(a);break;case "resize":this._resize(a)}},_init:function(){n(b,"closed");
-this._createToggle();j(g,"load",this,!1);j(g,"resize",this,!1);j(e,"mousedown",this,!1);j(e,"touchstart",this,!1);j(e,"touchend",this,!1);j(e,"keyup",this,!1);j(e,"click",this,!1)},_createStyles:function(){m.parentNode||v.appendChild(m)},_removeStyles:function(){m.parentNode&&m.parentNode.removeChild(m)},_createToggle:function(){if(f.customToggle){var a=f.customToggle.replace("#","");if(h.getElementById(a))e=h.getElementById(a);else throw Error("The custom nav toggle you are trying to select doesn't exist");
-}else a=h.createElement("a"),a.innerHTML=f.label,l(a,{href:"#",id:"nav-toggle"}),"after"===f.insert?b.parentNode.insertBefore(a,b.nextSibling):b.parentNode.insertBefore(a,b),e=h.getElementById("nav-toggle")},_preventDefault:function(a){a.preventDefault?(a.preventDefault(),a.stopPropagation()):a.returnValue=!1},_onmousedown:function(a){var b=a||g.event;3===b.which||2===b.button||(this._preventDefault(a),this.toggle(a))},_ontouchstart:function(a){e.onmousedown=null;this._preventDefault(a);this.toggle(a)},
-_ontouchend:function(){var a=this;b.addEventListener("click",a._preventDefault,!0);setTimeout(function(){b.removeEventListener("click",a._preventDefault,!0)},f.transition)},_onkeyup:function(a){13===(a||g.event).keyCode&&this.toggle(a)},_onclick:function(a){this._preventDefault(a)},_transitions:function(){if(f.animate){var a=b.style,d="max-height "+f.transition+"ms";a.WebkitTransition=d;a.MozTransition=d;a.OTransition=d;a.transition=d}},_calcHeight:function(){var a="#"+this.wrapperEl+".opened{max-height:"+
-b.inner.offsetHeight+"px}";t&&(m.innerHTML=a)},_resize:function(){"none"!==g.getComputedStyle(e,null).getPropertyValue("display")?(l(e,{"aria-hidden":"false"}),b.className.match(/(^|\s)closed(\s|$)/)&&(l(b,{"aria-hidden":"true"}),b.style.position="absolute"),this._createStyles(),this._calcHeight()):(l(e,{"aria-hidden":"true"}),l(b,{"aria-hidden":"false"}),b.style.position=f.openPos,this._removeStyles());f.init()}};var q;return function(a,b){q||(q=new s(a,b));return q}}(window,document);
+/* jshint strict:false, forin:false, noarg:true, noempty:true, eqeqeq:true,
+boss:true, bitwise:true, browser:true, devel:true, indent:2 */
+/* exported responsiveNav */
+
+var responsiveNav = (function (window, document) {
+
+  var computed = !!window.getComputedStyle;
+
+  // getComputedStyle polyfill
+  if (!window.getComputedStyle) {
+    window.getComputedStyle = function(el) {
+      this.el = el;
+      this.getPropertyValue = function(prop) {
+        var re = /(\-([a-z]){1})/g;
+        if (prop === "float") {
+          prop = "styleFloat";
+        }
+        if (re.test(prop)) {
+          prop = prop.replace(re, function () {
+            return arguments[2].toUpperCase();
+          });
+        }
+        return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+      };
+      return this;
+    };
+  }
+
+  var nav,
+    opts,
+    navToggle,
+    styleElement = document.createElement("style"),
+    navOpen = false,
+
+    // fn arg can be an object or a function, thanks to handleEvent
+    // read more at: http://www.thecssninja.com/javascript/handleevent
+    addEvent = function (el, evt, fn, bubble) {
+      if ("addEventListener" in el) {
+        // BBOS6 doesn't support handleEvent, catch and polyfill
+        try {
+          el.addEventListener(evt, fn, bubble);
+        } catch (e) {
+          if (typeof fn === "object" && fn.handleEvent) {
+            el.addEventListener(evt, function (e) {
+              // Bind fn as this and set first arg as event object
+              fn.handleEvent.call(fn, e);
+            }, bubble);
+          } else {
+            throw e;
+          }
+        }
+      } else if ("attachEvent" in el) {
+        // check if the callback is an object and contains handleEvent
+        if (typeof fn === "object" && fn.handleEvent) {
+          el.attachEvent("on" + evt, function () {
+            // Bind fn as this
+            fn.handleEvent.call(fn);
+          });
+        } else {
+          el.attachEvent("on" + evt, fn);
+        }
+      }
+    },
+
+    removeEvent = function (el, evt, fn, bubble) {
+      if ("removeEventListener" in el) {
+        try {
+          el.removeEventListener(evt, fn, bubble);
+        } catch (e) {
+          if (typeof fn === "object" && fn.handleEvent) {
+            el.removeEventListener(evt, function (e) {
+              fn.handleEvent.call(fn, e);
+            }, bubble);
+          } else {
+            throw e;
+          }
+        }
+      } else if ("detachEvent" in el) {
+        if (typeof fn === "object" && fn.handleEvent) {
+          el.detachEvent("on" + evt, function () {
+            fn.handleEvent.call(fn);
+          });
+        } else {
+          el.detachEvent("on" + evt, fn);
+        }
+      }
+    },
+
+    getChildren = function (e) {
+      if (e.children.length < 1) {
+        throw new Error("The Nav container has no containing elements");
+      }
+      // Store all children in array
+      var children = [];
+      // Loop through children and store in array if child != TextNode
+      for (var i = 0; i < e.children.length; i++) {
+        if (e.children[i].nodeType === 1) {
+          children.push(e.children[i]);
+        }
+      }
+      return children;
+    },
+
+    setAttributes = function (el, attrs) {
+      for (var key in attrs) {
+        el.setAttribute(key, attrs[key]);
+      }
+    },
+
+    addClass = function (el, cls) {
+      el.className += " " + cls;
+      el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
+    },
+
+    removeClass = function (el, cls) {
+      var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
+      el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
+    },
+
+    ResponsiveNav = function (el, options) {
+      var i;
+
+      // Default options
+      this.options = {
+        animate: true,        // Boolean: Use CSS3 transitions, true or false
+        transition: 400,      // Integer: Speed of the transition, in milliseconds
+        label: "Menu",        // String: Label for the navigation toggle
+        insert: "after",      // String: Insert the toggle before or after the navigation
+        customToggle: "",     // Selector: Specify the ID of a custom toggle
+        openPos: "relative",  // String: Position of the opened nav, relative or static
+        jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
+        init: function(){},   // Function: Init callback
+        open: function(){},   // Function: Open callback
+        close: function(){}   // Function: Close callback
+      };
+
+      // User defined options
+      for (i in options) {
+        this.options[i] = options[i];
+      }
+
+      // Adds "js" class for <html>
+      addClass(document.documentElement, this.options.jsClass);
+
+      // Wrapper
+      this.wrapperEl = el.replace("#", "");
+      if (document.getElementById(this.wrapperEl)) {
+        this.wrapper = document.getElementById(this.wrapperEl);
+      } else {
+        // If el doesn't exists, stop here.
+        throw new Error("The nav element you are trying to select doesn't exist");
+      }
+
+      // Inner wrapper
+      this.wrapper.inner = getChildren(this.wrapper);
+
+      // For minification
+      opts = this.options;
+      nav = this.wrapper;
+
+      // Init
+      this._init(this);
+    };
+
+  ResponsiveNav.prototype = {
+    // Public methods
+    destroy: function () {
+      this._removeStyles();
+      removeClass(nav, "closed");
+      removeClass(nav, "opened");
+      nav.removeAttribute("style");
+      nav.removeAttribute("aria-hidden");
+      nav = null;
+      _instance = null;
+
+      removeEvent(window, "load", this, false);
+      removeEvent(window, "resize", this, false);
+      removeEvent(navToggle, "mousedown", this, false);
+      removeEvent(navToggle, "touchstart", this, false);
+      removeEvent(navToggle, "touchend", this, false);
+      removeEvent(navToggle, "keyup", this, false);
+      removeEvent(navToggle, "click", this, false);
+
+      if (!opts.customToggle) {
+        navToggle.parentNode.removeChild(navToggle);
+      } else {
+        navToggle.removeAttribute("aria-hidden");
+      }
+    },
+
+    toggle: function () {
+      if (!navOpen) {
+        removeClass(nav, "closed");
+        addClass(nav, "opened");
+        nav.style.position = opts.openPos;
+        setAttributes(nav, {"aria-hidden": "false"});
+
+        navOpen = true;
+        opts.open();
+      } else {
+        removeClass(nav, "opened");
+        addClass(nav, "closed");
+        setAttributes(nav, {"aria-hidden": "true"});
+
+        if (opts.animate) {
+          setTimeout(function () {
+            nav.style.position = "absolute";
+          }, opts.transition + 10);
+        } else {
+          nav.style.position = "absolute";
+        }
+
+        navOpen = false;
+        opts.close();
+      }
+    },
+
+    handleEvent: function (e) {
+      var evt = e || window.event;
+
+      switch (evt.type) {
+      case "mousedown":
+        this._onmousedown(evt);
+        break;
+      case "touchstart":
+        this._ontouchstart(evt);
+        break;
+      case "touchend":
+        this._ontouchend(evt);
+        break;
+      case "keyup":
+        this._onkeyup(evt);
+        break;
+      case "click":
+        this._onclick(evt);
+        break;
+      case "load":
+        this._transitions(evt);
+        this._resize(evt);
+        break;
+      case "resize":
+        this._resize(evt);
+        break;
+      }
+    },
+
+    // Private methods
+    _init: function () {
+      addClass(nav, "closed");
+      this._createToggle();
+
+      addEvent(window, "load", this, false);
+      addEvent(window, "resize", this, false);
+      addEvent(navToggle, "mousedown", this, false);
+      addEvent(navToggle, "touchstart", this, false);
+      addEvent(navToggle, "touchend", this, false);
+      addEvent(navToggle, "keyup", this, false);
+      addEvent(navToggle, "click", this, false);
+    },
+
+    _createStyles: function () {
+      if (!styleElement.parentNode) {
+        document.getElementsByTagName("head")[0].appendChild(styleElement);
+      }
+    },
+
+    _removeStyles: function () {
+      if (styleElement.parentNode) {
+        styleElement.parentNode.removeChild(styleElement);
+      }
+    },
+
+    _createToggle: function () {
+      if (!opts.customToggle) {
+        var toggle = document.createElement("a");
+        toggle.innerHTML = opts.label;
+        setAttributes(toggle, {
+          "href": "#",
+          "id": "nav-toggle"
+        });
+
+        if (opts.insert === "after") {
+          nav.parentNode.insertBefore(toggle, nav.nextSibling);
+        } else {
+          nav.parentNode.insertBefore(toggle, nav);
+        }
+
+        navToggle = document.getElementById("nav-toggle");
+      } else {
+        var toggleEl = opts.customToggle.replace("#", "");
+
+        if (document.getElementById(toggleEl)) {
+          navToggle = document.getElementById(toggleEl);
+        } else {
+          throw new Error("The custom nav toggle you are trying to select doesn't exist");
+        }
+      }
+    },
+
+    _preventDefault: function(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        e.returnValue = false;
+      }
+    },
+
+    _onmousedown: function (e) {
+      var evt = e || window.event;
+      // If the user isn't right clicking:
+      if (!(evt.which === 3 || evt.button === 2)) {
+        this._preventDefault(e);
+        this.toggle(e);
+      }
+    },
+
+    _ontouchstart: function (e) {
+      // Touchstart event fires before
+      // the mousedown and can wipe it
+      navToggle.onmousedown = null;
+      this._preventDefault(e);
+      this.toggle(e);
+    },
+
+    _ontouchend: function () {
+      // Prevents ghost click from happening on some Android browsers
+      var that = this;
+      nav.addEventListener("click", that._preventDefault, true);
+      setTimeout(function () {
+        nav.removeEventListener("click", that._preventDefault, true);
+      }, opts.transition);
+    },
+
+    _onkeyup: function (e) {
+      var evt = e || window.event;
+      if (evt.keyCode === 13) {
+        this.toggle(e);
+      }
+    },
+
+    _onclick: function (e) {
+      // For older browsers (looking at IE)
+      this._preventDefault(e);
+    },
+
+    _transitions: function () {
+      if (opts.animate) {
+        var objStyle = nav.style,
+          transition = "max-height " + opts.transition + "ms";
+
+        objStyle.WebkitTransition = transition;
+        objStyle.MozTransition = transition;
+        objStyle.OTransition = transition;
+        objStyle.transition = transition;
+      }
+    },
+
+    _calcHeight: function () {
+      var savedHeight = 0;
+      for (var i = 0; i < nav.inner.length; i++) {
+        savedHeight += nav.inner[i].offsetHeight;
+      }
+
+      var innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
+
+      // Hide from old IE
+      if (computed) {
+        styleElement.innerHTML = innerStyles;
+        innerStyles = "";
+      }
+    },
+
+    _resize: function () {
+      if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
+        setAttributes(navToggle, {"aria-hidden": "false"});
+
+        // If the navigation is hidden
+        if (nav.className.match(/(^|\s)closed(\s|$)/)) {
+          setAttributes(nav, {"aria-hidden": "true"});
+          nav.style.position = "absolute";
+        }
+
+        this._createStyles();
+        this._calcHeight();
+      } else {
+        setAttributes(navToggle, {"aria-hidden": "true"});
+        setAttributes(nav, {"aria-hidden": "false"});
+        nav.style.position = opts.openPos;
+        this._removeStyles();
+      }
+
+      // Init callback
+      opts.init();
+    }
+
+  };
+
+  var _instance;
+  function rn (el, options) {
+    if (!_instance) {
+      _instance = new ResponsiveNav(el, options);
+    }
+    return _instance;
+  }
+
+  return rn;
+})(window, document);
