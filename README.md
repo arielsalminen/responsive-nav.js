@@ -134,7 +134,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`1.0.15` (2013-06-28) - Can now combine multiple navigations inside a container, no settings needed.
+`1.0.15` (2013-06-28) - Responsive Nav now automatically combines multiple navigations inside a container.
 
 `1.0.14` (2013-04-13) - Adds touchend listener and stopProganation + prevents ghost click from happening on some Android browsers. "tabIndex" and "debug" settings are being removed.
 
