@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.0.17
+/*! responsive-nav.js v1.0.18
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -38,6 +38,7 @@ var responsiveNav = (function (window, document) {
     opts,
     navToggle,
     styleElement = document.createElement("style"),
+    hasAnimFinished,
     navOpen,
 
     // fn arg can be an object or a function, thanks to handleEvent
@@ -198,29 +199,33 @@ var responsiveNav = (function (window, document) {
     },
 
     toggle: function () {
-      if (!navOpen) {
-        removeClass(nav, "closed");
-        addClass(nav, "opened");
-        nav.style.position = opts.openPos;
-        setAttributes(nav, {"aria-hidden": "false"});
+      if (hasAnimFinished === true) {
+        if (!navOpen) {
+          removeClass(nav, "closed");
+          addClass(nav, "opened");
+          nav.style.position = opts.openPos;
+          setAttributes(nav, {"aria-hidden": "false"});
 
-        navOpen = true;
-        opts.open();
-      } else {
-        removeClass(nav, "opened");
-        addClass(nav, "closed");
-        setAttributes(nav, {"aria-hidden": "true"});
-
-        if (opts.animate) {
-          setTimeout(function () {
-            nav.style.position = "absolute";
-          }, opts.transition + 10);
+          navOpen = true;
+          opts.open();
         } else {
-          nav.style.position = "absolute";
-        }
+          removeClass(nav, "opened");
+          addClass(nav, "closed");
+          setAttributes(nav, {"aria-hidden": "true"});
 
-        navOpen = false;
-        opts.close();
+          if (opts.animate) {
+            hasAnimFinished = false;
+            setTimeout(function () {
+              nav.style.position = "absolute";
+              hasAnimFinished = true;
+            }, opts.transition + 10);
+          } else {
+            nav.style.position = "absolute";
+          }
+
+          navOpen = false;
+          opts.close();
+        }
       }
     },
 
@@ -257,6 +262,7 @@ var responsiveNav = (function (window, document) {
     // Private methods
     _init: function () {
       addClass(nav, "closed");
+      hasAnimFinished = true;
       navOpen = false;
       this._createToggle();
 
