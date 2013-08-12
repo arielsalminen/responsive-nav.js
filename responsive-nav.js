@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.0.19
+/*! responsive-nav.js v1.0.20
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -182,7 +182,6 @@ var responsiveNav = (function (window, document) {
       nav = null;
       _instance = null;
 
-      removeEvent(window, "load", this, false);
       removeEvent(window, "resize", this, false);
       removeEvent(document.body, "touchmove", this, false);
       removeEvent(navToggle, "touchstart", this, false);
@@ -249,10 +248,6 @@ var responsiveNav = (function (window, document) {
       case "keyup":
         this._onKeyUp(evt);
         break;
-      case "load":
-        this._transitions(evt);
-        this._resize(evt);
-        break;
       case "resize":
         this._resize(evt);
         break;
@@ -264,9 +259,11 @@ var responsiveNav = (function (window, document) {
       addClass(nav, "closed");
       hasAnimFinished = true;
       navOpen = false;
-      this._createToggle();
 
-      addEvent(window, "load", this, false);
+      this._createToggle();
+      this._transitions();
+      this._resize();
+
       addEvent(window, "resize", this, false);
       addEvent(document.body, "touchmove", this, false);
       addEvent(navToggle, "touchstart", this, false);
@@ -274,6 +271,9 @@ var responsiveNav = (function (window, document) {
       addEvent(navToggle, "mouseup", this, false);
       addEvent(navToggle, "keyup", this, false);
       addEvent(navToggle, "click", this, false);
+
+      // Init callback
+      opts.init();
     },
 
     _createStyles: function () {
@@ -413,9 +413,6 @@ var responsiveNav = (function (window, document) {
         nav.style.position = opts.openPos;
         this._removeStyles();
       }
-
-      // Init callback
-      opts.init();
     }
 
   };
