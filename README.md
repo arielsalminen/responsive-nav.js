@@ -3,13 +3,13 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only 1.7 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only 1.9 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
 
 
 #### Features:
 
 * Simple, semantic markup.
-* Weighs only 1.7 KB minified and Gzip’ed.
+* Weighs only 1.9 KB minified and Gzip’ed.
 * Doesn’t require any external library.
 * Uses CSS3 transitions and touch events.
 * Removes the 300 ms delay between a physical tap and the click event.
@@ -134,7 +134,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`1.0.17` (2013-08-12) - Uses now touchmove & touchend, which means that the menu doesn’t trigger anymore if the user starts moving finger instead of just tapping. + Fixes one Android bug.
+`1.0.18` (2013-08-12) - Uses now touchmove & touchend, which means that the menu doesn’t trigger anymore if the user starts moving finger instead of just tapping. Also fixes one Android bug and a bug which appeared when tapping the toggle really fast over and over.
 
 `1.0.16` (2013-08-02) - Set `navOpen` state in the `_init` method. Thanks [@nicolashery](https://github.com/nicolashery)!
 
