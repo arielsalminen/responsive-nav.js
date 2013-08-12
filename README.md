@@ -134,7 +134,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`1.0.19` (2013-08-12) - Uses now touchmove & touchend, which means that the menu doesn’t trigger anymore if the user starts moving finger instead of just tapping. Also fixes one Android bug and a bug which appeared when tapping the toggle really fast over and over.
+`1.0.20` (2013-08-12) - Uses now touchmove & touchend, which means that the menu doesn’t trigger anymore if the user starts moving finger instead of just tapping. Also fixes one Android bug and a bug which appeared when tapping the toggle really fast over and over. Plugin’s Functionality doesn’t depent on window load event anymore so it works now with tools like require.js too.
 
 `1.0.16` (2013-08-02) - Set `navOpen` state in the `_init` method. Thanks [@nicolashery](https://github.com/nicolashery)!
 
