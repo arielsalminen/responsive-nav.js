@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Nav &middot; Require.js Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../responsive-nav.css">
+    <script>
+      var doc = document, docEl = doc.documentElement;
+      docEl.className = docEl.className.replace(/(^|\s)no-js(\s|$)/, " js ");
+    </script>
+    <script data-main="main" src="require.js"></script>
+  </head>
+  <body>
+
+    <div id="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
