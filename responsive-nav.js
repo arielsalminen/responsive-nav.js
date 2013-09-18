@@ -393,7 +393,13 @@ var responsiveNav = function (el, options) {
         savedHeight += nav.inner[i].offsetHeight;
       }
       var innerStyles = ".nav-collapse.opened{max-height:" + savedHeight + "px}";
-      styleElement.styleSheet ? styleElement.styleSheet.cssText = innerStyles : styleElement.innerHTML = innerStyles;
+
+      if (styleElement.styleSheet) {
+        styleElement.styleSheet.cssText = innerStyles;
+      } else {
+        styleElement.innerHTML = innerStyles;
+      }
+
       innerStyles = "";
     },
 
