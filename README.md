@@ -117,6 +117,7 @@ In random order:
 * [Matt Stow](https://twitter.com/stowball)
 * [Joao Carlos](https://twitter.com/jcxplorer)
 * [Vesa Vänskä](https://twitter.com/vesan)
+* [Andrea Carraro](https://github.com/toomuchdesign)
 
 
 # License
@@ -135,7 +136,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 # Changelog
 
 
-`1.0.21` (2013-09-18) - Multiple instances are now possible. Uses classes instead of ID's now by default, but can be configured to use ID's if old IE support is needed (check the "ie-support" folder in demos).
+`1.0.21` (2013-09-18) - Multiple instances are now possible thanks to [@toomuchdesign](https://github.com/toomuchdesign). Uses classes instead of ID's now by default, but can be configured to use ID's if old IE support is needed (check the "ie-support" folder in demos).
 
 `1.0.20` (2013-08-12) - Uses now touchmove & touchend, which means that the menu doesn’t trigger anymore if the user starts moving finger instead of just tapping. Also fixes one Android bug and a bug which appeared when tapping the toggle really fast over and over. Plugin’s Functionality doesn’t depent on window load event anymore so it works now with tools like require.js too.
 
