@@ -54,13 +54,13 @@ Following the steps below you will be able to get the plugin up and running. If 
 ```html
 <!-- Put this right before the </body> closing tag -->
 	<script>
-		var navigation = responsiveNav(".nav-collapse");
+		var nav = responsiveNav(".nav-collapse");
 	</script>
 ```
 
 4. Customizable options:
 ```javascript
-	var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+	var nav = responsiveNav("#nav", { // Selector
 		animate: true, // Boolean: Use CSS3 transitions, true or false
 		transition: 250, // Integer: Speed of the transition, in milliseconds
 		label: "Menu", // String: Label for the navigation toggle
@@ -77,9 +77,9 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 # Public methods
 
-`navigation.destroy();`
+`nav.destroy();`
 
-`navigation.toggle();`
+`nav.toggle();`
 
 
 # Tested on the following platforms
