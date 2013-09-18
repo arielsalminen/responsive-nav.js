@@ -26,6 +26,16 @@
   max-height: 9999px;
 }
 
+.nav-toggle {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 @media screen and (min-width: 40em) {
   .js .nav-collapse {
     position: relative;
