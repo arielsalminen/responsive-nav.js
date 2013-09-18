@@ -184,15 +184,14 @@ var responsiveNav = function (el, options) {
       nav.removeAttribute("style");
       nav.removeAttribute("aria-hidden");
       nav = null;
-      _instance = null;
 
       removeEvent(window, "resize", this, false);
       removeEvent(document.body, "touchmove", this, false);
       removeEvent(navToggle, "touchstart", this, false);
       removeEvent(navToggle, "touchend", this, false);
+      removeEvent(navToggle, "mouseup", this, false);
       removeEvent(navToggle, "keyup", this, false);
       removeEvent(navToggle, "click", this, false);
-      removeEvent(navToggle, "mouseup", this, false);
 
       if (!opts.customToggle) {
         navToggle.parentNode.removeChild(navToggle);
