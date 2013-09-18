@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.0.20
+/*! responsive-nav.js v1.0.21
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -10,12 +10,12 @@
 boss:true, bitwise:true, browser:true, devel:true, indent:2 */
 /* exported responsiveNav */
 
-var responsiveNav = (function (window, document) {
+var responsiveNav = function (el, options) {
 
   var computed = !!window.getComputedStyle;
 
   // getComputedStyle polyfill
-  if (!window.getComputedStyle) {
+  if (!computed) {
     window.getComputedStyle = function(el) {
       this.el = el;
       this.getPropertyValue = function(prop) {
@@ -117,8 +117,10 @@ var responsiveNav = (function (window, document) {
     },
 
     addClass = function (el, cls) {
-      el.className += " " + cls;
-      el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
+      if (el.className.indexOf(cls) !== 0) {
+        el.className += " " + cls;
+        el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
+      }
     },
 
     removeClass = function (el, cls) {
@@ -132,7 +134,7 @@ var responsiveNav = (function (window, document) {
       // Default options
       this.options = {
         animate: true,        // Boolean: Use CSS3 transitions, true or false
-        transition: 350,      // Integer: Speed of the transition, in milliseconds
+        transition: 250,      // Integer: Speed of the transition, in milliseconds
         label: "Menu",        // String: Label for the navigation toggle
         insert: "after",      // String: Insert the toggle before or after the navigation
         customToggle: "",     // Selector: Specify the ID of a custom toggle
@@ -155,6 +157,8 @@ var responsiveNav = (function (window, document) {
       this.wrapperEl = el.replace("#", "");
       if (document.getElementById(this.wrapperEl)) {
         this.wrapper = document.getElementById(this.wrapperEl);
+      } else if (document.querySelector(this.wrapperEl)) {
+        this.wrapper = document.querySelector(this.wrapperEl);
       } else {
         // If el doesn't exists, stop here.
         throw new Error("The nav element you are trying to select doesn't exist");
@@ -180,15 +184,14 @@ var responsiveNav = (function (window, document) {
       nav.removeAttribute("style");
       nav.removeAttribute("aria-hidden");
       nav = null;
-      _instance = null;
 
       removeEvent(window, "resize", this, false);
       removeEvent(document.body, "touchmove", this, false);
       removeEvent(navToggle, "touchstart", this, false);
       removeEvent(navToggle, "touchend", this, false);
+      removeEvent(navToggle, "mouseup", this, false);
       removeEvent(navToggle, "keyup", this, false);
       removeEvent(navToggle, "click", this, false);
-      removeEvent(navToggle, "mouseup", this, false);
 
       if (!opts.customToggle) {
         navToggle.parentNode.removeChild(navToggle);
@@ -256,6 +259,7 @@ var responsiveNav = (function (window, document) {
 
     // Private methods
     _init: function () {
+      addClass(nav, "nav-collapse");
       addClass(nav, "closed");
       hasAnimFinished = true;
       navOpen = false;
@@ -278,6 +282,7 @@ var responsiveNav = (function (window, document) {
 
     _createStyles: function () {
       if (!styleElement.parentNode) {
+        styleElement.type = "text/css";
         document.getElementsByTagName("head")[0].appendChild(styleElement);
       }
     },
@@ -294,7 +299,7 @@ var responsiveNav = (function (window, document) {
         toggle.innerHTML = opts.label;
         setAttributes(toggle, {
           "href": "#",
-          "id": "nav-toggle"
+          "class": "nav-toggle"
         });
 
         if (opts.insert === "after") {
@@ -303,12 +308,14 @@ var responsiveNav = (function (window, document) {
           nav.parentNode.insertBefore(toggle, nav);
         }
 
-        navToggle = document.getElementById("nav-toggle");
+        navToggle = toggle;
       } else {
         var toggleEl = opts.customToggle.replace("#", "");
 
         if (document.getElementById(toggleEl)) {
           navToggle = document.getElementById(toggleEl);
+        } else if (document.querySelector(toggleEl)) {
+          navToggle = document.querySelector(toggleEl);
         } else {
           throw new Error("The custom nav toggle you are trying to select doesn't exist");
         }
@@ -385,14 +392,15 @@ var responsiveNav = (function (window, document) {
       for (var i = 0; i < nav.inner.length; i++) {
         savedHeight += nav.inner[i].offsetHeight;
       }
+      var innerStyles = ".nav-collapse.opened{max-height:" + savedHeight + "px}";
 
-      var innerStyles = "#" + this.wrapperEl + ".opened{max-height:" + savedHeight + "px}";
-
-      // Hide from old IE
-      if (computed) {
+      if (styleElement.styleSheet) {
+        styleElement.styleSheet.cssText = innerStyles;
+      } else {
         styleElement.innerHTML = innerStyles;
-        innerStyles = "";
       }
+
+      innerStyles = "";
     },
 
     _resize: function () {
@@ -416,14 +424,5 @@ var responsiveNav = (function (window, document) {
     }
 
   };
-
-  var _instance;
-  function rn (el, options) {
-    if (!_instance) {
-      _instance = new ResponsiveNav(el, options);
-    }
-    return _instance;
-  }
-
-  return rn;
-})(window, document);
+  return new ResponsiveNav(el, options);
+};

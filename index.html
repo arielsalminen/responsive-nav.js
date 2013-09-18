@@ -64,7 +64,7 @@
 <div id="instructions" class="section">
   <h2>Usage Instructions</h2>
   <p>Following the steps below you will be able to get the plugin up and running. If you notice any bugs, please post them to <a href="https://github.com/viljamis/responsive-nav.js/issues">GitHub&nbsp;issues</a>.</p>
-  
+
 <h3>Link files</h3>
 <pre class="prettyprint lang-html"><code>&lt;!-- Put these into the &lt;head> -->
 &lt;link rel="stylesheet" href="responsive-nav.css">
@@ -72,25 +72,25 @@
 </code></pre>
 
 <h3>Add markup</h3>
-<pre class="prettyprint lang-html"><code>&lt;div id="nav">
+<pre class="prettyprint lang-html"><code>&lt;nav class="nav-collapse">
   &lt;ul>
     &lt;li>&lt;a href="#">Home&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">About&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">Projects&lt;/a>&lt;/li>
     &lt;li>&lt;a href="#">Contact&lt;/a>&lt;/li>
   &lt;/ul>
-&lt;/div>
+&lt;/nav>
 </code></pre>
 
 <h3>Hook up the plugin</h3>
 <pre class="prettyprint lang-html"><code>&lt;!-- Put this right before the &lt;/body> closing tag -->
 &lt;script>
-  var navigation = responsiveNav("#nav");
+  var nav = responsiveNav(".nav-collapse");
 &lt;/script>
 </code></pre>
 
 <h3>Customizable options</h3>
-<pre class="prettyprint lang-js"><code>var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
+<pre class="prettyprint lang-js"><code>var nav = responsiveNav(".nav-collapse", { // Selector
   animate: true, // Boolean: Use CSS3 transitions, true or false
   transition: 400, // Integer: Speed of the transition, in milliseconds
   label: "Menu", // String: Label for the navigation toggle
@@ -106,10 +106,10 @@
 
 <h3>Public methods</h3>
 <pre class="prettyprint lang-js"><code>// Destroy
-navigation.destroy();
+nav.destroy();
 
 // Toggle
-navigation.toggle();
+nav.toggle();
 </code></pre>
 </div>
 
@@ -124,7 +124,7 @@ navigation.toggle();
 
     <script>
       // Init responsive-nav.js
-      var navigation = responsiveNav("#nav");
+      var nav = responsiveNav("#nav");
     </script>
 
     <script>
