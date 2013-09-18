@@ -9,7 +9,7 @@ article, aside, figure, footer, header, hgroup, menu, nav, section,
 summary, hgroup {
   margin: 0;
   padding: 0;
-  border: 0; 
+  border: 0;
 }
 
 a:active,
@@ -32,34 +32,34 @@ body {
   font: normal 100%/1.4 sans-serif;
 }
 
-#nav,
-#nav * {
+.nav-collapse,
+.nav-collapse * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-#nav,
-#nav ul {
+.nav-collapse,
+.nav-collapse ul {
   list-style: none;
   width: 100%;
   float: left;
 }
 
-#nav li {
+.nav-collapse li {
   float: left;
   width: 100%;
 }
 
 @media screen and (min-width: 40em) {
-  #nav li {
+  .nav-collapse li {
     width: 25%;
     *width: 24.9%; /* IE7 Hack */
     _width: 19%; /* IE6 Hack */
   }
 }
 
-#nav a {
+.nav-collapse a {
   color: #fff;
   text-decoration: none;
   width: 100%;
@@ -70,7 +70,7 @@ body {
 }
 
 @media screen and (min-width: 40em) {
-  #nav a {
+  .nav-collapse a {
     margin: 0;
     padding: 1em;
     float: left;
@@ -80,18 +80,18 @@ body {
   }
 }
 
-#nav ul ul a {
+.nav-collapse ul ul a {
   background: #ca3716;
   padding-left: 2em;
 }
 
 @media screen and (min-width: 40em) {
-  #nav ul ul a {
+  .nav-collapse ul ul a {
     display: none;
   }
 }
 
-#nav-toggle {
+.nav-toggle {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -106,7 +106,7 @@ body {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
-  #nav-toggle {
+  .nav-toggle {
     background-image: url("hamburger-retina.gif");
     -webkit-background-size: 100px 100px;
     -moz-background-size: 100px 100px;

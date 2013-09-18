@@ -3,7 +3,7 @@ h1,h2,p,
 ol,ul,li {
   margin: 0;
   padding: 0;
-  border: 0; 
+  border: 0;
 }
 
 @-webkit-viewport { width: device-width; }
@@ -96,25 +96,25 @@ a:hover {
   background-color: rgba(0,0,0, .4);
 }
 
-#nav {
+.nav-collapse {
   position: absolute;
   width: 24%;
   top: 2em;
   left: 0;
 }
 
-#nav ul {
+.nav-collapse ul {
   display: block;
   width: 100%;
   list-style: none;
 }
 
-#nav li {
+.nav-collapse li {
   width: 100%;
   display: block;
 }
 
-#nav a {
+.nav-collapse a {
   color: #aaa;
   font-weight: bold;
   -webkit-box-sizing: border-box;
@@ -131,38 +131,38 @@ a:hover {
   width: 100%;
 }
 
-#nav a:hover { background: rgba(255,255,255, .1) }
-#nav .active a { color: #fff; background: rgba(0,0,0, .3) }
-#nav li:first-child a { border-top: 0 }
-#nav li:last-child a { border-bottom: 0 }
-#toggle { display: none }
+.nav-collapse a:hover { background: rgba(255,255,255, .1) }
+.nav-collapse .active a { color: #fff; background: rgba(0,0,0, .3) }
+.nav-collapse li:first-child a { border-top: 0 }
+.nav-collapse li:last-child a { border-bottom: 0 }
+.nav-toggle { display: none }
 
 @media screen and (max-width: 40em) {
-  .js #nav {
+  .js .nav-collapse {
     clip: rect(0 0 0 0);
     max-height: 0;
     position: absolute;
     display: block;
     overflow: hidden;
   }
-  #nav {
+  .nav-collapse {
     top: 0;
     width: 100%;
     position: relative;
   }
-  #nav.opened { max-height: 9999px }
-  #nav a:hover { background: transparent }
-  #nav .active a:hover { color: #fff; background: rgba(0,0,0, .3) }
-  #toggle {
+  .nav-collapse.opened { max-height: 9999px }
+  .nav-collapse a:hover { background: transparent }
+  .nav-collapse .active a:hover { color: #fff; background: rgba(0,0,0, .3) }
+  .nav-toggle {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    display: block;
     width: 70px;
     height: 55px;
     float: right;
+    display: block;
     margin: 0 -2em 1em 0;
     text-indent: -9999px;
     overflow: hidden;
@@ -188,7 +188,7 @@ a:hover {
     -o-background-size: 200px 200px;
     background-size: 200px 200px;
   }
-  #toggle {
+  .nav-toggle {
     background-image: url("hamburger-retina.gif");
     -webkit-background-size: 100px 100px;
     -moz-background-size: 100px 100px;
@@ -198,6 +198,6 @@ a:hover {
 }
 
 @media screen and (min-width: 76em) {
-  #nav { width: 18em }
+  .nav-collapse { width: 18em }
   .main { width: auto; left: 18em }
 }

@@ -10,17 +10,17 @@
   </head>
   <body>
 
-    <div role="navigation" id="nav">
+    <nav role="navigation" class="nav-collapse">
       <ul>
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Blog</a></li>
       </ul>
-    </div>
+    </nav>
 
     <div role="main" class="main">
-      <a href="#nav" id="toggle">Menu</a>
+      <a href="#nav" class="nav-toggle">Menu</a>
       <h1>Prototype</h1>
 
       <p class="intro">Despite the apparent simplicity, there are many underlying factors which, when thought out and implemented properly, can make that simple solution even better without adding more complexity to the user&nbsp;interface.</p>
@@ -45,7 +45,7 @@
     </div>
 
     <script>
-      var navigation = responsiveNav("#nav", {customToggle: "#toggle"});
+      var navigation = responsiveNav(".nav-collapse", {customToggle: ".nav-toggle"});
     </script>
   </body>
 </html>

@@ -10,19 +10,19 @@
   </head>
   <body>
 
-    <div id="nav">
+    <nav class="nav-collapse">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Blog</a></li>
       </ul>
-    </div>
+    </nav>
 
     <button id="toggle" class="closed">Toggle Menu</button>
 
     <script>
-      var navigation = responsiveNav("#nav", {
+      var navigation = responsiveNav(".nav-collapse", {
         customToggle: "#toggle",
         open: function () {
           var toggle = document.getElementById("toggle");

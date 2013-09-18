@@ -10,19 +10,19 @@
   </head>
   <body>
 
-    <div id="nav">
+    <nav class="nav-collapse">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Blog</a></li>
       </ul>
-    </div>
+    </nav>
 
     <script>
-      var navigation = responsiveNav("#nav", {
+      var navigation = responsiveNav(".nav-collapse", {
         animate: true,        // Boolean: Use CSS3 transitions, true or false
-        transition: 400,      // Integer: Speed of the transition, in milliseconds
+        transition: 250,      // Integer: Speed of the transition, in milliseconds
         label: "Menu",        // String: Label for the navigation toggle
         insert: "after",      // String: Insert the toggle before or after the navigation
         customToggle: "",     // Selector: Specify the ID of a custom toggle
