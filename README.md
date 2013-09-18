@@ -60,7 +60,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 4. Customizable options:
 ```javascript
-	var nav = responsiveNav("#nav", { // Selector
+	var nav = responsiveNav(".nav-collapse", { // Selector
 		animate: true, // Boolean: Use CSS3 transitions, true or false
 		transition: 250, // Integer: Speed of the transition, in milliseconds
 		label: "Menu", // String: Label for the navigation toggle
