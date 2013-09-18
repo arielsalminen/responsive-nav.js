@@ -40,21 +40,21 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 2. Add markup:
 ```html
-	<div id="nav">
+	<nav class="nav-collapse">
 		<ul>
 			<li><a href="#">Home</a></li>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Projects</a></li>
 			<li><a href="#">Contact</a></li>
 	 	</ul>
-	</div>
+	</nav>
 ```
 
 3. Hook up the plugin:
 ```html
 <!-- Put this right before the </body> closing tag -->
 	<script>
-		var navigation = responsiveNav("#nav");
+		var navigation = responsiveNav(".nav-collapse");
 	</script>
 ```
 
@@ -62,7 +62,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 ```javascript
 	var navigation = responsiveNav("#nav", { // Selector: The ID of the wrapper
 		animate: true, // Boolean: Use CSS3 transitions, true or false
-		transition: 400, // Integer: Speed of the transition, in milliseconds
+		transition: 250, // Integer: Speed of the transition, in milliseconds
 		label: "Menu", // String: Label for the navigation toggle
 		insert: "after", // String: Insert the toggle before or after the navigation
 		customToggle: "", // Selector: Specify the ID of a custom toggle
@@ -89,7 +89,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Windows Phone 7.5 & 7.8
 * Blackberry 7.0+
 * Blackberry Tablet 2.0+
-* Kindle 3.3+	
+* Kindle 3.3+
 * Maemo 5.0+
 * Meego 1.2+
 * Symbian 3
@@ -104,7 +104,6 @@ Following the steps below you will be able to get the plugin up and running. If 
 # Roadmap
 
 * Start using Grunt and add needed config to the repository
-* Allow multiple instances of the navigation (get rid of the Singleton pattern)
 * Investigate if it would be smoother using translateY or translate3d
 * Better window.resize handling
 
@@ -133,6 +132,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 # Changelog
+
+
+`1.0.21` (2013-09-18) - Multiple instances are now possible. Uses classes instead of ID's now by default, but can be configured to use ID's if old IE support is needed (check the "ie-support" folder in demos).
 
 `1.0.20` (2013-08-12) - Uses now touchmove & touchend, which means that the menu doesn’t trigger anymore if the user starts moving finger instead of just tapping. Also fixes one Android bug and a bug which appeared when tapping the toggle really fast over and over. Plugin’s Functionality doesn’t depent on window load event anymore so it works now with tools like require.js too.
 
