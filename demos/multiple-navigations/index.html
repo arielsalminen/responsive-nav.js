@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Nav &middot; Multiple Navigations Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../responsive-nav.css">
+    <script src="../../responsive-nav.js"></script>
+  </head>
+  <body>
+
+    <nav class="nav-1 nav-collapse">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+
+    <nav class="nav-2 nav-collapse">
+      <ul>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <script>
+
+      var navigation1 = responsiveNav(".nav-1");
+
+      var navigation2 = responsiveNav(".nav-2", {
+        insert: "before"
+      });
+
+    </script>
+
+  </body>
+</html>
