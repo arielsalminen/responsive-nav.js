@@ -12,6 +12,7 @@
 * Weighs only 1.9 KB minified and Gzip’ed.
 * Doesn’t require any external library.
 * Uses CSS3 transitions and touch events.
+* Supports RequireJS and multiple instances.
 * Removes the 300 ms delay between a physical tap and the click event.
 * Makes it possible to use CSS3 transitions with height: auto.
 * Built with accessibility in mind, meaning that everything works on screen readers and with JavaScript disabled, too.
