@@ -1,6 +1,6 @@
 {
   "name": "responsive-nav",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "main": [
     "responsive-nav.css",
     "responsive-nav.js"
