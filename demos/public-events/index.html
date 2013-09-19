@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Nav &middot; Public Events Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../responsive-nav.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="../../responsive-nav.js"></script>
+  </head>
+  <body>
+
+    <nav class="nav-collapse">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+
+    <button id="toggle">Toggle menu</button>
+    <button id="destroy">Destroy menu</button>
+    <button id="resize">Call resize method manually</button>
+
+    <script>
+
+      // Init Responsive Nav
+      var nav = responsiveNav(".nav-collapse");
+
+      // Toggle Nav
+      var toggle = document.getElementById("toggle");
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        nav.toggle();
+      }, false);
+
+      // Destroy Nav
+      var destroy = document.getElementById("destroy");
+      destroy.addEventListener("click", function (e) {
+        e.preventDefault();
+        nav.destroy();
+      }, false);
+
+      // Call Resize method manually
+      var resize = document.getElementById("resize");
+      resize.addEventListener("click", function (e) {
+        e.preventDefault();
+        nav.resize();
+      }, false);
+
+    </script>
+
+  </body>
+</html>
