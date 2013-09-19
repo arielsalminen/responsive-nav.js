@@ -1,4 +1,4 @@
-/*! responsive-nav.js v1.0.21
+/*! responsive-nav.js v1.0.22
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -181,6 +181,7 @@ var responsiveNav = function (el, options) {
       this._removeStyles();
       removeClass(nav, "closed");
       removeClass(nav, "opened");
+      removeClass(nav, "nav-collapse");
       nav.removeAttribute("style");
       nav.removeAttribute("aria-hidden");
       nav = null;
@@ -231,6 +232,26 @@ var responsiveNav = function (el, options) {
       }
     },
 
+    resize: function () {
+      if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
+        setAttributes(navToggle, {"aria-hidden": "false"});
+
+        // If the navigation is hidden
+        if (nav.className.match(/(^|\s)closed(\s|$)/)) {
+          setAttributes(nav, {"aria-hidden": "true"});
+          nav.style.position = "absolute";
+        }
+
+        this._createStyles();
+        this._calcHeight();
+      } else {
+        setAttributes(navToggle, {"aria-hidden": "true"});
+        setAttributes(nav, {"aria-hidden": "false"});
+        nav.style.position = opts.openPos;
+        this._removeStyles();
+      }
+    },
+
     handleEvent: function (e) {
       var evt = e || window.event;
 
@@ -252,7 +273,7 @@ var responsiveNav = function (el, options) {
         this._onKeyUp(evt);
         break;
       case "resize":
-        this._resize(evt);
+        this.resize(evt);
         break;
       }
     },
@@ -266,7 +287,7 @@ var responsiveNav = function (el, options) {
 
       this._createToggle();
       this._transitions();
-      this._resize();
+      this.resize();
 
       addEvent(window, "resize", this, false);
       addEvent(document.body, "touchmove", this, false);
@@ -401,26 +422,6 @@ var responsiveNav = function (el, options) {
       }
 
       innerStyles = "";
-    },
-
-    _resize: function () {
-      if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
-        setAttributes(navToggle, {"aria-hidden": "false"});
-
-        // If the navigation is hidden
-        if (nav.className.match(/(^|\s)closed(\s|$)/)) {
-          setAttributes(nav, {"aria-hidden": "true"});
-          nav.style.position = "absolute";
-        }
-
-        this._createStyles();
-        this._calcHeight();
-      } else {
-        setAttributes(navToggle, {"aria-hidden": "true"});
-        setAttributes(nav, {"aria-hidden": "false"});
-        nav.style.position = opts.openPos;
-        this._removeStyles();
-      }
     }
 
   };
