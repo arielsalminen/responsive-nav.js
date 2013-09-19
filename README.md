@@ -25,7 +25,7 @@
 * [Simple demo with IE support](http://responsive-nav.com/demo-respondjs/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs))
 * [Advanced demo](http://responsive-nav.com/demo/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/advanced-left-navigation))
 * [Official website](http://responsive-nav.com) (works as a demo, too!)
-* 10(!) additional examples included in this repository's [demos](https://github.com/viljamis/responsive-nav.js/tree/master/demos) folder.
+* 11(!) additional examples included in this repository's [demos](https://github.com/viljamis/responsive-nav.js/tree/master/demos) folder.
 
 
 # Usage instructions
@@ -78,9 +78,11 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 # Public methods
 
+`nav.toggle();`
+
 `nav.destroy();`
 
-`nav.toggle();`
+`nav.resize();`
 
 
 # Tested on the following platforms
@@ -135,6 +137,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+
+`1.0.22` (2013-09-19) - Public resize method (to allow calling resize manually when needed).
 
 `1.0.21` (2013-09-18) - Multiple instances are now possible thanks to [@toomuchdesign](https://github.com/toomuchdesign). Uses classes instead of ID's now by default, but can be configured to use ID's if old IE support is needed (check the "ie-support" folder in demos).
 
