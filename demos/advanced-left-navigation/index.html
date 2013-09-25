@@ -10,14 +10,14 @@
   </head>
   <body>
 
-    <nav role="navigation" class="nav-collapse">
+    <div role="navigation" id="foo" class="nav-collapse">
       <ul>
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Blog</a></li>
       </ul>
-    </nav>
+    </div>
 
     <div role="main" class="main">
       <a href="#nav" class="nav-toggle">Menu</a>
@@ -45,7 +45,7 @@
     </div>
 
     <script>
-      var navigation = responsiveNav(".nav-collapse", {customToggle: ".nav-toggle"});
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
     </script>
   </body>
 </html>
