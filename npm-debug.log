@@ -1,0 +1,28 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.16/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.3.8
+3 info using node@v0.10.16
+4 error install Couldn't read dependencies
+5 error Error: Invalid version: "1"
+5 error     at Object.module.exports.fixVersionField (/usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/fixer.js:175:13)
+5 error     at /usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js:29:38
+5 error     at Array.forEach (native)
+5 error     at normalize (/usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/read-package-json/node_modules/normalize-package-data/lib/normalize.js:28:15)
+5 error     at final (/usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/read-package-json/read-json.js:310:33)
+5 error     at then (/usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/read-package-json/read-json.js:124:33)
+5 error     at /usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/read-package-json/read-json.js:299:40
+5 error     at fs.js:266:14
+5 error     at /usr/local/Cellar/node/0.10.16/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:103:5
+5 error     at Object.oncomplete (fs.js:107:15)
+6 error If you need help, you may report this log at:
+6 error     <http://github.com/isaacs/npm/issues>
+6 error or email it to:
+6 error     <npm-@googlegroups.com>
+7 error System Darwin 12.5.0
+8 error command "/usr/local/Cellar/node/0.10.16/bin/node" "/usr/local/bin/npm" "install"
+9 error cwd /Users/viljamis/Desktop/Dropbox/code/responsive-nav.js
+10 error node -v v0.10.16
+11 error npm -v 1.3.8
+12 verbose exit [ 1, true ]
