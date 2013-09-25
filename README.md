@@ -3,17 +3,17 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only 1.9 KB minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only ~1kb minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
 
 
 #### Features:
 
 * Simple, semantic markup.
-* Weighs only 1.9 KB minified and Gzip’ed.
+* Weighs only ~1kb minified and Gzip’ed.
 * Doesn’t require any external library.
 * Uses CSS3 transitions and touch events.
 * Supports RequireJS and multiple instances.
-* Removes the 300 ms delay between a physical tap and the click event.
+* Removes the 300ms delay between a physical tap and the click event.
 * Makes it possible to use CSS3 transitions with height: auto.
 * Built with accessibility in mind, meaning that everything works on screen readers and with JavaScript disabled, too.
 * Works in all major desktop and mobile browsers, including IE 6 and up.
@@ -104,11 +104,46 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Mac OS X
 
 
-# Roadmap
+# Working on the repository
 
-* Start using Grunt and add needed config to the repository
-* Investigate if it would be smoother using translateY or translate3d
-* Better window.resize handling
+[GruntJS](http://gruntjs.com/) is used for the build process, which means node and npm are required. If you already have those on your machine, you can install Grunt and all dependencies required for the build using:
+
+```sh
+npm install -g grunt-cli
+npm install
+```
+
+# Git Hooks
+
+It is useful to setup a pre-commit and post-checkout hooks to smooth your workflow. On pre-commit we want to ensure that the project can build successfully, and on post-checkout we want to ensure that any new dependencies are installed via npm.
+
+## Pre-Commit
+
+```sh
+touch .git/hooks/pre-commit && echo -e '#!/bin/sh\ngrunt test' > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+```
+
+## Post-Checkout
+
+```sh
+touch .git/hooks/post-checkout && echo -e '#!/bin/sh\nnpm install\nexit 0' > .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
+```
+
+# Building The Project
+
+To build the project, run unit tests etc. enter the following at the terminal:
+
+```sh
+grunt
+```
+
+Grunt can also be used to monitor files and re-build the project on each change. For this we use Grunt's watch task:
+
+```sh
+grunt watch
+```
+
+Next time you change the file, Grunt will perform all build tasks.
 
 
 # Special thanks
@@ -137,6 +172,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+
+`1.0.23` (2013-09-25) - Fixes IE8 bugs + starts using automated builds and tests.
 
 `1.0.22` (2013-09-19) - Public resize method (to allow calling resize manually when needed).
 
