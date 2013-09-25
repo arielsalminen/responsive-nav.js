@@ -1,0 +1,17 @@
+{
+  "name": "responsive-nav-site",
+  "version": "1",
+  "description": "Responsive Nav Site",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/viljamis/responsive-nav.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/viljamis/responsive-nav/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-replace": "~0.4.4"
+  }
+}
