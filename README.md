@@ -155,6 +155,7 @@ In random order:
 * [Joao Carlos](https://twitter.com/jcxplorer)
 * [Vesa Vänskä](https://twitter.com/vesan)
 * [Andrea Carraro](https://github.com/toomuchdesign)
+* [Nick Williams](https://twitter.com/WickyNilliams)
 
 
 # License
