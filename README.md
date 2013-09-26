@@ -148,7 +148,7 @@ Next time you change the file, Grunt will perform all build tasks.
 
 ## Testing
 
-The test suite can be run with grunt test and is also part of the default Grunt task. This command runs all tests locally using PhantomJS.
+The test suite can be run with `grunt test` and is also part of the default Grunt task. This command runs all tests locally using PhantomJS.
 
 ### Running on multiple devices/browsers
 
