@@ -146,6 +146,19 @@ grunt watch
 Next time you change the file, Grunt will perform all build tasks.
 
 
+# Testing
+
+The test suite can be run with grunt test and is also part of the default Grunt task. This command runs all tests locally using PhantomJS.
+
+## Running on multiple devices/browsers
+
+It's possible to run the test suite on multiple devices with Karma.
+
+The Karma server can be started with grunt karma and multiple browsers should then point to the machine running the server on port 9876 (e.g. http://localhost:9876). Once the browsers are connected, the test suite can be run with grunt karma:all:run.
+
+An easier way to test on multiple devices as part of the development cycle is to use karma with the watch task. Running grunt karma watch will automatically start the Karma server in the background and will run the tests automatically every time a file changes, on every connected device.
+
+
 # Special thanks
 
 In random order:
