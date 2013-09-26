@@ -113,23 +113,23 @@ npm install -g grunt-cli
 npm install
 ```
 
-# Git Hooks
+## Git Hooks
 
 It is useful to setup a pre-commit and post-checkout hooks to smooth your workflow. On pre-commit we want to ensure that the project can build successfully, and on post-checkout we want to ensure that any new dependencies are installed via npm.
 
-## Pre-Commit
+### Pre-Commit
 
 ```sh
 touch .git/hooks/pre-commit && echo -e '#!/bin/sh\ngrunt test' > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 ```
 
-## Post-Checkout
+### Post-Checkout
 
 ```sh
 touch .git/hooks/post-checkout && echo -e '#!/bin/sh\nnpm install\nexit 0' > .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
 ```
 
-# Building The Project
+## Building The Project
 
 To build the project, run unit tests etc. enter the following at the terminal:
 
@@ -146,11 +146,11 @@ grunt watch
 Next time you change the file, Grunt will perform all build tasks.
 
 
-# Testing
+## Testing
 
 The test suite can be run with grunt test and is also part of the default Grunt task. This command runs all tests locally using PhantomJS.
 
-## Running on multiple devices/browsers
+### Running on multiple devices/browsers
 
 It's possible to run the test suite on multiple devices with Karma.
 
