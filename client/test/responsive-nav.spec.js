@@ -184,7 +184,7 @@ describe("responsive-nav", function () {
   describe("resize", function () {
 
     it("calculates the height of the navigation", function () {
-      el.innerHTML = "<ul style='display:overflow:hidden;width:100%;float:left;margin:0;padding:0'>" +
+      el.innerHTML = "<ul style='overflow:hidden;width:100%;float:left;margin:0;padding:0'>" +
         "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Home</a></li>" +
         "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>About</a></li>" +
         "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Projects</a></li>" +
