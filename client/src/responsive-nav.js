@@ -68,7 +68,6 @@ var responsiveNav = function (el, options) {
       removeClass(nav, "nav-collapse");
       nav.removeAttribute("style");
       nav.removeAttribute("aria-hidden");
-      nav = null;
 
       removeEvent(window, "resize", this, false);
       removeEvent(document.body, "touchmove", this, false);

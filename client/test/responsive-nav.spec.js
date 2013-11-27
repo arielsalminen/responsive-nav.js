@@ -16,12 +16,12 @@ describe("responsive-nav", function () {
     "</ul>";
 
   function eventFire(el, etype) {
-    if (el.fireEvent) {
-      (el.fireEvent("on" + etype));
-    } else {
+    if (el.dispatchEvent) {
       var evObj = document.createEvent("Events");
       evObj.initEvent(etype, true, false);
       el.dispatchEvent(evObj);
+    } else if (el.fireEvent) {
+      el.fireEvent("on" + etype);
     }
   }
 
@@ -90,8 +90,8 @@ describe("responsive-nav", function () {
         "</ul>";
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
-        styleContents = styleEl.innerHTML;
-      expect(styleContents).toBe(".nav-collapse.opened{max-height:50px}");
+        styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:50px}");
       nav.destroy();
     });
 
@@ -184,7 +184,7 @@ describe("responsive-nav", function () {
   describe("resize", function () {
 
     it("calculates the height of the navigation", function () {
-      el.innerHTML = "<ul style='overflow:hidden;width:100%;height:16px;float:left;margin:0;padding:0'>" +
+      el.innerHTML = "<ul style='display:overflow:hidden;width:100%;float:left;margin:0;padding:0'>" +
         "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Home</a></li>" +
         "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>About</a></li>" +
         "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Projects</a></li>" +
@@ -192,8 +192,8 @@ describe("responsive-nav", function () {
         "</ul>";
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
-        styleContents = styleEl.innerHTML;
-      expect(styleContents).toBe(".nav-collapse.opened{max-height:16px}");
+        styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:16px}");
       nav.destroy();
     });
 
@@ -207,14 +207,18 @@ describe("responsive-nav", function () {
     it("turns off animation if needed", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
       nav = responsiveNav("#" + selector, { animate: false });
-      expect(el.style.transition).toBe(undefined);
+      expect(el.style.transition).not.toBe("max-height 250ms");
       nav.destroy();
     });
 
     it("controls the transition speed", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
-      nav = responsiveNav("#" + selector, { transition: "666" });
-      expect(el.style.transition).toBe("max-height 666ms");
+      nav = responsiveNav("#" + selector, { transition: 666 });
+      if (el.style.transition) {
+        expect(el.style.transition).toBe("max-height 666ms");
+      } else if (el.style.webkitTransition) {
+        expect(el.style.webkitTransition).toBe("max-height 666ms");
+      }
       nav.destroy();
     });
 
