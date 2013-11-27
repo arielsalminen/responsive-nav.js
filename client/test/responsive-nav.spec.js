@@ -31,6 +31,27 @@ describe("responsive-nav", function () {
   }
 
   /**
+   * Resize
+   */
+  describe("resize", function () {
+
+    it("calculates the height of the navigation", function () {
+      el.innerHTML = "<ul style='overflow:hidden;width:100%;float:left;margin:0;padding:0'>" +
+        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Home</a></li>" +
+        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>About</a></li>" +
+        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Projects</a></li>" +
+        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Blog</a></li>" +
+        "</ul>";
+      insertNav();
+      var styleEl = document.getElementsByTagName("style")[0],
+        styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:16px}");
+      nav.destroy();
+    });
+
+  });
+
+  /**
    * Init
    */
   describe("init", function () {
@@ -173,27 +194,6 @@ describe("responsive-nav", function () {
       var toggle = document.querySelector(".nav-toggle");
       eventFire(toggle, "mouseup");
       expect(el.className).toBe("nav-collapse opened");
-      nav.destroy();
-    });
-
-  });
-
-  /**
-   * Resize
-   */
-  describe("resize", function () {
-
-    it("calculates the height of the navigation", function () {
-      el.innerHTML = "<ul style='overflow:hidden;width:100%;float:left;margin:0;padding:0'>" +
-        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Home</a></li>" +
-        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>About</a></li>" +
-        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Projects</a></li>" +
-        "<li style='height:4px;overflow:hidden;width:100%;float:left;margin:0;padding:0'><a href='#'>Blog</a></li>" +
-        "</ul>";
-      insertNav();
-      var styleEl = document.getElementsByTagName("style")[0],
-        styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:16px}");
       nav.destroy();
     });
 
