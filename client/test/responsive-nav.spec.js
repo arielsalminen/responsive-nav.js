@@ -254,6 +254,13 @@ describe("responsive-nav", function () {
       nav.destroy();
     });
 
+    it("allows users to change the default container class", function () {
+      document.getElementsByTagName("body")[0].appendChild(el);
+      nav = responsiveNav("#" + selector, { navClass: "random-class" });
+      expect(el.className).toBe("random-class closed");
+      nav.destroy();
+    });
+
     it("allows users to specify custom JS class", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
       nav = responsiveNav("#" + selector, { jsClass: "foobar" });
