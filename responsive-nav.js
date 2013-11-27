@@ -134,16 +134,17 @@
   
         // Default options
         this.options = {
-          animate: true,        // Boolean: Use CSS3 transitions, true or false
-          transition: 250,      // Integer: Speed of the transition, in milliseconds
-          label: "Menu",        // String: Label for the navigation toggle
-          insert: "after",      // String: Insert the toggle before or after the navigation
-          customToggle: "",     // Selector: Specify the ID of a custom toggle
-          openPos: "relative",  // String: Position of the opened nav, relative or static
-          jsClass: "js",        // String: 'JS enabled' class which is added to <html> el
-          init: function(){},   // Function: Init callback
-          open: function(){},   // Function: Open callback
-          close: function(){}   // Function: Close callback
+          animate: true,             // Boolean: Use CSS3 transitions, true or false
+          transition: 250,           // Integer: Speed of the transition, in milliseconds
+          label: "Menu",             // String: Label for the navigation toggle
+          insert: "after",           // String: Insert the toggle before or after the navigation
+          customToggle: "",          // Selector: Specify the ID of a custom toggle
+          openPos: "relative",       // String: Position of the opened nav, relative or static
+          navClass: "nav-collapse",  // String: Default CSS class. If changed, you need to edit the CSS too!
+          jsClass: "js",             // String: 'JS enabled' class which is added to <html> element
+          init: function(){},        // Function: Init callback
+          open: function(){},        // Function: Open callback
+          close: function(){}        // Function: Close callback
         };
   
         // User defined options
@@ -183,7 +184,7 @@
         this._removeStyles();
         removeClass(nav, "closed");
         removeClass(nav, "opened");
-        removeClass(nav, "nav-collapse");
+        removeClass(nav, opts.navClass);
         nav.removeAttribute("style");
         nav.removeAttribute("aria-hidden");
   
@@ -281,7 +282,7 @@
   
       // Private methods
       _init: function () {
-        addClass(nav, "nav-collapse");
+        addClass(nav, opts.navClass);
         addClass(nav, "closed");
         hasAnimFinished = true;
         navOpen = false;
@@ -420,7 +421,7 @@
         for (var i = 0; i < nav.inner.length; i++) {
           savedHeight += nav.inner[i].offsetHeight;
         }
-        var innerStyles = ".nav-collapse.opened{max-height:" + savedHeight + "px}";
+        var innerStyles = "." + opts.navClass + ".opened{max-height:" + savedHeight + "px}";
   
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;
