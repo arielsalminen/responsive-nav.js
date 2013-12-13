@@ -8,3 +8,6 @@
   -o-user-select: none;
   user-select: none;
 }
+#nav.disable-pointer-events {
+  pointer-events: none !important;
+}

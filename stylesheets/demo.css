@@ -541,7 +541,9 @@ em {
 #nav.opened {
   position: relative;
   max-height: 9999px; }
-
+#nav.disable-pointer-events {
+  pointer-events: none !important;
+}
 /* line 389, demo.css.scss */
 #nav-toggle {
   width: 70px;
