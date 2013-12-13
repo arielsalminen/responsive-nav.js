@@ -20,12 +20,13 @@
 * Free to use under the MIT license.
 
 
-# Demo
+# Demos
 
 * [Simple demo with IE support](http://responsive-nav.com/demo-respondjs/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs))
 * [Advanced demo](http://responsive-nav.com/demo/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/advanced-left-navigation))
 * [Official website](http://responsive-nav.com) (works as a demo, too!)
 * 11(!) additional examples included in this repository's [demos](https://github.com/viljamis/responsive-nav.js/tree/master/demos) folder.
+* Fixed position is possible by putting everything inside a fixed positioned container, example on Adtile’s site: [http://adtile.com](http://adtile.com).
 
 
 # Usage instructions
@@ -188,7 +189,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 # Changelog
 
 
-`1.0.24` (2013-12-13) - Fixes ghost click issues on Android + a problem where calculated max-height might get overridden under certain circumstances.
+`1.0.25` (2013-12-13) - Fixes ghost click issues on Android + a problem where calculated max-height might get overridden under certain circumstances.
 
 `1.0.24` (2013-11-27) - Adds new option called "navClass." All tests should also work now on real iOS, Windows Phone and Android devices (when using grunt-karma), and not just with PhantomJS.
 
