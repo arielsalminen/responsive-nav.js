@@ -26,7 +26,7 @@
 * [Advanced demo](http://responsive-nav.com/demo/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/advanced-left-navigation))
 * [Official website](http://responsive-nav.com) (works as a demo, too!)
 * 11(!) additional examples included in this repository's [demos](https://github.com/viljamis/responsive-nav.js/tree/master/demos) folder.
-* Fixed position is possible by putting everything inside a fixed positioned container, example on Adtile’s site: [http://adtile.com](http://adtile.com).
+* Fixed position is possible by putting everything inside a fixed positioned container, example on Adtile’s site: [http://adtile.me](http://adtile.me).
 
 
 # Usage instructions
