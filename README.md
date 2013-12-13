@@ -188,6 +188,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 # Changelog
 
 
+`1.0.24` (2013-12-13) - Fixes ghost click issues on Android + a problem where calculated max-height might get overridden under certain circumstances.
+
 `1.0.24` (2013-11-27) - Adds new option called "navClass." All tests should also work now on real iOS, Windows Phone and Android devices (when using grunt-karma), and not just with PhantomJS.
 
 `1.0.23` (2013-09-25) - Fixes IE8 bugs + starts using automated builds and tests.
