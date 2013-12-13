@@ -45,7 +45,7 @@ describe("responsive-nav", function () {
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
         styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:16px}");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:16px !important}");
       nav.destroy();
     });
 
@@ -112,7 +112,7 @@ describe("responsive-nav", function () {
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
         styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:50px}");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:50px !important}");
       nav.destroy();
     });
 

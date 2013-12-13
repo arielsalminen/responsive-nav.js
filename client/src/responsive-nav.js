@@ -303,7 +303,7 @@ var responsiveNav = function (el, options) {
       for (var i = 0; i < nav.inner.length; i++) {
         savedHeight += nav.inner[i].offsetHeight;
       }
-      var innerStyles = "." + opts.navClass + ".opened{max-height:" + savedHeight + "px}";
+      var innerStyles = "." + opts.navClass + ".opened{max-height:" + savedHeight + "px !important}";
 
       if (styleElement.styleSheet) {
         styleElement.styleSheet.cssText = innerStyles;
