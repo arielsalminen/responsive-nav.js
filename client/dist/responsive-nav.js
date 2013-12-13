@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.0.24
+/*! responsive-nav.js 1.0.25
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -362,6 +362,7 @@
   
       _onTouchStart: function (e) {
         e.stopPropagation();
+        addClass(nav, "disable-pointer-events");
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.touchHasMoved = false;
@@ -380,12 +381,9 @@
         if (!this.touchHasMoved) {
           if (e.type === "touchend") {
             this.toggle(e);
-            // Prevent click on the underlying menu on Android 2.3
-            var that = this;
-            nav.addEventListener("click", that._preventDefault, true);
             setTimeout(function () {
-              nav.removeEventListener("click", that._preventDefault, true);
-            }, opts.transition + 100);
+              removeClass(nav, "disable-pointer-events");
+            }, opts.transition + 300);
             return;
           } else {
             var evt = e || window.event;
