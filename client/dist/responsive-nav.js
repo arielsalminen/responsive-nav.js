@@ -2,11 +2,11 @@
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
- * Copyright (c) 2013 @viljamis
+ * Copyright (c) 2014 @viljamis
  * Available under the MIT license
  */
 
-(function () {
+(function (document, window) {
 
   "use strict";
 
@@ -438,4 +438,4 @@
 
   window.responsiveNav = responsiveNav;
 
-}());
+}(document, window));

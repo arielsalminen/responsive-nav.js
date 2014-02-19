@@ -6,7 +6,7 @@
  * Available under the MIT license
  */
 
-(function () {
+(function (document, window) {
 
   "use strict";
 
@@ -14,4 +14,4 @@
 
   window.responsiveNav = responsiveNav;
 
-}());
+}(document, window));
