@@ -45,7 +45,7 @@ describe("responsive-nav", function () {
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
         styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:16px !important}");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse-0{max-height:16px !important}");
       nav.destroy();
     });
 
@@ -73,7 +73,7 @@ describe("responsive-nav", function () {
     it("creates a toggle", function () {
       insertNav();
       expect(document.querySelector(".nav-toggle").nodeName.toLowerCase()).toBe("a");
-      expect(el.className).toBe("nav-collapse closed");
+      expect(el.className).toBe("nav-collapse nav-collapse-3 closed");
       nav.destroy();
     });
 
@@ -95,7 +95,7 @@ describe("responsive-nav", function () {
 
     it("adds classes", function () {
       insertNav();
-      expect(el.className).toBe("nav-collapse closed");
+      expect(el.className).toBe("nav-collapse nav-collapse-6 closed");
       nav.destroy();
     });
 
@@ -112,7 +112,7 @@ describe("responsive-nav", function () {
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
         styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse{max-height:50px !important}");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".nav-collapse-7{max-height:50px !important}");
       nav.destroy();
     });
 
@@ -130,8 +130,8 @@ describe("responsive-nav", function () {
       document.getElementsByTagName("body")[0].appendChild(el2);
       nav = responsiveNav(selector);
       var nav2 = responsiveNav("#navigation2");
-      expect(el.className).toBe("nav-collapse closed");
-      expect(el2.className).toBe("nav-collapse closed");
+      expect(el.className).toBe("nav-collapse nav-collapse-8 closed");
+      expect(el2.className).toBe("nav-collapse nav-collapse-9 closed");
       nav.destroy();
       nav2.destroy();
     });
@@ -168,9 +168,47 @@ describe("responsive-nav", function () {
       spyOn(nav, "toggle").andCallThrough();
       nav.toggle();
       expect(nav.toggle).toHaveBeenCalled();
-      expect(el.className).toBe("nav-collapse opened");
+      expect(el.className).toBe("nav-collapse nav-collapse-11 opened");
       expect(el.getAttribute("aria-hidden")).toBe("false");
       expect(el.style.position).toBe("relative");
+      var navToggle = document.querySelector(".nav-toggle");
+      expect(navToggle.className).toBe("nav-toggle active");
+      nav.destroy();
+    });
+
+  });
+
+  /**
+   * open
+   */
+  describe("open", function () {
+
+    it("opens the navigation", function () {
+      insertNav();
+      spyOn(nav, "open").andCallThrough();
+      nav.open();
+      expect(nav.open).toHaveBeenCalled();
+      expect(el.className).toBe("nav-collapse nav-collapse-12 opened");
+      expect(el.getAttribute("aria-hidden")).toBe("false");
+      expect(el.style.position).toBe("relative");
+      nav.destroy();
+    });
+
+  });
+
+  /**
+   * close
+   */
+  describe("close", function () {
+
+    it("closes the navigation", function () {
+      insertNav();
+      spyOn(nav, "close").andCallThrough();
+      nav.open();
+      nav.close();
+      expect(nav.close).toHaveBeenCalled();
+      expect(el.className).toBe("nav-collapse nav-collapse-13 closed");
+      expect(el.getAttribute("aria-hidden")).toBe("true");
       nav.destroy();
     });
 
@@ -185,7 +223,7 @@ describe("responsive-nav", function () {
       insertNav();
       var toggle = document.querySelector(".nav-toggle");
       eventFire(toggle, "touchend");
-      expect(el.className).toBe("nav-collapse opened");
+      expect(el.className).toBe("nav-collapse nav-collapse-14 opened");
       nav.destroy();
     });
 
@@ -193,7 +231,7 @@ describe("responsive-nav", function () {
       insertNav();
       var toggle = document.querySelector(".nav-toggle");
       eventFire(toggle, "mouseup");
-      expect(el.className).toBe("nav-collapse opened");
+      expect(el.className).toBe("nav-collapse nav-collapse-15 opened");
       nav.destroy();
     });
 
@@ -257,7 +295,7 @@ describe("responsive-nav", function () {
     it("allows users to change the default container class", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
       nav = responsiveNav("#" + selector, { navClass: "random-class" });
-      expect(el.className).toBe("random-class closed");
+      expect(el.className).toBe("random-class random-class-22 closed");
       nav.destroy();
     });
 
