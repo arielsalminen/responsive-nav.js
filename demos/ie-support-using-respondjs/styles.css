@@ -33,7 +33,7 @@
     position: relative;
     max-height: none;
   }
-  .nav-toggle {
+  #nav-toggle {
     display: none;
   }
 }
@@ -132,12 +132,14 @@ body {
   }
 }
 
-.nav-toggle {
+#nav-toggle {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border: 0;
+  cursor: pointer;
   width: 70px;
   height: 55px;
   float: right;
@@ -147,7 +149,7 @@ body {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (min--moz-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-device-pixel-ratio: 1.3), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
-  .nav-toggle {
+  #nav-toggle {
     background-image: url("hamburger-retina.gif");
     -webkit-background-size: 100px 100px;
     -moz-background-size: 100px 100px;

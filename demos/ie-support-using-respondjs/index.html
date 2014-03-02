@@ -19,8 +19,12 @@
       </ul>
     </div>
 
+    <button id="nav-toggle">Menu</button>
+
     <script>
-      var navigation = responsiveNav("#nav");
+      var navigation = responsiveNav("#nav", {
+        customToggle: "#nav-toggle"
+      });
     </script>
   </body>
 </html>
