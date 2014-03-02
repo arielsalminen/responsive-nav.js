@@ -1,8 +1,11 @@
 {
   "name": "responsive-nav",
-  "version": "1.0.25",
+  "version": "1.0.30",
   "main": [
     "responsive-nav.css",
     "responsive-nav.js"
+  ],
+  "ignore": [
+    "demos/"
   ]
 }
