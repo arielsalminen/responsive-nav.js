@@ -47,7 +47,7 @@ module.exports = function (grunt) {
     rig : {
       dist : {
         files : {
-          "<%= meta.output %>": ["client/src/wrapper.js"]
+          "<%= meta.output %>": ["client/src/responsive-nav.js"]
         }
       }
     },
