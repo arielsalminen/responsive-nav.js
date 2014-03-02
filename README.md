@@ -22,11 +22,11 @@
 
 # Demos
 
-* [Simple demo with IE support](http://responsive-nav.com/demo-respondjs/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs))
+* [Fixed positioned one page demo](http://www.adtile.me/fixed-nav/) using smooth scrolling. View source on GitHub: [adtile/fixed-nav](https://github.com/adtile/fixed-nav)
 * [Advanced demo](http://responsive-nav.com/demo/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/advanced-left-navigation))
 * [Official website](http://responsive-nav.com) (works as a demo, too!)
+* [Simple demo with IE support](http://responsive-nav.com/demo-respondjs/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs))
 * 11(!) additional examples included in this repository's [demos](https://github.com/viljamis/responsive-nav.js/tree/master/demos) folder.
-* Fixed position is possible by putting everything inside a fixed positioned container, example on Adtile’s site: [http://adtile.me](http://adtile.me).
 
 
 # Usage instructions
@@ -68,8 +68,10 @@ Following the steps below you will be able to get the plugin up and running. If 
 		label: "Menu", // String: Label for the navigation toggle
 		insert: "after", // String: Insert the toggle before or after the navigation
 		customToggle: "", // Selector: Specify the ID of a custom toggle
+		closeOnNavClick: false, // Boolean: Close the navigation when one of the links are clicked
 		openPos: "relative", // String: Position of the opened nav, relative or static
 		navClass: "nav-collapse", // String: Default CSS class. If changed, you need to edit the CSS too!
+		navActiveClass: "js-nav-active", // String: Class that is added to <html> element when nav is active
 		jsClass: "js", // String: 'JS enabled' class which is added to <html> element
 		init: function(){}, // Function: Init callback
 		open: function(){}, // Function: Open callback
@@ -80,11 +82,32 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 # Public methods
 
+See the [example code here](https://github.com/viljamis/responsive-nav.js/blob/master/demos/public-events/index.html) for the usage.
+
 `nav.toggle();`
+
+`nav.open();`
+
+`nav.close();`
 
 `nav.destroy();`
 
 `nav.resize();`
+
+
+# Supporting old IEs
+
+Even though Responsive Nav works even on IE6, you should remember that IE8 and under do not support media queries and thus can’t change between "small screen" and "large screen" styles. If needed, you can add Media Query support for those browsers using [respond.js](https://github.com/scottjehl/Respond). There’s an example [here](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs).
+
+When old IE support is needed you should stick to using only ID selectors with Responsive Nav. That’s because the plugin uses `getElementById` method by default which is widely supported in all browsers. When using classes or element selectors `querySelector` will be used instead which isn’t supported in old IEs.
+
+`closeOnNavClick` option is the only thing that doesn’t work in IE8 & under, but the functionality is built using progressive enhancement, so nothing will break if you want to enable it for other browsers.
+
+
+# Things to keep in mind
+
+Calculated Max-height doesn't account for top/bottom padding on `.nav-collapse` (this is on purpose). If you need to add padding inside the nav, you can apply it to any other element, for example the `<ul>` inside `.nav-collapse`.
+
 
 
 # Tested on the following platforms
@@ -94,6 +117,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 * Windows Phone 7.5 & 7.8
 * Blackberry 7.0+
 * Blackberry Tablet 2.0+
+* Jolla
 * Kindle 3.3+
 * Maemo 5.0+
 * Meego 1.2+
@@ -113,6 +137,12 @@ Following the steps below you will be able to get the plugin up and running. If 
 ```sh
 npm install -g grunt-cli
 npm install
+```
+
+## Starting the server
+
+```sh
+python -m SimpleHTTPServer 8000
 ```
 
 ## Git Hooks
@@ -188,6 +218,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+
+`1.0.30` (2013-03-02) - Better performance. New [fixed navigation example](https://github.com/adtile/fixed-nav) provided by [Adtile](https://twitter.com/adtilehq). This release fixes an issue where multiple navigations on the same page got the same calculated height. Toggle now has an "active" class when the nav is open. Two new options are added: "closeOnNavClick" and "navActiveClass". Two new methods are also added: "open" and "close" (thanks to [@munkius](https://github.com/munkius) for the heads up on this!). This release adds also better "hamburger" icon for advanced demos which you can now style via css (size, color, shadow & etc). Includes also other bug fixes targeting older Android devices.
 
 `1.0.25` (2013-12-13) - Fixes ghost click issues on Android + a problem where calculated max-height might get overridden under certain circumstances.
 
