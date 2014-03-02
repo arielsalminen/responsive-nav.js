@@ -20,6 +20,7 @@
   "devel" : true,
   "node" : true,
   "globals" : {
+    "index" : true,
     "responsiveNav" : true,
     "ResponsiveNav" : true,
     "addEvent" : true,
