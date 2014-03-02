@@ -4,5 +4,8 @@
   "main": [
     "@@name.css",
     "@@name.js"
+  ],
+  "ignore": [
+    "demos/"
   ]
 }
