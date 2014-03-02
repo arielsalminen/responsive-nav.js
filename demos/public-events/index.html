@@ -19,6 +19,8 @@
     </nav>
 
     <button id="toggle">Toggle menu</button>
+    <button id="open">Open menu</button>
+    <button id="close">Close menu</button>
     <button id="destroy">Destroy menu</button>
     <button id="resize">Call resize method manually</button>
 
@@ -32,6 +34,20 @@
       toggle.addEventListener("click", function (e) {
         e.preventDefault();
         nav.toggle();
+      }, false);
+
+      // Open Nav
+      var open = document.getElementById("open");
+      open.addEventListener("click", function (e) {
+        e.preventDefault();
+        nav.open();
+      }, false);
+
+      // Close Nav
+      var close = document.getElementById("close");
+      close.addEventListener("click", function (e) {
+        e.preventDefault();
+        nav.close();
       }, false);
 
       // Destroy Nav
