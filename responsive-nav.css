@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.0.25 by @viljamis */
+/*! responsive-nav.js 1.0.30 by @viljamis */
 
 .nav-collapse ul {
   margin: 0;
@@ -26,7 +26,7 @@
   max-height: 9999px;
 }
 
-.nav-collapse.disable-pointer-events {
+.disable-pointer-events {
   pointer-events: none !important;
 }
 
