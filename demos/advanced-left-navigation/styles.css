@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "responsivenav";
+  src:url("../icons/responsivenav.eot");
+  src:url("../icons/responsivenav.eot?#iefix") format("embedded-opentype"),
+    url("../icons/responsivenav.ttf") format("truetype"),
+    url("../icons/responsivenav.woff") format("woff"),
+    url("../icons/responsivenav.svg#responsivenav") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body,div,
 h1,h2,p,
 ol,ul,li {
@@ -154,19 +165,44 @@ a:hover {
   .nav-collapse a:hover { background: transparent }
   .nav-collapse .active a:hover { color: #fff; background: rgba(0,0,0, .3) }
   .nav-toggle {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-decoration: none;
+    text-indent: -999px;
+    position: relative;
+    overflow: hidden;
     width: 70px;
     height: 55px;
     float: right;
     display: block;
     margin: 0 -2em 1em 0;
-    text-indent: -9999px;
-    overflow: hidden;
-    background: #444 url("hamburger.gif") no-repeat 50% 33%;
+  }
+  .nav-toggle:before {
+    color: #444; /* Edit this to change the icon color */
+    font-family: "responsivenav";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 28px;
+    text-transform: none;
+    position: absolute;
+    content: "\2261";
+    text-indent: 0;
+    text-align: center;
+    line-height: 65px;
+    speak: none;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .nav-toggle.active:before {
+    font-size: 24px;
+    content: "\78";
   }
   .main {
     -webkit-overflow-scrolling: auto;
@@ -187,13 +223,6 @@ a:hover {
     -moz-background-size: 200px 200px;
     -o-background-size: 200px 200px;
     background-size: 200px 200px;
-  }
-  .nav-toggle {
-    background-image: url("hamburger-retina.gif");
-    -webkit-background-size: 100px 100px;
-    -moz-background-size: 100px 100px;
-    -o-background-size: 100px 100px;
-    background-size: 100px 100px;
   }
 }
 
