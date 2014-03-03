@@ -470,7 +470,7 @@
         for (var i = 0; i < nav.inner.length; i++) {
           savedHeight += nav.inner[i].offsetHeight;
         }
-        var innerStyles = "." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important}";
+        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important}";
 
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;
