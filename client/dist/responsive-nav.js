@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.0.31
+/*! responsive-nav.js 1.0.32
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -33,7 +33,7 @@
         return this;
       };
     }
-    /* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass */
+    /* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass, forEach */
     // fn arg can be an object or a function, thanks to handleEvent
     // read more at: http://www.thecssninja.com/javascript/handleevent
     var addEvent = function (el, evt, fn, bubble) {
@@ -119,6 +119,13 @@
       removeClass = function (el, cls) {
         var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
         el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
+      },
+    
+      // forEach method that passes back the stuff we need
+      forEach = function (array, callback, scope) {
+        for (var i = 0; i < array.length; i++) {
+          callback.call(scope, i, array[i]);
+        }
       };
 
     var nav,
@@ -385,10 +392,10 @@
       },
 
       _closeOnNavClick: function () {
-        if (opts.closeOnNavClick && "querySelectorAll" in document && Array.prototype.forEach) {
+        if (opts.closeOnNavClick && "querySelectorAll" in document) {
           var links = nav.querySelectorAll("a"),
             self = this;
-          [].forEach.call(links, function (el, i) {
+          forEach(links, function (i, el) {
             addEvent(links[i], "click", function () {
               if (isMobile) {
                 self.toggle();
