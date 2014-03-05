@@ -219,6 +219,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 # Changelog
 
 
+`1.0.32` (2014-03-05) - Ditching the `[].forEach.call(NodeList)` hack to make the code more sensible and future-proof.
+
 `1.0.31` (2014-03-02) - Fixes Chrome Mobile rendering issue.
 
 `1.0.30` (2014-03-02) - Better performance. New [fixed navigation example](https://github.com/adtile/fixed-nav) provided by [Adtile](https://twitter.com/adtilehq). This release fixes an issue where multiple navigations on the same page got the same calculated height. Toggle now has an "active" class when the nav is open. Two new options are added: "closeOnNavClick" and "navActiveClass". Two new methods are also added: "open" and "close" (thanks to [@munkius](https://github.com/munkius) for the heads up on this!). This release adds also better "hamburger" icon for advanced demos which you can now style via css (size, color, shadow & etc). Includes also other bug fixes targeting older Android devices.
