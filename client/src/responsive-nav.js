@@ -279,10 +279,10 @@
       },
 
       _closeOnNavClick: function () {
-        if (opts.closeOnNavClick && "querySelectorAll" in document && Array.prototype.forEach) {
+        if (opts.closeOnNavClick && "querySelectorAll" in document) {
           var links = nav.querySelectorAll("a"),
             self = this;
-          [].forEach.call(links, function (el, i) {
+          forEach(links, function (i, el) {
             addEvent(links[i], "click", function () {
               if (isMobile) {
                 self.toggle();

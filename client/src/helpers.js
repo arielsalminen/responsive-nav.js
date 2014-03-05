@@ -1,4 +1,4 @@
-/* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass */
+/* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass, forEach */
 // fn arg can be an object or a function, thanks to handleEvent
 // read more at: http://www.thecssninja.com/javascript/handleevent
 var addEvent = function (el, evt, fn, bubble) {
@@ -84,4 +84,11 @@ var addEvent = function (el, evt, fn, bubble) {
   removeClass = function (el, cls) {
     var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
     el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
+  },
+
+  // forEach method that passes back the stuff we need
+  forEach = function (array, callback, scope) {
+    for (var i = 0; i < array.length; i++) {
+      callback.call(scope, i, array[i]);
+    }
   };
