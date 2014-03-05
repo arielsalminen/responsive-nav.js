@@ -29,6 +29,7 @@
     "removeClass" : true,
     "setAttributes" : true,
     "getChildren" : true,
+    "forEach" : true,
     "options" : true,
     "opts" : true,
     "nav" : true
