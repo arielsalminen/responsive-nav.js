@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.0.32 by @viljamis */
+/*! responsive-nav.js 1.0.40 by @viljamis */
 
 .nav-collapse ul {
   margin: 0;
@@ -13,7 +13,8 @@
   display: block;
 }
 
-.js .nav-collapse {
+.js .nav-collapse,
+.js .nav-collapse .dropdown ul {
   clip: rect(0 0 0 0);
   max-height: 0;
   position: absolute;
@@ -22,15 +23,18 @@
   zoom: 1;
 }
 
-.nav-collapse.opened {
+.nav-collapse.opened,
+.nav-collapse .dropdown.opened ul {
   max-height: 9999px;
 }
 
-.disable-pointer-events {
-  pointer-events: none !important;
+.nav-collapse .dropdown.opened > ul,
+.nav-collapse .dropdown .dropdown.opened > ul {
+  position: relative;
 }
 
-.nav-toggle {
+.nav-toggle,
+.dropdown-toggle {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -44,7 +48,8 @@
   .js .nav-collapse {
     position: relative;
   }
-  .js .nav-collapse.closed {
+  .js .nav-collapse.closed,
+  .js .nav-collapse.closed .dropdown ul {
     max-height: none;
   }
   .nav-toggle {
