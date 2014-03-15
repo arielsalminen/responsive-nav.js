@@ -1,7 +1,7 @@
 {
   "bitwise" : true,
   "camelcase" : true,
-  "curly" : true,
+  "curly" : false,
   "eqeqeq" : true,
   "forin" : false,
   "immed" : true,
@@ -26,10 +26,14 @@
     "addEvent" : true,
     "removeEvent" : true,
     "addClass" : true,
+    "hasClass" : true,
     "removeClass" : true,
     "setAttributes" : true,
     "getChildren" : true,
+    "elemsByClassName" : true,
     "forEach" : true,
+    "next" : true,
+    "closest" : true,
     "options" : true,
     "opts" : true,
     "nav" : true
