@@ -381,6 +381,10 @@
 
   };
 
-  window.responsiveNav = responsiveNav;
-
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = responsiveNav;
+  }
+  else {
+    window.responsiveNav = responsiveNav;
+  }
 }(document, window, 0));
