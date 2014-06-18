@@ -34,50 +34,50 @@
 Following the steps below you will be able to get the plugin up and running. If you notice any bugs, please post them to [GitHub issues](https://github.com/viljamis/responsive-nav.js/issues).
 
 1. Link files:
-```html
-	<!-- Put these into the <head> -->
-	<link rel="stylesheet" href="responsive-nav.css">
-	<script src="responsive-nav.js"></script>
-```
+	```html
+		<!-- Put these into the <head> -->
+		<link rel="stylesheet" href="responsive-nav.css">
+		<script src="responsive-nav.js"></script>
+	```
 
-2. Add markup:
-```html
-	<nav class="nav-collapse">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Projects</a></li>
-			<li><a href="#">Contact</a></li>
-	 	</ul>
-	</nav>
-```
+1. Add markup:
+	```html
+		<nav class="nav-collapse">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Contact</a></li>
+		 	</ul>
+		</nav>
+	```
 
-3. Hook up the plugin:
-```html
-<!-- Put this right before the </body> closing tag -->
-	<script>
-		var nav = responsiveNav(".nav-collapse");
-	</script>
-```
+1. Hook up the plugin:
+	```html
+	<!-- Put this right before the </body> closing tag -->
+		<script>
+			var nav = responsiveNav(".nav-collapse");
+		</script>
+	```
 
-4. Customizable options:
-```javascript
-	var nav = responsiveNav(".nav-collapse", { // Selector
-		animate: true, // Boolean: Use CSS3 transitions, true or false
-		transition: 284, // Integer: Speed of the transition, in milliseconds
-		label: "Menu", // String: Label for the navigation toggle
-		insert: "before", // String: Insert the toggle before or after the navigation
-		customToggle: "", // Selector: Specify the ID of a custom toggle
-		closeOnNavClick: false, // Boolean: Close the navigation when one of the links are clicked
-		openPos: "relative", // String: Position of the opened nav, relative or static
-		navClass: "nav-collapse", // String: Default CSS class. If changed, you need to edit the CSS too!
-		navActiveClass: "js-nav-active", // String: Class that is added to <html> element when nav is active
-		jsClass: "js", // String: 'JS enabled' class which is added to <html> element
-		init: function(){}, // Function: Init callback
-		open: function(){}, // Function: Open callback
-		close: function(){} // Function: Close callback
-	});
-```
+1. Customizable options:
+	```javascript
+		var nav = responsiveNav(".nav-collapse", { // Selector
+			animate: true, // Boolean: Use CSS3 transitions, true or false
+			transition: 284, // Integer: Speed of the transition, in milliseconds
+			label: "Menu", // String: Label for the navigation toggle
+			insert: "before", // String: Insert the toggle before or after the navigation
+			customToggle: "", // Selector: Specify the ID of a custom toggle
+			closeOnNavClick: false, // Boolean: Close the navigation when one of the links are clicked
+			openPos: "relative", // String: Position of the opened nav, relative or static
+			navClass: "nav-collapse", // String: Default CSS class. If changed, you need to edit the CSS too!
+			navActiveClass: "js-nav-active", // String: Class that is added to <html> element when nav is active
+			jsClass: "js", // String: 'JS enabled' class which is added to <html> element
+			init: function(){}, // Function: Init callback
+			open: function(){}, // Function: Open callback
+			close: function(){} // Function: Close callback
+		});
+	```
 
 
 # Public methods
