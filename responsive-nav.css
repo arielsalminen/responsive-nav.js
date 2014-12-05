@@ -41,13 +41,13 @@
 }
 
 @media screen and (min-width: 40em) {
-  .js .nav-collapse {
+  .js.nav-multiple-layouts .nav-collapse {
     position: relative;
   }
-  .js .nav-collapse.closed {
+  .js.nav-multiple-layouts .nav-collapse.closed {
     max-height: none;
   }
-  .nav-toggle {
+  .nav-multiple-layouts .nav-toggle {
     display: none;
   }
 }

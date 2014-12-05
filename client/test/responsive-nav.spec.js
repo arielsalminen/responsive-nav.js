@@ -58,7 +58,7 @@ describe("responsive-nav", function () {
 
     it("adds a 'js' class", function () {
       insertNav();
-      expect(document.documentElement.className).toBe("js");
+      expect(document.documentElement.className).toBe("js nav-multiple-layouts");
       nav.destroy();
     });
 
@@ -242,6 +242,13 @@ describe("responsive-nav", function () {
    */
   describe("options", function () {
 
+    it("allows user to always use dropdown navigation", function() {
+      document.getElementsByTagName("body")[0].appendChild(el);
+      nav = responsiveNav("#" + selector, { alwaysDropdown: true });
+      expect(document.documentElement.className).not.toBe("js nav-multiple-layouts");
+      nav.destroy();
+    });
+
     it("turns off animation if needed", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
       nav = responsiveNav("#" + selector, { animate: false });
@@ -295,14 +302,14 @@ describe("responsive-nav", function () {
     it("allows users to change the default container class", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
       nav = responsiveNav("#" + selector, { navClass: "random-class" });
-      expect(el.className).toBe("random-class random-class-22 closed");
+      expect(el.className).toBe("random-class random-class-23 closed");
       nav.destroy();
     });
 
     it("allows users to specify custom JS class", function () {
       document.getElementsByTagName("body")[0].appendChild(el);
       nav = responsiveNav("#" + selector, { jsClass: "foobar" });
-      expect(document.documentElement.className).toBe("js foobar");
+      expect(document.documentElement.className).toBe("js foobar nav-multiple-layouts");
       nav.destroy();
     });
 

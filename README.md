@@ -63,6 +63,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 4. Customizable options:
 ```javascript
 	var nav = responsiveNav(".nav-collapse", { // Selector
+		alwaysDropdown: false, // Boolean: Override breakpoint to always use mobile-style nav
 		animate: true, // Boolean: Use CSS3 transitions, true or false
 		transition: 284, // Integer: Speed of the transition, in milliseconds
 		label: "Menu", // String: Label for the navigation toggle
@@ -218,6 +219,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`1.0.33` (2014-12-05) - Adds `alwaysDropdown` option to enable mobile-style navigation regardless of the MQ breakpoint.
 
 `1.0.32` (2014-03-05) - Ditching the `[].forEach.call(NodeList)` hack to make the code more sensible and future-proof.
 
