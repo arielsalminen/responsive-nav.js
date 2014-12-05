@@ -142,6 +142,7 @@
 
         // Default options
         this.options = {
+          alwaysDropdown: false,
           animate: true,                    // Boolean: Use CSS3 transitions, true or false
           transition: 284,                  // Integer: Speed of the transition, in milliseconds
           label: "Menu",                    // String: Label for the navigation toggle
@@ -164,6 +165,11 @@
 
         // Adds "js" class for <html>
         addClass(htmlEl, this.options.jsClass);
+
+        // Disable media query at breakpoint
+        if (!this.options.alwaysDropdown) {
+          addClass(htmlEl, "nav-multiple-layouts");
+        }
 
         // Wrapper
         this.wrapperEl = el.replace("#", "");
@@ -202,6 +208,7 @@
         removeClass(nav, opts.navClass);
         removeClass(nav, opts.navClass + "-" + this.index);
         removeClass(htmlEl, opts.navActiveClass);
+        removeClass(htmlEl, "nav-multiple-layouts");
         nav.removeAttribute("style");
         nav.removeAttribute("aria-hidden");
 
