@@ -1,6 +1,15 @@
 /* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass, forEach */
-// fn arg can be an object or a function, thanks to handleEvent
-// read more at: http://www.thecssninja.com/javascript/handleevent
+
+/**
+ * Add Event
+ * fn arg can be an object or a function, thanks to handleEvent
+ * read more at: http://www.thecssninja.com/javascript/handleevent
+ *
+ * @param  {element}  element
+ * @param  {event}    event
+ * @param  {Function} fn
+ * @param  {boolean}  bubbling
+ */
 var addEvent = function (el, evt, fn, bubble) {
     if ("addEventListener" in el) {
       // BBOS6 doesn't support handleEvent, catch and polyfill
@@ -29,6 +38,14 @@ var addEvent = function (el, evt, fn, bubble) {
     }
   },
 
+  /**
+   * Remove Event
+   *
+   * @param  {element}  element
+   * @param  {event}    event
+   * @param  {Function} fn
+   * @param  {boolean}  bubbling
+   */
   removeEvent = function (el, evt, fn, bubble) {
     if ("removeEventListener" in el) {
       try {
@@ -53,6 +70,12 @@ var addEvent = function (el, evt, fn, bubble) {
     }
   },
 
+  /**
+   * Get the children of any element
+   *
+   * @param  {element}
+   * @return {array} Returns matching elements in an array
+   */
   getChildren = function (e) {
     if (e.children.length < 1) {
       throw new Error("The Nav container has no containing elements");
@@ -68,12 +91,24 @@ var addEvent = function (el, evt, fn, bubble) {
     return children;
   },
 
+  /**
+   * Sets multiple attributes at once
+   *
+   * @param {element} element
+   * @param {attrs}   attrs
+   */
   setAttributes = function (el, attrs) {
     for (var key in attrs) {
       el.setAttribute(key, attrs[key]);
     }
   },
 
+  /**
+   * Adds a class to any element
+   *
+   * @param {element} element
+   * @param {string}  class
+   */
   addClass = function (el, cls) {
     if (el.className.indexOf(cls) !== 0) {
       el.className += " " + cls;
@@ -81,12 +116,24 @@ var addEvent = function (el, evt, fn, bubble) {
     }
   },
 
+  /**
+   * Remove a class from any element
+   *
+   * @param  {element} element
+   * @param  {string}  class
+   */
   removeClass = function (el, cls) {
     var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
     el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
   },
 
-  // forEach method that passes back the stuff we need
+  /**
+   * forEach method that passes back the stuff we need
+   *
+   * @param  {array}    array
+   * @param  {Function} callback
+   * @param  {scope}    scope
+   */
   forEach = function (array, callback, scope) {
     for (var i = 0; i < array.length; i++) {
       callback.call(scope, i, array[i]);
