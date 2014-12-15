@@ -7,6 +7,7 @@
  */
 
 (function (document, window, index) {
+  // Index is used to keep multiple navs on the same page namespaced
 
   "use strict";
 
@@ -27,7 +28,10 @@
     var ResponsiveNav = function (el, options) {
         var i;
 
-        // Default options
+        /**
+         * Default options
+         * @type {Object}
+         */
         this.options = {
           animate: true,                    // Boolean: Use CSS3 transitions, true or false
           transition: 284,                  // Integer: Speed of the transition, in milliseconds
@@ -81,7 +85,9 @@
 
     ResponsiveNav.prototype = {
 
-      // Public methods
+      /**
+       * Unattaches events and removes any classes that were added
+       */
       destroy: function () {
         this._removeStyles();
         removeClass(nav, "closed");
@@ -93,6 +99,7 @@
         nav.removeAttribute("aria-hidden");
 
         removeEvent(window, "resize", this, false);
+        removeEvent(window, "focus", this, false);
         removeEvent(document.body, "touchmove", this, false);
         removeEvent(navToggle, "touchstart", this, false);
         removeEvent(navToggle, "touchend", this, false);
@@ -107,6 +114,9 @@
         }
       },
 
+      /**
+       * Toggles the navigation open/close
+       */
       toggle: function () {
         if (hasAnimFinished === true) {
           if (!navOpen) {
@@ -114,9 +124,15 @@
           } else {
             this.close();
           }
+
+          // Enable pointer events again
+          this._enablePointerEvents();
         }
       },
 
+      /**
+       * Opens the navigation
+       */
       open: function () {
         if (!navOpen) {
           removeClass(nav, "closed");
@@ -130,6 +146,9 @@
         }
       },
 
+      /**
+       * Closes the navigation
+       */
       close: function () {
         if (navOpen) {
           addClass(nav, "closed");
@@ -138,12 +157,15 @@
           removeClass(navToggle, "active");
           setAttributes(nav, {"aria-hidden": "true"});
 
+          // If animations are enabled, wait until they finish
           if (opts.animate) {
             hasAnimFinished = false;
             setTimeout(function () {
               nav.style.position = "absolute";
               hasAnimFinished = true;
             }, opts.transition + 10);
+
+          // Animations aren't enabled, we can do these immediately
           } else {
             nav.style.position = "absolute";
           }
@@ -153,7 +175,13 @@
         }
       },
 
+      /**
+       * Resize is called on window resize and orientation change.
+       * It initializes the CSS styles and height calculations.
+       */
       resize: function () {
+
+        // Resize watches navigation toggle's display state
         if (window.getComputedStyle(navToggle, null).getPropertyValue("display") !== "none") {
 
           isMobile = true;
@@ -177,6 +205,12 @@
         }
       },
 
+      /**
+       * Takes care of all even handling
+       *
+       * @param  {event} event
+       * @return {type} returns the type of event that should be used
+       */
       handleEvent: function (e) {
         var evt = e || window.event;
 
@@ -197,13 +231,16 @@
         case "keyup":
           this._onKeyUp(evt);
           break;
+        case "focus":
         case "resize":
           this.resize(evt);
           break;
         }
       },
 
-      // Private methods
+      /**
+       * Initializes the widget
+       */
       _init: function () {
         this.index = index++;
 
@@ -218,13 +255,18 @@
         this._transitions();
         this.resize();
 
-        // IE8 hack
+        /**
+         * On IE8 the resize event triggers too early for some reason
+         * so it's called here again on init to make sure all the
+         * calculated styles are correct.
+         */
         var self = this;
         setTimeout(function () {
           self.resize();
         }, 20);
 
         addEvent(window, "resize", this, false);
+        addEvent(window, "focus", this, false);
         addEvent(document.body, "touchmove", this, false);
         addEvent(navToggle, "touchstart", this, false);
         addEvent(navToggle, "touchend", this, false);
@@ -232,10 +274,15 @@
         addEvent(navToggle, "keyup", this, false);
         addEvent(navToggle, "click", this, false);
 
-        // Init callback
+        /**
+         * Init callback here
+         */
         opts.init();
       },
 
+      /**
+       * Creates Styles to the <head>
+       */
       _createStyles: function () {
         if (!styleElement.parentNode) {
           styleElement.type = "text/css";
@@ -243,13 +290,21 @@
         }
       },
 
+      /**
+       * Removes styles from the <head>
+       */
       _removeStyles: function () {
         if (styleElement.parentNode) {
           styleElement.parentNode.removeChild(styleElement);
         }
       },
 
+      /**
+       * Creates Navigation Toggle
+       */
       _createToggle: function () {
+
+        // If there's no toggle, let's create one
         if (!opts.customToggle) {
           var toggle = document.createElement("a");
           toggle.innerHTML = opts.label;
@@ -258,6 +313,7 @@
             "class": "nav-toggle"
           });
 
+          // Determine where to insert the toggle
           if (opts.insert === "after") {
             nav.parentNode.insertBefore(toggle, nav.nextSibling);
           } else {
@@ -265,6 +321,8 @@
           }
 
           navToggle = toggle;
+
+        // There is a toggle already, let's use that one
         } else {
           var toggleEl = opts.customToggle.replace("#", "");
 
@@ -278,9 +336,12 @@
         }
       },
 
+      /**
+       * Closes the navigation when a link inside is clicked
+       */
       _closeOnNavClick: function () {
-        if (opts.closeOnNavClick && "querySelectorAll" in document) {
-          var links = nav.querySelectorAll("a"),
+        if (opts.closeOnNavClick) {
+          var links = nav.getElementsByTagName("a"),
             self = this;
           forEach(links, function (i, el) {
             addEvent(links[i], "click", function () {
@@ -292,36 +353,76 @@
         }
       },
 
+      /**
+       * Prevents the default tap functionality
+       *
+       * @param  {event} event
+       */
       _preventDefault: function(e) {
         if (e.preventDefault) {
+          if (e.stopImmediatePropagation) {
+            e.stopImmediatePropagation();
+          }
           e.preventDefault();
           e.stopPropagation();
+          return false;
+
+        // This is strictly for old IE
         } else {
           e.returnValue = false;
         }
       },
 
+      /**
+       * On touch start get the location of the touch
+       * and disable pointer events on the body.
+       *
+       * @param  {event} event
+       */
       _onTouchStart: function (e) {
-        e.stopPropagation();
-        if (opts.insert === "after") {
-          addClass(document.body, "disable-pointer-events");
-        }
+        this._preventDefault(e);
+        addClass(document.body, "disable-pointer-events");
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.touchHasMoved = false;
+
+        /**
+         * We remove mouseup event completely here to avoid
+         * double triggering of events.
+         */
         removeEvent(navToggle, "mouseup", this, false);
       },
 
+      /**
+       * Check if the user is scrolling instead of tapping and
+       * re-enable pointer events if movement happed.
+       *
+       * @param  {event} event
+       */
       _onTouchMove: function (e) {
         if (Math.abs(e.touches[0].clientX - this.startX) > 10 ||
         Math.abs(e.touches[0].clientY - this.startY) > 10) {
+          this._enablePointerEvents();
           this.touchHasMoved = true;
         }
       },
 
+      /**
+       * On touch end toggle either the whole navigation or
+       * a sub-navigation depending on which one was tapped.
+       *
+       * @param  {event} event
+       */
       _onTouchEnd: function (e) {
         this._preventDefault(e);
+        if (!isMobile) {
+          return;
+        }
+
+        // If the user isn't scrolling
         if (!this.touchHasMoved) {
+
+          // If the event type is touch
           if (e.type === "touchend") {
             this.toggle();
             if (opts.insert === "after") {
@@ -330,9 +431,12 @@
               }, opts.transition + 300);
             }
             return;
+
+          // Event type was click, not touch
           } else {
             var evt = e || window.event;
-            // If it isn't a right click
+
+            // If it isn't a right click, do toggling
             if (!(evt.which === 3 || evt.button === 2)) {
               this.toggle();
             }
@@ -340,6 +444,13 @@
         }
       },
 
+      /**
+       * For keyboard accessibility, toggle the navigation on Enter
+       * keypress too (also sub-navigation is keyboard accessible
+       * which explains the complexity here)
+       *
+       * @param  {event} event
+       */
       _onKeyUp: function (e) {
         var evt = e || window.event;
         if (evt.keyCode === 13) {
@@ -347,6 +458,16 @@
         }
       },
 
+      /**
+       * Enable pointer events
+       */
+      _enablePointerEvents: function () {
+        removeClass(document.body, "disable-pointer-events");
+      },
+
+      /**
+       * Adds the needed CSS transitions if animations are enabled
+       */
       _transitions: function () {
         if (opts.animate) {
           var objStyle = nav.style,
@@ -359,12 +480,19 @@
         }
       },
 
+      /**
+       * Calculates the height of the navigation and then creates
+       * styles which are later added to the page <head>
+       */
       _calcHeight: function () {
         var savedHeight = 0;
         for (var i = 0; i < nav.inner.length; i++) {
           savedHeight += nav.inner[i].offsetHeight;
         }
-        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important}";
+
+        // Pointer event styles are also here since they might only be confusing inside the stylesheet
+        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " .disable-pointer-events{pointer-events:none !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
+
 
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;
@@ -377,6 +505,9 @@
 
     };
 
+    /**
+     * Return new Responsive Nav
+     */
     return new ResponsiveNav(el, options);
 
   };
