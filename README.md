@@ -3,13 +3,13 @@
 
 ### Responsive navigation plugin without library dependencies and with fast touch screen support.
 
-[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only ~1kb minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
+[Responsive Nav](http://responsive-nav.com) is a tiny JavaScript plugin which weighs only 1.3kb minified and Gzip’ed, and helps you to create a toggled navigation for small screens. It uses touch events and CSS3 transitions for the best possible performance. It also contains a “clever” workaround that makes it possible to transition from `height: 0` to `height: auto`, which isn’t normally possible with CSS3 transitions.
 
 
 #### Features:
 
 * Simple, semantic markup.
-* Weighs only ~1kb minified and Gzip’ed.
+* Weighs only 1.3kb minified and Gzip’ed.
 * Doesn’t require any external library.
 * Uses CSS3 transitions and touch events.
 * Supports RequireJS and multiple instances.
@@ -95,13 +95,16 @@ See the [example code here](https://github.com/viljamis/responsive-nav.js/blob/m
 `nav.resize();`
 
 
+# Changing the breakpoint
+
+Breakpoint is defined in the [responsive-nav.css](https://github.com/viljamis/responsive-nav.js/blob/master/responsive-nav.css) file. Responsive Nav checks on window resize and on orientation change if the navigation toggle has `display: none;` and based on that switches between mobile and desktop states.
+
+
 # Supporting old IEs
 
 Even though Responsive Nav works even on IE6, you should remember that IE8 and under do not support media queries and thus can’t change between "small screen" and "large screen" styles. If needed, you can add Media Query support for those browsers using [respond.js](https://github.com/scottjehl/Respond). There’s an example [here](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs).
 
-When old IE support is needed you should stick to using only ID selectors with Responsive Nav. That’s because the plugin uses `getElementById` method by default which is widely supported in all browsers. When using classes or element selectors `querySelector` will be used instead which isn’t supported in old IEs.
-
-`closeOnNavClick` option is the only thing that doesn’t work in IE8 & under, but the functionality is built using progressive enhancement, so nothing will break if you want to enable it for other browsers.
+When old IE support is needed you should stick to using ID selector with Responsive Nav. That’s because the plugin uses `getElementById` method by default which is widely supported in all browsers. When using classes or element selectors `querySelector` will be used instead which isn’t supported in old IEs.
 
 
 # Things to keep in mind
@@ -109,15 +112,14 @@ When old IE support is needed you should stick to using only ID selectors with R
 Calculated Max-height doesn't account for top/bottom padding on `.nav-collapse` (this is on purpose). If you need to add padding inside the nav, you can apply it to any other element, for example the `<ul>` inside `.nav-collapse`.
 
 
-
 # Tested on the following platforms
 
 * iOS 4.2.1+
 * Android 1.6+
-* Windows Phone 7.5 & 7.8
+* Windows Phone 7.5+
 * Blackberry 7.0+
 * Blackberry Tablet 2.0+
-* Jolla
+* Jolla 1.0+
 * Kindle 3.3+
 * Maemo 5.0+
 * Meego 1.2+
@@ -125,8 +127,7 @@ Calculated Max-height doesn't account for top/bottom padding on `.nav-collapse` 
 * Symbian Belle
 * Symbian S40 Asha
 * webOS 2.0+
-* Windows XP
-* Windows 7
+* Windows XP+
 * Mac OS X
 
 
@@ -139,21 +140,25 @@ npm install -g grunt-cli
 npm install
 ```
 
+
 ## Starting the server
 
 ```sh
 python -m SimpleHTTPServer 8000
 ```
 
+
 ## Git Hooks
 
 It is useful to setup a pre-commit and post-checkout hooks to smooth your workflow. On pre-commit we want to ensure that the project can build successfully, and on post-checkout we want to ensure that any new dependencies are installed via npm.
+
 
 ### Pre-Commit
 
 ```sh
 touch .git/hooks/pre-commit && echo -e '#!/bin/sh\ngrunt test' > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 ```
+
 
 ### Post-Checkout
 
@@ -218,6 +223,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`1.0.33` (2014-12-15) - "closeOnNavClick" now works on old IEs too, so no more features that only work in modern browsers. Fixes a bug which caused the navigation to sometimes not toggle.  Also fixes a bug in Safari that sometimes caused the navigation render incorrectly when switching between browser tabs. (+Adds more comments to the code.)
 
 `1.0.32` (2014-03-05) - Ditching the `[].forEach.call(NodeList)` hack to make the code more sensible and future-proof.
 
