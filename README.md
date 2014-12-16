@@ -223,6 +223,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`1.0.34` (2014-12-16) - Fixes versioning.
+
 `1.0.33` (2014-12-15) - "closeOnNavClick" now works on old IEs too, so no more features that only work in modern browsers. Fixes a bug which caused the navigation to sometimes not toggle.  Also fixes a bug in Safari that sometimes caused the navigation render incorrectly when switching between browser tabs. (+Adds more comments to the code.)
 
 `1.0.32` (2014-03-05) - Ditching the `[].forEach.call(NodeList)` hack to make the code more sensible and future-proof.
