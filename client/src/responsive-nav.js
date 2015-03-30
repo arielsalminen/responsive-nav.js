@@ -124,10 +124,10 @@
           } else {
             this.close();
           }
-
-          // Enable pointer events again
-          this._enablePointerEvents();
         }
+
+        // Enable pointer events again
+        this._enablePointerEvents();
       },
 
       /**
@@ -426,9 +426,7 @@
           if (e.type === "touchend") {
             this.toggle();
             if (opts.insert === "after") {
-              setTimeout(function () {
-                removeClass(document.body, "disable-pointer-events");
-              }, opts.transition + 300);
+              setTimeout(this._enablePointerEvents, opts.transition + 300);
             }
             return;
 
