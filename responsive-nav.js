@@ -2,7 +2,7 @@
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
- * Copyright (c) 2014 @viljamis
+ * Copyright (c) 2015 @viljamis
  * Available under the MIT license
  */
 
@@ -286,9 +286,6 @@
           } else {
             this.close();
           }
-
-          // Enable pointer events again
-          this._enablePointerEvents();
         }
       },
 
@@ -536,21 +533,19 @@
       },
 
       /**
-       * On touch start get the location of the touch
-       * and disable pointer events on the body.
+       * On touch start we get the location of the touch
        *
        * @param  {event} event
        */
       _onTouchStart: function (e) {
         this._preventDefault(e);
-        addClass(document.body, "disable-pointer-events");
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.touchHasMoved = false;
 
         /**
          * We remove mouseup event completely here to avoid
-         * double triggering of events.
+         * double triggering the event.
          */
         removeEvent(navToggle, "mouseup", this, false);
       },
@@ -564,7 +559,6 @@
       _onTouchMove: function (e) {
         if (Math.abs(e.touches[0].clientX - this.startX) > 10 ||
         Math.abs(e.touches[0].clientY - this.startY) > 10) {
-          this._enablePointerEvents();
           this.touchHasMoved = true;
         }
       },
@@ -587,11 +581,6 @@
           // If the event type is touch
           if (e.type === "touchend") {
             this.toggle();
-            if (opts.insert === "after") {
-              setTimeout(function () {
-                removeClass(document.body, "disable-pointer-events");
-              }, opts.transition + 300);
-            }
             return;
 
           // Event type was click, not touch
@@ -621,13 +610,6 @@
       },
 
       /**
-       * Enable pointer events
-       */
-      _enablePointerEvents: function () {
-        removeClass(document.body, "disable-pointer-events");
-      },
-
-      /**
        * Adds the needed CSS transitions if animations are enabled
        */
       _transitions: function () {
@@ -652,8 +634,7 @@
           savedHeight += nav.inner[i].offsetHeight;
         }
 
-        // Pointer event styles are also here since they might only be confusing inside the stylesheet
-        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " .disable-pointer-events{pointer-events:none !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
+        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
 
 
         if (styleElement.styleSheet) {

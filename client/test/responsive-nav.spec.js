@@ -45,7 +45,7 @@ describe("responsive-nav", function () {
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
         styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".js .nav-collapse-0{max-height:16px !important} .js .disable-pointer-events{pointer-events:none !important} .js .nav-collapse-0.dropdown-active {max-height:9999px !important}");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".js .nav-collapse-0{max-height:16px !important} .js .nav-collapse-0.dropdown-active {max-height:9999px !important}");
       nav.destroy();
     });
 
@@ -112,7 +112,7 @@ describe("responsive-nav", function () {
       insertNav();
       var styleEl = document.getElementsByTagName("style")[0],
         styleContents = styleEl.innerHTML || styleEl.styleSheet.cssText.replace(/\s+/g, "").replace(/\;/g, "");
-      expect(styleContents.replace(/\.opened/g, "")).toBe(".js .nav-collapse-7{max-height:50px !important} .js .disable-pointer-events{pointer-events:none !important} .js .nav-collapse-7.dropdown-active {max-height:9999px !important}");
+      expect(styleContents.replace(/\.opened/g, "")).toBe(".js .nav-collapse-7{max-height:50px !important} .js .nav-collapse-7.dropdown-active {max-height:9999px !important}");
       nav.destroy();
     });
 
