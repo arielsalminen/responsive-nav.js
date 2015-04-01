@@ -334,7 +334,7 @@
       },
 
       /**
-       * Closes the navigation when a link inside is clicked
+       * Closes the navigation when a link inside is clicked.
        */
       _closeOnNavClick: function () {
         if (opts.closeOnNavClick) {
@@ -351,7 +351,7 @@
       },
 
       /**
-       * Prevents the default tap functionality
+       * Prevents the default functionality.
        *
        * @param  {event} event
        */
@@ -371,7 +371,7 @@
       },
 
       /**
-       * On touch start we get the location of the touch
+       * On touch start we get the location of the touch.
        *
        * @param  {event} event
        */
@@ -389,8 +389,7 @@
       },
 
       /**
-       * Check if the user is scrolling instead of tapping and
-       * re-enable pointer events if movement happed.
+       * Check if the user is scrolling instead of tapping.
        *
        * @param  {event} event
        */
@@ -402,8 +401,7 @@
       },
 
       /**
-       * On touch end toggle either the whole navigation or
-       * a sub-navigation depending on which one was tapped.
+       * On touch end toggle the navigation.
        *
        * @param  {event} event
        */
@@ -435,8 +433,7 @@
 
       /**
        * For keyboard accessibility, toggle the navigation on Enter
-       * keypress too (also sub-navigation is keyboard accessible
-       * which explains the complexity here)
+       * keypress too.
        *
        * @param  {event} event
        */
@@ -455,9 +452,9 @@
           var objStyle = nav.style,
             transition = "max-height " + opts.transition + "ms";
 
-          objStyle.WebkitTransition = transition;
-          objStyle.MozTransition = transition;
-          objStyle.OTransition = transition;
+          objStyle.WebkitTransition =
+          objStyle.MozTransition =
+          objStyle.OTransition =
           objStyle.transition = transition;
         }
       },
@@ -473,7 +470,6 @@
         }
 
         var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
-
 
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;
