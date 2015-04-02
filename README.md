@@ -223,9 +223,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
-`1.0.37` (2015-04-02) - Adds feature detection for event.stopImmediatePropagation.
-
-`1.0.36` (2015-04-02) - Removes all pointer-event hacks completely and also fixes issue which caused multiple taps to sometimes freeze the nav completely.
+`1.0.38` (2015-04-02) - Fixes custom-toggle demo, adds feature detection for event.stopImmediatePropagation, removes all pointer-event hacks completely and also fixes an issue which caused multiple taps to sometimes freeze the nav completely.
 
 `1.0.34` (2014-12-16) - Fixes versioning.
 
