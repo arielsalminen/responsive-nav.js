@@ -544,7 +544,7 @@
         this.touchHasMoved = false;
 
         /**
-         * We remove mouseup event completely here to avoid
+         * Remove mouseup event completely here to avoid
          * double triggering the event.
          */
         removeEvent(navToggle, "mouseup", this, false);
