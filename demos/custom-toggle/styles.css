@@ -9,3 +9,10 @@ button {
 button.active {
   background: green;
 }
+
+
+@media (min-width: 700px) {
+  button {
+    display: none;
+  }
+}
