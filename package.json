@@ -1,6 +1,6 @@
 {
   "name": "responsive-nav",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "Responsive Nav JS plugin",
   "main": "index.js",
   "scripts": {

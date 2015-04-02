@@ -223,6 +223,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`1.0.35` (2015-04-02) - Removes all pointer-event hacks completely and also fixes issue which caused multiple taps to sometimes freeze the nav completely.
+
 `1.0.34` (2014-12-16) - Fixes versioning.
 
 `1.0.33` (2014-12-15) - "closeOnNavClick" now works on old IEs too, so no more features that only work in modern browsers. Fixes a bug which caused the navigation to sometimes not toggle.  Also fixes a bug in Safari that sometimes caused the navigation render incorrectly when switching between browser tabs. (+Adds more comments to the code.)
