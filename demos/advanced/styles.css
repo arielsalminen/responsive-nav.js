@@ -37,6 +37,7 @@ body {
   text-size-adjust: 100%;
   color: #37302a;
   background: #fff;
+  min-height: 5000px;
   font: normal 100%/1.4 sans-serif;
 }
 
@@ -176,8 +177,3 @@ section {
   font-size: 24px;
   content:"x";
 }
-
-
-
-
-

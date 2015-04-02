@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.0.36
+/*! responsive-nav.js 1.0.37
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -6,6 +6,7 @@
  * Available under the MIT license
  */
 
+/* global Event */
 (function (document, window, index) {
   // Index is used to keep multiple navs on the same page namespaced
 
@@ -538,7 +539,9 @@
        * @param  {event} event
        */
       _onTouchStart: function (e) {
-        this._preventDefault(e);
+        if (!Event.prototype.stopImmediatePropagation) {
+          this._preventDefault(e);
+        }
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.touchHasMoved = false;

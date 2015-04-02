@@ -6,6 +6,7 @@
  * Available under the MIT license
  */
 
+/* global Event */
 (function (document, window, index) {
   // Index is used to keep multiple navs on the same page namespaced
 
@@ -376,7 +377,9 @@
        * @param  {event} event
        */
       _onTouchStart: function (e) {
-        this._preventDefault(e);
+        if (!Event.prototype.stopImmediatePropagation) {
+          this._preventDefault(e);
+        }
         this.startX = e.touches[0].clientX;
         this.startY = e.touches[0].clientY;
         this.touchHasMoved = false;
