@@ -223,6 +223,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 # Changelog
 
+`1.0.39` (2015-04-09) - Adds Browserify support.
+
 `1.0.38` (2015-04-02) - Fixes custom-toggle demo, adds feature detection for event.stopImmediatePropagation, removes all pointer-event hacks completely and also fixes an issue which caused multiple taps to sometimes freeze the nav completely.
 
 `1.0.34` (2014-12-16) - Fixes versioning.
