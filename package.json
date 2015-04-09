@@ -3,7 +3,6 @@
   "version": "1.0.39",
   "description": "Responsive Nav JS plugin",
   "main": "client/dist/responsive-nav.js",
-  "files": ""
   "scripts": {
     "test": "grunt test --verbose"
   },
