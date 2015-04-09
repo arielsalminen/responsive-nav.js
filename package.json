@@ -1,8 +1,8 @@
 {
   "name": "responsive-nav",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "Responsive Nav JS plugin",
-  "main": "index.js",
+  "main": "responsive-nav.js",
   "scripts": {
     "test": "grunt test --verbose"
   },

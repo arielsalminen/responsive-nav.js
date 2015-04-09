@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.0.38
+/*! responsive-nav.js 1.0.39
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -654,6 +654,10 @@
 
   };
 
-  window.responsiveNav = responsiveNav;
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = responsiveNav;
+  } else {
+    window.responsiveNav = responsiveNav;
+  }
 
 }(document, window, 0));
