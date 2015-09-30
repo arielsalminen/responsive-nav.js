@@ -630,12 +630,13 @@
        * styles which are later added to the page <head>
        */
       _calcHeight: function () {
-        var savedHeight = 0;
+        var savedHeight = 0,
+            computedStyle;
         for (var i = 0; i < nav.inner.length; i++) {
           savedHeight += nav.inner[i].offsetHeight;
           
           if (this.options.includeMargins) {
-            computedStyle = window.getComputedStyle(nav.inner[i], null);
+            computedStyle = window.getComputedStyle(nav.inner[i]);
             savedHeight += parseInt(computedStyle.getPropertyValue("margin-top"));
             savedHeight += parseInt(computedStyle.getPropertyValue("margin-bottom"));
           }          
