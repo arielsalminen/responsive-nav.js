@@ -206,6 +206,7 @@
           navClass: "nav-collapse",         // String: Default CSS class. If changed, you need to edit the CSS too!
           navActiveClass: "js-nav-active",  // String: Class that is added to <html> element when nav is active
           jsClass: "js",                    // String: 'JS enabled' class which is added to <html> element
+          includeMargins: false,            // Boolean: Include navigation item's margin when calculating height, true or false
           init: function(){},               // Function: Init callback
           open: function(){},               // Function: Open callback
           close: function(){}               // Function: Close callback
@@ -629,9 +630,16 @@
        * styles which are later added to the page <head>
        */
       _calcHeight: function () {
-        var savedHeight = 0;
+        var savedHeight = 0,
+            computedStyle;
         for (var i = 0; i < nav.inner.length; i++) {
           savedHeight += nav.inner[i].offsetHeight;
+          
+          if (this.options.includeMargins) {
+            computedStyle = window.getComputedStyle(nav.inner[i]);
+            savedHeight += parseInt(computedStyle.getPropertyValue("margin-top"));
+            savedHeight += parseInt(computedStyle.getPropertyValue("margin-bottom"));
+          }          
         }
 
         var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
