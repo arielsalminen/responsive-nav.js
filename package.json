@@ -5,10 +5,10 @@
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/viljamis/responsive-nav.js.git"
+    "url": "https://github.com/arielsalminen/responsive-nav.js.git"
   },
   "bugs": {
-    "url": "https://github.com/viljamis/responsive-nav/issues"
+    "url": "https://github.com/arielsalminen/responsive-nav/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
