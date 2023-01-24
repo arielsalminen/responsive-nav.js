@@ -23,15 +23,15 @@
 # Demos
 
 * [Fixed positioned one page demo](http://www.adtile.me/fixed-nav/) using smooth scrolling. View source on GitHub: [adtile/fixed-nav](https://github.com/adtile/fixed-nav)
-* [Advanced demo](http://responsive-nav.com/demo/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/advanced-left-navigation))
+* [Advanced demo](http://responsive-nav.com/demo/) (View the [source code](https://github.com/arielsalminen/responsive-nav.js/tree/master/demos/advanced-left-navigation))
 * [Official website](http://responsive-nav.com) (works as a demo, too!)
-* [Simple demo with IE support](http://responsive-nav.com/demo-respondjs/) (View the [source code](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs))
-* 11(!) additional examples included in this repository's [demos](https://github.com/viljamis/responsive-nav.js/tree/master/demos) folder.
+* [Simple demo with IE support](http://responsive-nav.com/demo-respondjs/) (View the [source code](https://github.com/arielsalminen/responsive-nav.js/tree/master/demos/ie-support-using-respondjs))
+* 11(!) additional examples included in this repository's [demos](https://github.com/arielsalminen/responsive-nav.js/tree/master/demos) folder.
 
 
 # Usage instructions
 
-Following the steps below you will be able to get the plugin up and running. If you notice any bugs, please post them to [GitHub issues](https://github.com/viljamis/responsive-nav.js/issues).
+Following the steps below you will be able to get the plugin up and running. If you notice any bugs, please post them to [GitHub issues](https://github.com/arielsalminen/responsive-nav.js/issues).
 
 1. Link files:
 	```html
@@ -82,7 +82,7 @@ Following the steps below you will be able to get the plugin up and running. If 
 
 # Public methods
 
-See the [example code here](https://github.com/viljamis/responsive-nav.js/blob/master/demos/public-events/index.html) for the usage.
+See the [example code here](https://github.com/arielsalminen/responsive-nav.js/blob/master/demos/public-events/index.html) for the usage.
 
 `nav.toggle();`
 
@@ -97,12 +97,12 @@ See the [example code here](https://github.com/viljamis/responsive-nav.js/blob/m
 
 # Changing the breakpoint
 
-Breakpoint is defined in the [responsive-nav.css](https://github.com/viljamis/responsive-nav.js/blob/master/responsive-nav.css) file. Responsive Nav checks on window resize and on orientation change if the navigation toggle has `display: none;` and based on that switches between mobile and desktop states.
+Breakpoint is defined in the [responsive-nav.css](https://github.com/arielsalminen/responsive-nav.js/blob/master/responsive-nav.css) file. Responsive Nav checks on window resize and on orientation change if the navigation toggle has `display: none;` and based on that switches between mobile and desktop states.
 
 
 # Supporting old IEs
 
-Even though Responsive Nav works even on IE6, you should remember that IE8 and under do not support media queries and thus can’t change between "small screen" and "large screen" styles. If needed, you can add Media Query support for those browsers using [respond.js](https://github.com/scottjehl/Respond). There’s an example [here](https://github.com/viljamis/responsive-nav.js/tree/master/demos/ie-support-using-respondjs).
+Even though Responsive Nav works even on IE6, you should remember that IE8 and under do not support media queries and thus can’t change between "small screen" and "large screen" styles. If needed, you can add Media Query support for those browsers using [respond.js](https://github.com/scottjehl/Respond). There’s an example [here](https://github.com/arielsalminen/responsive-nav.js/tree/master/demos/ie-support-using-respondjs).
 
 When old IE support is needed you should stick to using ID selector with Responsive Nav. That’s because the plugin uses `getElementById` method by default which is widely supported in all browsers. When using classes or element selectors `querySelector` will be used instead which isn’t supported in old IEs.
 
@@ -212,7 +212,7 @@ In random order:
 
 Licensed under the MIT license.
 
-Copyright (c) 2013 Viljami Salminen, http://viljamis.com/
+Copyright (c) 2012-2023 Ariel Salminen, https://arie.ls/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

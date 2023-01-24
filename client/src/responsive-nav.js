@@ -1,8 +1,8 @@
 /*! responsive-nav.js @@version
- * https://github.com/viljamis/responsive-nav.js
+ * https://github.com/arielsalminen/responsive-nav.js
  * http://responsive-nav.com
  *
- * Copyright (c) @@year @viljamis
+ * Copyright (c) @@year @arielsalminen
  * Available under the MIT license
  */
 
