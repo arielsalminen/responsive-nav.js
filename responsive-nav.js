@@ -37,7 +37,7 @@
         return this;
       };
     }
-    /* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass, forEach */
+    /* exported addEvent, removeEvent, getChildren, setAttributes, getClass, addClass, removeClass, forEach */
     
     /**
      * Add Event
@@ -143,15 +143,25 @@
       },
     
       /**
+       * Gets the classname of an element.
+       *
+       * @param {element} element
+       * @return {string} the classes on the element
+       */
+      getClass = function (el) {
+        return el.getAttribute("class") || "";
+      },
+
+      /**
        * Adds a class to any element
        *
        * @param {element} element
        * @param {string}  class
        */
       addClass = function (el, cls) {
-        if (el.className.indexOf(cls) !== 0) {
-          el.className += " " + cls;
-          el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
+        if (getClass(el).indexOf(cls) !== 0) {
+          el.setAttribute("class", getClass(el) + " " + cls);
+          el.setAttribute("class", getClass(el).replace(/(^\s*)|(\s*$)/g,""));
         }
       },
     
@@ -163,7 +173,7 @@
        */
       removeClass = function (el, cls) {
         var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
-        el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
+        el.setAttribute("class", getClass(el).replace(reg, " ").replace(/(^\s*)|(\s*$)/g,""));
       },
     
       /**
@@ -348,7 +358,7 @@
           setAttributes(navToggle, {"aria-hidden": "false"});
 
           // If the navigation is hidden
-          if (nav.className.match(/(^|\s)closed(\s|$)/)) {
+          if (getClass(nav).match(/(^|\s)closed(\s|$)/)) {
             setAttributes(nav, {"aria-hidden": "true"});
             nav.style.position = "absolute";
           }
