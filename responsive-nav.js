@@ -15,7 +15,7 @@
   var responsiveNav = function (el, options) {
 
     var computed = !!window.getComputedStyle;
-    
+
     /**
      * getComputedStyle polyfill for old browsers
      */
@@ -38,7 +38,7 @@
       };
     }
     /* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass, forEach */
-    
+
     /**
      * Add Event
      * fn arg can be an object or a function, thanks to handleEvent
@@ -50,16 +50,19 @@
      * @param  {boolean}  bubbling
      */
     var addEvent = function (el, evt, fn, bubble) {
+        // set passive events if this is supported
+        var options = supportsPassiveEvents ? {passive: true, capture: bubble} : bubble;
+
         if ("addEventListener" in el) {
           // BBOS6 doesn't support handleEvent, catch and polyfill
           try {
-            el.addEventListener(evt, fn, bubble);
+            el.addEventListener(evt, fn, options);
           } catch (e) {
             if (typeof fn === "object" && fn.handleEvent) {
               el.addEventListener(evt, function (e) {
                 // Bind fn as this and set first arg as event object
                 fn.handleEvent.call(fn, e);
-              }, bubble);
+              }, options);
             } else {
               throw e;
             }
@@ -76,7 +79,7 @@
           }
         }
       },
-    
+
       /**
        * Remove Event
        *
@@ -108,7 +111,32 @@
           }
         }
       },
-    
+
+      /**
+       * Check support for passive event listeners
+       *
+       * @return {bool} Returns whether {passive: true} can be used
+       */
+      checkPassiveEventSupport = function () {
+        var supported = false;
+
+        try {
+          var opts = {
+            get passive() {
+              supported = true;
+            }
+          };
+
+          if ("addEventListener" in window) {
+            window.addEventListener("test", null, opts);
+            window.removeEventListener("test", null, opts);
+          }
+        } catch (e) {
+          supported = false;
+        }
+        return supported;
+      },
+
       /**
        * Get the children of any element
        *
@@ -129,7 +157,7 @@
         }
         return children;
       },
-    
+
       /**
        * Sets multiple attributes at once
        *
@@ -141,7 +169,7 @@
           el.setAttribute(key, attrs[key]);
         }
       },
-    
+
       /**
        * Adds a class to any element
        *
@@ -154,7 +182,7 @@
           el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
         }
       },
-    
+
       /**
        * Remove a class from any element
        *
@@ -165,7 +193,7 @@
         var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
         el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
       },
-    
+
       /**
        * forEach method that passes back the stuff we need
        *
@@ -184,6 +212,7 @@
       navToggle,
       styleElement = document.createElement("style"),
       htmlEl = document.documentElement,
+      supportsPassiveEvents = checkPassiveEventSupport(),
       hasAnimFinished,
       isMobile,
       navOpen;
@@ -519,17 +548,19 @@
        * @param  {event} event
        */
       _preventDefault: function(e) {
-        if (e.preventDefault) {
-          if (e.stopImmediatePropagation) {
-            e.stopImmediatePropagation();
-          }
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
+        if (!supportsPassiveEvents) {
+          if (e.preventDefault) {
+            if (e.stopImmediatePropagation) {
+              e.stopImmediatePropagation();
+            }
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
 
-        // This is strictly for old IE
-        } else {
-          e.returnValue = false;
+          // This is strictly for old IE
+          } else {
+            e.returnValue = false;
+          }
         }
       },
 
