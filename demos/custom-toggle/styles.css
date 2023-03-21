@@ -1,4 +1,4 @@
-button {
+#toggle {
   color: white;
   padding: 1em;
   border: 0;
@@ -6,13 +6,13 @@ button {
   background: red;
 }
 
-button.active {
+#toggle.active {
   background: green;
 }
 
 
 @media (min-width: 700px) {
-  button {
+  #toggle {
     display: none;
   }
 }
