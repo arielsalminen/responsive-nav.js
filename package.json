@@ -23,7 +23,7 @@
     "grunt-rigger": "~0.5.0",
     "grunt-contrib-watch": "~0.5.2",
     "grunt-contrib-uglify": "~0.2.2",
-    "express": "~3.3.5",
+    "express": "~4.17.1",
     "grunt-shell": "~0.3.1",
     "grunt-replace": "~0.4.4",
     "grunt-karma": "~0.6.1",
